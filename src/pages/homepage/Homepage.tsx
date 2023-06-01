@@ -19,12 +19,6 @@ export default function Homepage() {
         scrub: true,
       },
     });
-
-    //  Add animations to the timeline
-    tl.to(".sub-section-1", { opacity: 0, y: -20 });
-    tl.to(".sub-section-2", { opacity: 0, y: -20 });
-
-    // Add more animations with pin option here
   }, []);
   return (
     <>
