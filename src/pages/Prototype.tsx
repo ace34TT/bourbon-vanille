@@ -38,38 +38,6 @@ export default function Prototype() {
     loadImages();
   }, []);
 
-  // useEffect(() => {
-  //   const animateElement = () => {
-  //     gsap.fromTo(".bg-4", { opacity: 1 }, { opacity: 0, duration: 0.5 });
-  //   };
-  //   const reverseAnimation = () => {
-  //     gsap.fromTo(".bg-4", { opacity: 0 }, { opacity: 1, duration: 0.5 });
-  //   };
-  //   ScrollTrigger.create({
-  //     markers: true,
-  //     trigger: ".sub-section-2",
-  //     start: "top 80%",
-  //     end: "bottom 15%",
-  //     scrub: true,
-  //     onEnter: animateElement,
-  //     onLeaveBack: reverseAnimation,
-  //   });
-  //   const animateElement2 = () => {
-  //     gsap.fromTo(".bg-3", { opacity: 1 }, { opacity: 0, duration: 0.5 });
-  //   };
-  //   const reverseAnimation2 = () => {
-  //     gsap.fromTo(".bg-3", { opacity: 0 }, { opacity: 1, duration: 0.5 });
-  //   };
-  //   ScrollTrigger.create({
-  //     markers: true,
-  //     trigger: ".sub-section-3",
-  //     start: "top 80%",
-  //     end: "bottom 15%",
-  //     scrub: true,
-  //     onEnter: animateElement2,
-  //     onLeaveBack: reverseAnimation2,
-  //   });
-  // }, []);
   useEffect(() => {
     const animateElement = (bg: string) => {
       gsap.fromTo(
