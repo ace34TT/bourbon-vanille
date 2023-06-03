@@ -1,7 +1,8 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 //
 const loadImage = async (path: string): Promise<string> => {
   try {
@@ -37,7 +38,6 @@ export default function Prototype() {
     };
     loadImages();
   }, []);
-
   useEffect(() => {
     const animateElement = (bg: string) => {
       gsap.fromTo(
@@ -65,50 +65,67 @@ export default function Prototype() {
 
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
+  // useEffect(() => {
+  //   const scroll = new LocomotiveScroll({
+  //     el: containerRef.current,
+  //     smooth: true,
+  //   });
+
+  //   return () => {
+  //     if (scroll) {
+  //       scroll.destroy();
+  //     }
+  //   };
+  // }, []);
 
   return (
-    <>
-      <div ref={containerRef} className="3d-section relative">
-        <div className="w-screen h-screen main-section sticky top-0 relative">
-          <div
-            className="bg-1 w-full h-full absolute z-10 brightness-50"
-            style={{ zIndex: 10 }}
-          >
-            <img
-              src={loadedImages[0]}
-              alt="Your Image"
-              className="w-full h-full object-cover"
-            ></img>
-          </div>
-          <div
-            className="bg-2 w-full h-full absolute z-20 brightness-50"
-            style={{ zIndex: 20 }}
-          >
-            <img
-              src={loadedImages[1]}
-              alt="Your Image"
-              className="w-full h-full object-cover"
-            ></img>
-          </div>
-          <div
-            className="bg-3 w-full h-full absolute z-30 brightness-50"
-            style={{ zIndex: 30 }}
-          >
-            <img
-              src={loadedImages[2]}
-              alt="Your Image"
-              className="w-full h-full object-cover"
-            ></img>
-          </div>
-          <div
-            className="bg-4 w-full h-full absolute z-40 brightness-50"
-            style={{ zIndex: 40 }}
-          >
-            <img
-              src={loadedImages[3]}
-              alt="Your Image"
-              className="w-full h-full object-cover"
-            ></img>
+    <div ref={containerRef}>
+      <div className="3d-section relative">
+        <div
+          className="w-screen h-screen main-section sticky top-0 "
+          data-scroll-sticky
+        >
+          <div className="relative w-full h-full">
+            <div
+              className="bg-1 w-full h-full absolute z-10 brightness-50"
+              style={{ zIndex: 10 }}
+            >
+              <img
+                src={loadedImages[0]}
+                alt="Your Image"
+                className="w-full h-full object-cover"
+              ></img>
+            </div>
+            <div
+              className="bg-2 w-full h-full absolute z-20 brightness-50"
+              style={{ zIndex: 20 }}
+            >
+              <img
+                src={loadedImages[1]}
+                alt="Your Image"
+                className="w-full h-full object-cover"
+              ></img>
+            </div>
+            <div
+              className="bg-3 w-full h-full absolute z-30 brightness-50"
+              style={{ zIndex: 30 }}
+            >
+              <img
+                src={loadedImages[2]}
+                alt="Your Image"
+                className="w-full h-full object-cover"
+              ></img>
+            </div>
+            <div
+              className="bg-4 w-full h-full absolute z-40 brightness-50"
+              style={{ zIndex: 40 }}
+            >
+              <img
+                src={loadedImages[3]}
+                alt="Your Image"
+                className="w-full h-full object-cover"
+              ></img>
+            </div>
           </div>
         </div>
         {/*  */}
@@ -123,7 +140,7 @@ export default function Prototype() {
         </div>
         <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-slate-500">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
             illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
             inventore autem quibusdam voluptatibus, placeat rem nisi enim.
@@ -132,7 +149,7 @@ export default function Prototype() {
         </div>
         <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-slate-500">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
             illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
             inventore autem quibusdam voluptatibus, placeat rem nisi enim.
@@ -141,7 +158,7 @@ export default function Prototype() {
         </div>
         <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-slate-500">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
             illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
             inventore autem quibusdam voluptatibus, placeat rem nisi enim.
@@ -152,6 +169,6 @@ export default function Prototype() {
       <div className="footer h-screen bg-gray-500 flex justify-center items-center">
         Footer
       </div>
-    </>
+    </div>
   );
 }
