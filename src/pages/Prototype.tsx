@@ -40,11 +40,7 @@ export default function Prototype() {
 
   useEffect(() => {
     const animateElement = (bg: string) => {
-      gsap.fromTo(
-        "." + bg,
-        { opacity: 1, y: -50 },
-        { opacity: 0, y: 0, duration: 0.5 }
-      );
+      gsap.fromTo("." + bg, { opacity: 1 }, { opacity: 0, duration: 1 });
     };
     const reverseAnimation = (bg: string) => {
       gsap.fromTo("." + bg, { opacity: 0 }, { opacity: 1, duration: 0.5 });
