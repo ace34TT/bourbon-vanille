@@ -52,13 +52,34 @@ export default function Prototype() {
       ScrollTrigger.create({
         markers: true,
         trigger: "." + element.subSection,
-        start: "top 80%",
+        start: "top 60%",
         end: "bottom 15%",
         onEnter: () => animateElement(element.bg),
         onLeaveBack: () => reverseAnimation(element.bg),
       });
     };
-
+    sectionRelations.forEach((element) => createScrollTrigger(element));
+  }, []);
+  useEffect(() => {
+    const createScrollTrigger = (element: {
+      bg: string;
+      subSection: string;
+    }) => {
+      gsap.fromTo(
+        "." + element.subSection,
+        { opacity: 0 },
+        {
+          opacity: 0.95,
+          scrollTrigger: {
+            trigger: "." + element.subSection,
+            start: "top 50%",
+            end: "bottom bottom",
+            scrub: true,
+            markers: true,
+          },
+        }
+      );
+    };
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
 
@@ -108,40 +129,32 @@ export default function Prototype() {
           </div>
         </div>
         {/*  */}
-        <div className="sub-section-1 px-32 flex justify-around items-center h-screen w-screen absolute top-0 z-50 opacity-100">
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
-            inventore autem quibusdam voluptatibus, placeat rem nisi enim.
-            Omnis, expedita totam.
+        <div className="sub-section-1 px-32 flex justify-around items-center h-screen w-screen absolute top-0 z-50 opacity-100 bg-opacity-100">
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
+            Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
           </div>
           <div className="flex-1"></div>
         </div>
-        <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
+        <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-50 ">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
-            inventore autem quibusdam voluptatibus, placeat rem nisi enim.
-            Omnis, expedita totam.
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
+            Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
           </div>
         </div>
         <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
           <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
-            inventore autem quibusdam voluptatibus, placeat rem nisi enim.
-            Omnis, expedita totam.
+            illum nihil deleniti repellat ipsam.
           </div>
         </div>
         <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
           <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam. Aliquid mollitia in, qui fugiat
-            inventore autem quibusdam voluptatibus, placeat rem nisi enim.
-            Omnis, expedita totam.
+            illum nihil deleniti repellat ipsam.
           </div>
         </div>
       </div>
