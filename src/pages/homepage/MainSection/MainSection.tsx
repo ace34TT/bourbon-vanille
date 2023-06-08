@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
