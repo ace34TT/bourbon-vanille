@@ -1,0 +1,46 @@
+   <div
+        className="main-section"
+        ref={containerRef}
+        style={{ scrollBehavior: "smooth" }}
+      >
+        <div
+          className="sub-section sub-section-1 px-32 flex justify-around items-center h-screen w-screen"
+          id="section1"
+        >
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
+            Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
+          </div>
+          <div className="flex-1"></div>
+        </div>
+        <div
+          className="sub-section sub-section-2 px-32 flex justify-around items-center h-screen w-screen"
+          id="section2"
+        >
+          <div className="flex-1"></div>
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
+            Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
+          </div>
+        </div>
+        <div
+          className="sub-section sub-section-3 px-32 flex justify-around items-center h-screen w-screen"
+          id="section3"
+        >
+          <div className="flex-1"></div>
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+            illum nihil deleniti repellat ipsam.
+          </div>
+        </div>
+        <div
+          className="sub-section sub-section-4 px-32 flex justify-around items-center h-screen w-screen"
+          id="section4"
+        >
+          <div className="flex-1"></div>
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+            illum nihil deleniti repellat ipsam.
+          </div>
+        </div>
+      </div>
