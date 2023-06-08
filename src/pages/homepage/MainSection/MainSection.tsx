@@ -17,7 +17,6 @@ export default function MainSection() {
       setCurrentSection((prevState) => prevState - 1);
     }
   }, []);
-
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
     return () => {
