@@ -27,7 +27,7 @@ export function Model(props: ModelProps) {
     "models/Vanilla-transformed.glb"
   ) as GLTFResult;
 
-  const [rotation, setRotation] = useState<Euler>(new Euler(0, 0.65, -3.13));
+  const [rotation] = useState<Euler>(new Euler(0, 0.65, -3.13));
   const { camera } = useThree();
   camera.lookAt(new Vector3(0, 0, 0));
   return (
