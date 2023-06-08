@@ -9,7 +9,7 @@ import { Model } from "./MainModel";
 
 function Scene() {
   const { camera } = useThree();
-  const position: [number, number, number] = [1, 1.5, -3];
+  const position: [number, number, number] = [1, 1.5, -2];
   useFrame(() => {
     const [x, y, z] = position;
     camera.lookAt(x, y, z + 5); // Set the camera to look at a fixed point (0, 4, 0)
