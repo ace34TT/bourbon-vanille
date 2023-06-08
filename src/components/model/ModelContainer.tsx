@@ -18,12 +18,6 @@ function Scene() {
   return (
     <>
       <PerspectiveCamera position={position} makeDefault />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        enableDamping
-        dampingFactor={0.1}
-      />
       <gridHelper args={[100, 10]} />
       <axesHelper scale={[1, 1, 1]} />
       <Suspense fallback={null}>
