@@ -3,7 +3,9 @@ import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
 import ModelContainer from "../../../components/model/ModelContainer";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
@@ -36,14 +38,15 @@ export default function MainSection() {
       duration: 500,
       smooth: true,
       onComplete: () => {
-        console.log("done");
         setTimeout(() => {
           setCanScroll(true);
-        }, 1000); // Delay of 1 second (1000 milliseconds)
+        }, 1000);
       },
     });
   }, [currentSection]);
-
+  useEffect(() => {
+    gsap.to({}, {});
+  });
   return (
     <div className="relative">
       <div className="sticky top-0">
