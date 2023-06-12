@@ -37,6 +37,9 @@ const CameraContextProvider: React.FC<ICameraContextProviderProps> = ({
     setPosition,
     setRotation,
   };
+  useEffect(() => {
+    console.log(position);
+  }, [position]);
 
   return (
     <CameraContext.Provider value={contextValue}>
