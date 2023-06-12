@@ -38,7 +38,7 @@ export default function Scene() {
       });
     }
   }, [position, hasMounted]);
-  cameraRef.current?.lookAt(0, 0, 0);
+
   return (
     <>
       <PerspectiveCamera ref={cameraRef} makeDefault />
