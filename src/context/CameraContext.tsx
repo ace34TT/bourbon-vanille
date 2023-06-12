@@ -22,12 +22,15 @@ interface ICameraContextProviderProps {
 const CameraContextProvider: React.FC<ICameraContextProviderProps> = ({
   children,
 }) => {
-  const [position, setPosition] = useState<[number, number, number]>([
+  const [position, setUpPosition] = useState<[number, number, number]>([
     1, 1.5, -3,
   ]);
   const [rotation, setRotation] = useState<[number, number, number]>([
     0, 0.65, -0.1,
   ]);
+  const setPosition = (value: [number, number, number]) => {
+    setUpPosition(value);
+  };
   const contextValue: ICameraContext = {
     position,
     rotation,

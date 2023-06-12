@@ -1,21 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
 import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ITransition, transitions } from "../../../interfaces/ITransition";
+import { CameraContext } from "../../../context/CameraContext";
 gsap.registerPlugin(ScrollTrigger);
+
 export default function MainSection() {
+  const { setPosition } = useContext(CameraContext);
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
   const handleScroll = useCallback((event: { deltaY: number }) => {
     if (!canScroll) return;
     if (event.deltaY >= 0) {
-      // User scrolled down
       setCurrentSection((prevState) => prevState + 1);
     } else {
-      // User scrolled up
       setCurrentSection((prevState) => prevState - 1);
     }
   }, []);
@@ -45,14 +47,38 @@ export default function MainSection() {
     });
   }, [currentSection]);
   useEffect(() => {
-    gsap.to({}, {});
+    const animateElement = (_element: ITransition, index: number) => {
+      if (index + 1 < transitions.length) {
+        setPosition(transitions[index + 1].camera.position);
+      }
+    };
+    const reverseAnimation = (_element: ITransition, index: number) => {
+      if (index > 0) {
+        setPosition(transitions[index - 1].camera.position);
+      } else {
+        setPosition(transitions[0].camera.position);
+      }
+    };
+    const createScrollTrigger = (element: ITransition, index: number) => {
+      ScrollTrigger.create({
+        markers: true,
+        trigger: "." + element.section,
+        start: "center 15%",
+        end: "bottom 90%",
+        onEnter: () => animateElement(element, index),
+        onLeaveBack: () => reverseAnimation(element, index),
+      });
+    };
+    transitions.forEach((element, index) =>
+      createScrollTrigger(element, index)
+    );
   });
   return (
     <div className="relative">
       <div className="sticky top-0">
         <ModelContainer />
       </div>
-      <Element name="section1">
+      <Element className="section-1" name="section-1">
         <div
           className="sub-section sub-section-1 px-32 flex justify-around items-center h-screen w-screen"
           id="section1"
@@ -64,7 +90,7 @@ export default function MainSection() {
           <div className="flex-1"></div>
         </div>
       </Element>
-      <Element className="h-screen bg-red-300" name="section2">
+      <Element className="h-screen bg-red-300 section-2" name="section-2">
         <div
           className="sub-section sub-section-2 px-32 flex justify-around items-center h-screen w-screen"
           id="section2"
@@ -76,7 +102,7 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element className="h-screen bg-blue-300" name="section3">
+      <Element className="h-screen bg-blue-300" name="section-3">
         <div
           className="sub-section sub-section-3 px-32 flex justify-around items-center h-screen w-screen"
           id="section3"
@@ -88,7 +114,7 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element className="h-screen bg-green-300" name="section4">
+      <Element className="h-screen bg-green-300" name="section-4">
         <div
           className="sub-section sub-section-4 px-32 flex justify-around items-center h-screen w-screen"
           id="section4"
