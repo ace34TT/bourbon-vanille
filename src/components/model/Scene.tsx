@@ -9,36 +9,37 @@ import { CameraContext } from "../../context/CameraContext";
 import { Vector3, PerspectiveCamera as PerspectiveCameraType } from "three";
 import gsap from "gsap";
 import { arePositionsEqual } from "../../helpers/camera.util";
+import { useFrame } from "react-three-fiber";
 export default function Scene() {
   const cameraRef = useRef<PerspectiveCameraType>(null);
-
-  // Set the previousPosition ref's initial value to the default position
   const previousPosition = useRef<[number, number, number]>([1, 1.5, -3]);
-
-  // Add a state to track if the component has mounted
-  const [hasMounted] = useState(false);
   const { position } = useContext(CameraContext);
   useEffect(() => {
+    // previousPosition.current = position;
+    console.log(previousPosition.current, position);
+  }, [position]);
+  useFrame(() => {
     if (
-      (!arePositionsEqual(previousPosition.current, position) || !hasMounted) &&
+      !arePositionsEqual(previousPosition.current, position) &&
       cameraRef.current
     ) {
+      // console.log(previousPosition.current, position);
       const targetPosition = new Vector3(...position);
-      gsap.to(cameraRef.current.position, {
-        x: targetPosition.x,
-        y: targetPosition.y,
-        z: targetPosition.z,
-        duration: 1,
-        onStart: () => {
+      const currentPosition = cameraRef.current.position;
+
+      const animateCamera = () => {
+        const newPosition = currentPosition.clone().lerp(targetPosition, 0.05);
+        cameraRef.current!.position.copy(newPosition);
+        const epsilon = 0.001;
+        if (newPosition.distanceToSquared(targetPosition) > epsilon) {
+          requestAnimationFrame(animateCamera);
+        } else {
           previousPosition.current = position;
-        },
-        onComplete: () => {
-          previousPosition.current = position;
-        },
-      });
+        }
+      };
+      requestAnimationFrame(animateCamera);
     }
-  }, [position, hasMounted]);
-  cameraRef.current?.lookAt(0, 0, 0);
+  });
   return (
     <>
       <PerspectiveCamera ref={cameraRef} makeDefault />

@@ -29,6 +29,9 @@ const CameraContextProvider: React.FC<ICameraContextProviderProps> = ({
     0, 0.65, -0.1,
   ]);
   const setPosition = (value: [number, number, number]) => {
+    // console.log("avant " + position);
+    // console.log("apres " + value);
+
     setUpPosition(value);
   };
   const contextValue: ICameraContext = {

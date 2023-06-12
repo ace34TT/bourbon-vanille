@@ -36,7 +36,7 @@ export default function MainSection() {
   }, [currentSection]);
 
   useEffect(() => {
-    scroller.scrollTo(`section${currentSection}`, {
+    scroller.scrollTo(`section-${currentSection}`, {
       duration: 500,
       smooth: true,
       onComplete: () => {
@@ -46,6 +46,7 @@ export default function MainSection() {
       },
     });
   }, [currentSection]);
+
   useEffect(() => {
     const animateElement = (_element: ITransition, index: number) => {
       if (index + 1 < transitions.length) {
