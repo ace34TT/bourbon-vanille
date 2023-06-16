@@ -8,7 +8,6 @@ import { GLTF } from "three-stdlib";
 import { Vector3 } from "three";
 import { useContext, useEffect, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
-import { ModelContext } from "../../context/ModelContext";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,31 +25,14 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
     "models/Vanilla-transformed.glb"
   ) as GLTFResult;
   //
-  const { position, rotation } = useContext(ModelContext);
+
   // animation
   const modelRef = useRef<THREE.Group>(null);
-  const previousPosition = useRef(position);
-  useEffect(() => {
-    previousPosition.current = position;
-  }, [position]);
-  useFrame(() => {
-    if (previousPosition.current !== position) {
-      modelRef!.current!.position.copy(new Vector3(...position));
-      previousPosition.current = position;
-    }
-  });
   //
   const { camera } = useThree();
   camera.lookAt(new Vector3(0, 0, 0));
   return (
-    <group
-      {...props}
-      dispose={null}
-      position={position}
-      rotation={rotation}
-      scale={[0.07, 0.07, 0.04]}
-      ref={modelRef}
-    >
+    <group {...props} dispose={null} scale={[0.07, 0.07, 0.04]} ref={modelRef}>
       <mesh
         castShadow
         receiveShadow

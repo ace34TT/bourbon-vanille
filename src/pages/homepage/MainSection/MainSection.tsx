@@ -6,11 +6,11 @@ import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ITransition, transitions } from "../../../interfaces/ITransition";
-import { CameraContext } from "../../../context/CameraContext";
+import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MainSection() {
-  const { setPosition } = useContext(CameraContext);
+  const { setIndex } = useContext(TransitionContext);
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
   const handleScroll = useCallback((event: { deltaY: number }) => {
@@ -20,6 +20,7 @@ export default function MainSection() {
     } else {
       setCurrentSection((prevState) => prevState - 1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
@@ -27,16 +28,14 @@ export default function MainSection() {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [handleScroll]);
-
   useEffect(() => {
     const nextSection = Math.max(1, Math.min(4, currentSection));
     if (nextSection !== currentSection) {
       setCurrentSection(nextSection);
     }
   }, [currentSection]);
-
   useEffect(() => {
-    scroller.scrollTo(`section${currentSection}`, {
+    scroller.scrollTo(`section-${currentSection}`, {
       duration: 500,
       smooth: true,
       onComplete: () => {
@@ -46,18 +45,13 @@ export default function MainSection() {
       },
     });
   }, [currentSection]);
+  // ! Scroll
   useEffect(() => {
     const animateElement = (_element: ITransition, index: number) => {
-      if (index + 1 < transitions.length) {
-        setPosition(transitions[index + 1].camera.position);
-      }
+      setIndex(index + 1);
     };
     const reverseAnimation = (_element: ITransition, index: number) => {
-      if (index > 0) {
-        setPosition(transitions[index - 1].camera.position);
-      } else {
-        setPosition(transitions[0].camera.position);
-      }
+      setIndex(index);
     };
     const createScrollTrigger = (element: ITransition, index: number) => {
       ScrollTrigger.create({
@@ -72,7 +66,7 @@ export default function MainSection() {
     transitions.forEach((element, index) =>
       createScrollTrigger(element, index)
     );
-  });
+  }, []);
   return (
     <div className="relative">
       <div className="sticky top-0">

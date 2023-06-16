@@ -1,48 +1,56 @@
-import { Suspense, useContext, useEffect, useRef, useState } from "react";
-import {
-  Environment,
-  PerspectiveCamera,
-  OrbitControls,
-} from "@react-three/drei";
+import { Suspense, useContext, useEffect, useRef } from "react";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { Model } from "./MainModel";
-import { CameraContext } from "../../context/CameraContext";
-import { Vector3, PerspectiveCamera as PerspectiveCameraType } from "three";
-import gsap from "gsap";
-import { arePositionsEqual } from "../../helpers/camera.util";
+import { TransitionContext } from "../../context/TransitionContaxt";
+import { useThree } from "react-three-fiber";
+import { transitions } from "../../interfaces/ITransition";
+import { gsap } from "gsap";
 export default function Scene() {
-  const cameraRef = useRef<PerspectiveCameraType>(null);
-
-  // Set the previousPosition ref's initial value to the default position
-  const previousPosition = useRef<[number, number, number]>([1, 1.5, -3]);
-
-  // Add a state to track if the component has mounted
-  const [hasMounted] = useState(false);
-  const { position } = useContext(CameraContext);
+  const cameraRef = useRef<any>(null);
+  const { index } = useContext(TransitionContext);
+  // #################################
+  const {
+    camera,
+    gl: { domElement },
+  } = useThree();
   useEffect(() => {
-    if (
-      (!arePositionsEqual(previousPosition.current, position) || !hasMounted) &&
-      cameraRef.current
-    ) {
-      const targetPosition = new Vector3(...position);
-      gsap.to(cameraRef.current.position, {
-        x: targetPosition.x,
-        y: targetPosition.y,
-        z: targetPosition.z,
-        duration: 1,
-        onStart: () => {
-          previousPosition.current = position;
-        },
-        onComplete: () => {
-          previousPosition.current = position;
-        },
-      });
-    }
-  }, [position, hasMounted]);
+    cameraAnimate();
+  }, [index]);
 
+  function cameraAnimate(): void {
+    if (cameraRef.current.target) {
+      // gsap.timeline().to(camera.position, {
+      //   duration: 1,
+      //   repeat: 0,
+      //   x: transitions[index].camera.initial.position[0],
+      //   y: transitions[index].camera.initial.position[1],
+      //   z: transitions[index].camera.initial.position[2],
+      //   ease: "power3.inOut",
+      // });
+
+      gsap.timeline().to(
+        cameraRef.current.target,
+        {
+          duration: 1,
+          repeat: 0,
+          x: transitions[index].camera.target.position[0],
+          y: transitions[index].camera.target.position[1],
+          z: transitions[index].camera.target.position[2],
+          ease: "power3.inOut",
+        },
+        "<"
+      );
+    }
+  }
   return (
     <>
-      <PerspectiveCamera ref={cameraRef} makeDefault />
-      {/* <OrbitControls /> */}
+      {/* <PerspectiveCamera ref={cameraRef} makeDefault /> */}
+      <OrbitControls
+        ref={cameraRef}
+        args={[camera, domElement]}
+        panSpeed={1}
+        maxPolarAngle={Math.PI / 2}
+      />
       <gridHelper args={[100, 10]} />
       <axesHelper scale={[1, 1, 1]} />
 
