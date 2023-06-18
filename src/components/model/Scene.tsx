@@ -1,61 +1,34 @@
 import { Suspense, useContext, useEffect, useRef } from "react";
-import { Environment, OrbitControls } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  OrthographicCamera,
+  PerspectiveCamera,
+  ScrollControls,
+} from "@react-three/drei";
+import { Camera, PerspectiveCamera as PerspectiveCameraType } from "three";
 import { Model } from "./MainModel";
 import { TransitionContext } from "../../context/TransitionContaxt";
 import { useThree } from "react-three-fiber";
 import { transitions } from "../../interfaces/ITransition";
 import { gsap } from "gsap";
 export default function Scene() {
-  const cameraRef = useRef<any>(null);
-  const { index } = useContext(TransitionContext);
-  // #################################
-  const {
-    camera,
-    gl: { domElement },
-  } = useThree();
-  useEffect(() => {
-    cameraAnimate();
-  }, [index]);
-
-  function cameraAnimate(): void {
-    if (cameraRef.current.target) {
-      // gsap.timeline().to(camera.position, {
-      //   duration: 1,
-      //   repeat: 0,
-      //   x: transitions[index].camera.initial.position[0],
-      //   y: transitions[index].camera.initial.position[1],
-      //   z: transitions[index].camera.initial.position[2],
-      //   ease: "power3.inOut",
-      // });
-
-      gsap.timeline().to(
-        cameraRef.current.target,
-        {
-          duration: 1,
-          repeat: 0,
-          x: transitions[index].camera.target.position[0],
-          y: transitions[index].camera.target.position[1],
-          z: transitions[index].camera.target.position[2],
-          ease: "power3.inOut",
-        },
-        "<"
-      );
-    }
-  }
   return (
     <>
-      {/* <PerspectiveCamera ref={cameraRef} makeDefault /> */}
-      <OrbitControls
-        ref={cameraRef}
-        args={[camera, domElement]}
-        panSpeed={1}
-        maxPolarAngle={Math.PI / 2}
+      <OrthographicCamera
+        position={[0, 0, 50]}
+        zoom={90}
+        near={0.1}
+        far={5000}
+        makeDefault
       />
+      <OrbitControls enableZoom={false} />
       <gridHelper args={[100, 10]} />
       <axesHelper scale={[1, 1, 1]} />
-
       <Suspense fallback={null}>
-        <Model />
+        <ScrollControls pages={4} damping={0.25}>
+          <Model />
+        </ScrollControls>
         <Environment preset="warehouse" />
       </Suspense>
     </>

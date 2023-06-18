@@ -1,16 +1,12 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
 import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ITransition, transitions } from "../../../interfaces/ITransition";
-import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
-
 export default function MainSection() {
-  const { setIndex } = useContext(TransitionContext);
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
   const handleScroll = useCallback((event: { deltaY: number }) => {
@@ -46,27 +42,6 @@ export default function MainSection() {
     });
   }, [currentSection]);
   // ! Scroll
-  useEffect(() => {
-    const animateElement = (_element: ITransition, index: number) => {
-      setIndex(index + 1);
-    };
-    const reverseAnimation = (_element: ITransition, index: number) => {
-      setIndex(index);
-    };
-    const createScrollTrigger = (element: ITransition, index: number) => {
-      ScrollTrigger.create({
-        markers: true,
-        trigger: "." + element.section,
-        start: "center 15%",
-        end: "bottom 90%",
-        onEnter: () => animateElement(element, index),
-        onLeaveBack: () => reverseAnimation(element, index),
-      });
-    };
-    transitions.forEach((element, index) =>
-      createScrollTrigger(element, index)
-    );
-  }, []);
   return (
     <div className="relative">
       <div className="sticky top-0">
