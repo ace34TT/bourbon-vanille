@@ -5,6 +5,7 @@ import { Element } from "react-scroll";
 import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ITransition, transitions } from "../../../interfaces/ITransition";
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
@@ -42,6 +43,27 @@ export default function MainSection() {
     });
   }, [currentSection]);
   // ! Scroll
+  useEffect(() => {
+    const animateElement = (_element: ITransition, index: number) => {
+      setIndex(index + 1);
+    };
+    const reverseAnimation = (_element: ITransition, index: number) => {
+      setIndex(index);
+    };
+    const createScrollTrigger = (element: ITransition, index: number) => {
+      ScrollTrigger.create({
+        markers: true,
+        trigger: "." + element.section,
+        start: "center 15%",
+        end: "bottom 90%",
+        onEnter: () => animateElement(element, index),
+        onLeaveBack: () => reverseAnimation(element, index),
+      });
+    };
+    transitions.forEach((element, index) =>
+      createScrollTrigger(element, index)
+    );
+  }, []);
   return (
     <div className="relative">
       <div className="sticky top-0">
