@@ -17,7 +17,7 @@ export default function Scene() {
     <>
       <OrthographicCamera
         position={[0, 0, 50]}
-        zoom={90}
+        zoom={600}
         near={0.1}
         far={5000}
         makeDefault

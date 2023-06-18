@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
@@ -6,10 +6,12 @@ import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ITransition, transitions } from "../../../interfaces/ITransition";
+import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
+  const { setIndex } = useContext(TransitionContext);
   const handleScroll = useCallback((event: { deltaY: number }) => {
     if (!canScroll) return;
     if (event.deltaY >= 0) {
@@ -93,7 +95,10 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element className="h-screen bg-blue-300" name="section-3">
+      <Element
+        className="h-screen bg-blue-300 section section-3"
+        name="section-3"
+      >
         <div
           className="sub-section sub-section-3 px-32 flex justify-around items-center h-screen w-screen"
           id="section3"
@@ -105,7 +110,7 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element className="h-screen bg-green-300" name="section-4">
+      <Element className="h-screen bg-green-300 section-4" name="section-4">
         <div
           className="sub-section sub-section-4 px-32 flex justify-around items-center h-screen w-screen"
           id="section4"

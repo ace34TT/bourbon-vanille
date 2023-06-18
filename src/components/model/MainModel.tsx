@@ -9,6 +9,8 @@ import { Vector3 } from "three";
 import { useContext, useEffect, useLayoutEffect, useRef } from "react";
 import { useThree, useFrame } from "@react-three/fiber";
 import gsap from "gsap";
+import { TransitionContext } from "../../context/TransitionContaxt";
+import { transitions } from "../../interfaces/ITransition";
 type GLTFResult = GLTF & {
   nodes: {
     Circle035: THREE.Mesh;
@@ -25,36 +27,55 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   ) as GLTFResult;
   const modelRef = useRef<THREE.Group>(null);
   //
-  const tl = useRef<gsap.core.Timeline | null>(null);
-  const scroll = useScroll();
-  useFrame(() => {
-    tl.current?.seek(scroll.offset * tl.current.duration());
-  });
-  useLayoutEffect(() => {
-    tl.current = gsap.timeline();
-    if (modelRef.current) {
-      tl.current.to(
-        modelRef.current.position,
-        {
-          duration: 2,
-          x: -10,
-          y: -0.8,
-        },
-        0
-      );
-      tl.current.to(
-        modelRef.current.rotation,
-        {
-          duration: 2,
-          x: Math.PI / 2,
-          y: Math.PI / 2,
-          z: Math.PI / 2,
-        },
-        0
-      );
+  // const tl = useRef<gsap.core.Timeline | null>(null);
+  // const scroll = useScroll();
+  // useFrame(() => {
+  //   tl.current?.seek(scroll.offset * tl.current.duration());
+  // });
+  // useLayoutEffect(() => {
+  //   tl.current = gsap.timeline();
+  //   if (modelRef.current) {
+  //     tl.current.to(
+  //       modelRef.current.position,
+  //       {
+  //         duration: 2,
+  //         x: -10,
+  //         y: -0.8,
+  //       },
+  //       0
+  //     );
+  //     tl.current.to(
+  //       modelRef.current.rotation,
+  //       {
+  //         duration: 2,
+  //         x: Math.PI / 2,
+  //         y: Math.PI / 2,
+  //         z: Math.PI / 2,
+  //       },
+  //       0
+  //     );
+  //   }
+  //   //
+  // }, []);
+  const { setIndex, index } = useContext(TransitionContext);
+  useEffect(() => {
+    console.log(index);
+    if (index >= 0 && index < 3) {
+      gsap.to(modelRef.current!.position, {
+        duration: 1,
+        x: transitions[index].model.position[0],
+        y: transitions[index].model.position[1],
+        z: transitions[index].model.position[2],
+      });
+      gsap.to(modelRef.current!.rotation, {
+        duration: 1,
+        x: transitions[index].model.rotation[0],
+        y: transitions[index].model.rotation[1],
+        z: transitions[index].model.rotation[2],
+      });
     }
-    //
-  }, []);
+  }, [index]);
+
   return (
     <group
       {...props}

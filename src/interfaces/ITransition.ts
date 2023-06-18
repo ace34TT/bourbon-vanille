@@ -1,59 +1,31 @@
 export interface ITransition {
   section: string;
-  camera: {
-    initial: {
-      position: [number, number, number];
-      rotation: [number, number, number];
-    };
-    target: {
-      position: [number, number, number];
-      rotation: [number, number, number];
-    };
-  };
+
   model: {
-    initial: {
-      position: [number, number, number];
-      rotation: [number, number, number];
-    };
-    target: {
-      position: [number, number, number];
-      rotation: [number, number, number];
-    };
+    position: [number, number, number];
+    rotation: [number, number, number];
   };
 }
 export const transitions: ITransition[] = [
   {
     section: "section-1",
-    camera: {
-      initial: {
-        position: [0, 0, -1],
-        rotation: [0, 0.65, -0.1],
-      },
-      target: {
-        position: [0, 0, 0],
-        rotation: [0, 0.65, -0.1],
-      },
-    },
     model: {
-      initial: {
-        position: [1, 1.5, -2],
-        rotation: [1, 0, -0.0],
-      },
-      target: {
-        position: [1, 1.5, -2],
-        rotation: [1, 0, -0.0],
-      },
+      position: [0.75, -0.6, -0.5],
+      rotation: [0.003, 0.651, -3.13],
     },
   },
   {
     section: "section-2",
-    camera: {
-      initial: { position: [-2, 1.5, -3], rotation: [0, 0.65, -0.1] },
-      target: { position: [-2, 1.5, -3], rotation: [0, 0.65, -0.1] },
-    },
     model: {
-      initial: { position: [1, 1.5, -2], rotation: [1, 0, -0.0] },
-      target: { position: [1, 1.5, -2], rotation: [1, 0, -0.0] },
+      position: [-0.75, -0.3, -0],
+      rotation: [Math.PI / 12, Math.PI / 6, -2.75],
+    },
+  },
+  {
+    section: "section-3",
+    model: {
+      position: [-0.9, 0.5, -0.5],
+      rotation: [Math.PI / 4, Math.PI / 4, -3.5],
     },
   },
 ];
