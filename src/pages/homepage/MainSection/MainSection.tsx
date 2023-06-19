@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
   const [canScroll, setCanScroll] = useState(true);
+  const [reachedLastSection, setReachedLastSection] = useState(false);
   const { setIndex } = useContext(TransitionContext);
   const handleScroll = useCallback((event: { deltaY: number }) => {
     if (!canScroll) return;
@@ -28,7 +29,7 @@ export default function MainSection() {
     };
   }, [handleScroll]);
   useEffect(() => {
-    const nextSection = Math.max(1, Math.min(4, currentSection));
+    const nextSection = Math.max(1, Math.min(5, currentSection));
     if (nextSection !== currentSection) {
       setCurrentSection(nextSection);
     }
@@ -37,11 +38,6 @@ export default function MainSection() {
     scroller.scrollTo(`section-${currentSection}`, {
       duration: 500,
       smooth: true,
-      onComplete: () => {
-        setTimeout(() => {
-          setCanScroll(true);
-        }, 1000);
-      },
     });
   }, [currentSection]);
   // ! Scroll
@@ -65,6 +61,7 @@ export default function MainSection() {
     transitions.forEach((element, index) =>
       createScrollTrigger(element, index)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="relative">
