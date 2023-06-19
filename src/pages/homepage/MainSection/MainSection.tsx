@@ -40,7 +40,7 @@ export default function MainSection() {
       smooth: true,
     });
   }, [currentSection]);
-  // ! Scroll
+  // ! 3d model animation
   useEffect(() => {
     const animateElement = (_element: ITransition, index: number) => {
       setIndex(index + 1);
