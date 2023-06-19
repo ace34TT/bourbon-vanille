@@ -69,10 +69,7 @@ export default function MainSection() {
         <ModelContainer />
       </div>
       <Element className="section-1" name="section-1">
-        <div
-          className="sub-section sub-section-1 px-32 flex justify-around items-center h-screen w-screen"
-          id="section1"
-        >
+        <div className="sub-section sub-section-1 " id="section1">
           <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
             Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Omnis illum nihil deleniti repellat ipsam.
@@ -80,11 +77,8 @@ export default function MainSection() {
           <div className="flex-1"></div>
         </div>
       </Element>
-      <Element className="h-screen bg-red-300 section-2" name="section-2">
-        <div
-          className="sub-section sub-section-2 px-32 flex justify-around items-center h-screen w-screen"
-          id="section2"
-        >
+      <Element className="section-2" name="section-2">
+        <div className="sub-section sub-section-2 " id="section2">
           <div className="flex-1"></div>
           <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
             Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -92,14 +86,8 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element
-        className="h-screen bg-blue-300 section section-3"
-        name="section-3"
-      >
-        <div
-          className="sub-section sub-section-3 px-32 flex justify-around items-center h-screen w-screen"
-          id="section3"
-        >
+      <Element className="section-3" name="section-3">
+        <div className="sub-section sub-section-3 " id="section3">
           <div className="flex-1"></div>
           <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
@@ -107,9 +95,9 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element className="h-screen bg-green-300 section-4" name="section-4">
+      <Element className="section-4" name="section-4">
         <div
-          className="sub-section sub-section-4 px-32 flex justify-around items-center h-screen w-screen"
+          className="sub-section sub-section-4 justify-around "
           id="section4"
         >
           <div className="flex-1"></div>
@@ -119,10 +107,7 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
-      <Element
-        className="h-screen bg-blue-300 section section-5"
-        name="section-5"
-      ></Element>
+      <Element className="section-5 h-screen bg-green-700" name="section-5" />
     </div>
   );
 }
