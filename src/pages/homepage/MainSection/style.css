@@ -36,3 +36,11 @@
     ),
     url("./../../../assets/backgrounds/4.jpg");
 }
+
+.sub-section-5 {
+  background-image: linear-gradient(
+      rgba(22, 45, 30, 0.7),
+      rgba(22, 45, 30, 0.7)
+    ),
+    url("./../../../assets/backgrounds/4.jpg");
+}

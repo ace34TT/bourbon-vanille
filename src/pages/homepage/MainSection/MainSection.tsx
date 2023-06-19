@@ -56,7 +56,7 @@ export default function MainSection() {
       ScrollTrigger.create({
         markers: true,
         trigger: "." + element.section,
-        start: "center 15%",
+        start: "center 40%",
         end: "bottom 90%",
         onEnter: () => animateElement(element, index),
         onLeaveBack: () => reverseAnimation(element, index),
@@ -122,6 +122,10 @@ export default function MainSection() {
           </div>
         </div>
       </Element>
+      <Element
+        className="h-screen bg-blue-300 section section-5"
+        name="section-5"
+      ></Element>
     </div>
   );
 }
