@@ -10,33 +10,27 @@ import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
-  const [canScroll, setCanScroll] = useState(true);
-  const [reachedLastSection, setReachedLastSection] = useState(false);
   const { setIndex } = useContext(TransitionContext);
+
   const handleScroll = useCallback((event: { deltaY: number }) => {
-    if (!canScroll) return;
-    if (event.deltaY >= 0) {
-      setCurrentSection((prevState) => prevState + 1);
-    } else {
-      setCurrentSection((prevState) => prevState - 1);
+    const threshold = 50; // Adjust this value as needed for sensitivity
+    if (event.deltaY > threshold) {
+      setCurrentSection((prevState) => Math.min(prevState + 1, 5));
+    } else if (event.deltaY < -threshold) {
+      setCurrentSection((prevState) => Math.max(prevState - 1, 1));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [handleScroll]);
-  useEffect(() => {
-    const nextSection = Math.max(1, Math.min(5, currentSection));
-    if (nextSection !== currentSection) {
-      setCurrentSection(nextSection);
-    }
-  }, [currentSection]);
+
   useEffect(() => {
     scroller.scrollTo(`section-${currentSection}`, {
-      duration: 500,
+      duration: 1000,
       smooth: true,
     });
   }, [currentSection]);
@@ -64,50 +58,46 @@ export default function MainSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="relative">
+    <div className="parent">
       <div className="sticky top-0">
         <ModelContainer />
       </div>
-      <Element className="section-1" name="section-1">
-        <div className="sub-section sub-section-1 " id="section1">
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
-            Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Omnis illum nihil deleniti repellat ipsam.
-          </div>
-          <div className="flex-1"></div>
+      <Element className="custom-section sub-section-1" name="section-1">
+        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
+          Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+          illum nihil deleniti repellat ipsam.
+        </div>
+        <div className="flex-1"></div>
+      </Element>
+      <Element className="custom-section sub-section-2" name="section-2">
+        <div className="flex-1"></div>
+        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
+          Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+          illum nihil deleniti repellat ipsam.
         </div>
       </Element>
-      <Element className="section-2" name="section-2">
-        <div className="sub-section sub-section-2 " id="section2">
-          <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
-            Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Omnis illum nihil deleniti repellat ipsam.
-          </div>
+      <Element className="custom-section sub-section-3" name="section-3">
+        <div className="flex-1"></div>
+        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum
+          nihil deleniti repellat ipsam.
         </div>
       </Element>
-      <Element className="section-3" name="section-3">
-        <div className="sub-section sub-section-3 " id="section3">
-          <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam.
-          </div>
+      <Element className="custom-section sub-section-4" name="section-4">
+        <div className="flex-1"></div>
+        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum
+          nihil deleniti repellat ipsam.
         </div>
       </Element>
-      <Element className="section-4" name="section-4">
-        <div
-          className="sub-section sub-section-4 justify-around "
-          id="section4"
-        >
-          <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-            illum nihil deleniti repellat ipsam.
-          </div>
-        </div>
-      </Element>
-      <Element className="section-5 h-screen bg-green-700" name="section-5" />
+      <Element
+        className="custom-section sub-section-5 h-screen bg-green-700"
+        name="section-5"
+      />
+      <Element
+        className="custom-section sub-section-5 h-screen bg-green-700"
+        name="section-5"
+      />
     </div>
   );
 }
