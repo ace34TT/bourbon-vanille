@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import "./style.css";
-import { scroller } from "react-scroll";
+import { scroller, animateScroll } from "react-scroll";
 import { Element } from "react-scroll";
 import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
@@ -8,33 +8,55 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ITransition, transitions } from "../../../interfaces/ITransition";
 import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
-export default function MainSection() {
+interface IProps {
+  scrollToNextSection: () => void;
+}
+export default function MainSection({ scrollToNextSection }: IProps) {
+  const scrollSection = useRef<HTMLDivElement>(null);
+  // !
   const [currentSection, setCurrentSection] = useState(1);
-  const { setIndex } = useContext(TransitionContext);
-
   const handleScroll = useCallback((event: { deltaY: number }) => {
-    const threshold = 50; // Adjust this value as needed for sensitivity
+    const threshold = 50;
     if (event.deltaY > threshold) {
       setCurrentSection((prevState) => Math.min(prevState + 1, 5));
     } else if (event.deltaY < -threshold) {
       setCurrentSection((prevState) => Math.max(prevState - 1, 1));
     }
   }, []);
-
   useEffect(() => {
     window.addEventListener("wheel", handleScroll, { passive: false });
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [handleScroll]);
-
   useEffect(() => {
     scroller.scrollTo(`section-${currentSection}`, {
       duration: 1000,
       smooth: true,
     });
   }, [currentSection]);
+  // !
+  useEffect(() => {
+    const handleScrollTrigger = () => {
+      scrollToNextSection();
+    };
+    ScrollTrigger.create({
+      markers: true,
+      trigger: ".sub-section-5",
+      start: "center 55%",
+      end: "bottom 90%",
+      onEnter: handleScrollTrigger,
+    });
+    // Clean up the ScrollTrigger when the component unmounts
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill();
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // ! 3d model animation
+  const { setIndex } = useContext(TransitionContext);
   useEffect(() => {
     const animateElement = (_element: ITransition, index: number) => {
       setIndex(index + 1);
@@ -44,10 +66,10 @@ export default function MainSection() {
     };
     const createScrollTrigger = (element: ITransition, index: number) => {
       ScrollTrigger.create({
-        markers: true,
+        // markers: true,
         trigger: "." + element.section,
         start: "center 40%",
-        end: "bottom 90%",
+        end: "80% 90%",
         onEnter: () => animateElement(element, index),
         onLeaveBack: () => reverseAnimation(element, index),
       });
@@ -58,7 +80,7 @@ export default function MainSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="parent">
+    <div className="parent" ref={scrollSection}>
       <div className="sticky top-0">
         <ModelContainer />
       </div>
@@ -90,10 +112,6 @@ export default function MainSection() {
           nihil deleniti repellat ipsam.
         </div>
       </Element>
-      <Element
-        className="custom-section sub-section-5 h-screen bg-green-700"
-        name="section-5"
-      />
       <Element
         className="custom-section sub-section-5 h-screen bg-green-700"
         name="section-5"
