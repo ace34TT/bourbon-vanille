@@ -62,38 +62,39 @@ export default function MainSection() {
       <div className="sticky top-0">
         <ModelContainer />
       </div>
-      <Element className="custom-section sub-section-1" name="section-1">
-        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
-          Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-          illum nihil deleniti repellat ipsam.
+      <Element className="custom-section sub-section-1 px-28" name="section-1">
+        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+          La Maison Bourbon Vanille née à
+          <i className="text-accent"> Madagascar</i> ,est un trésor rare niche
+          dans un environnement naturel exceptionnellement luxueux.
         </div>
         <div className="flex-1"></div>
       </Element>
-      <Element className="custom-section sub-section-2" name="section-2">
+      <Element className="custom-section sub-section-2 px-28" name="section-2">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
-          Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-          illum nihil deleniti repellat ipsam.
+        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100 ">
+          Notre artisanat de haute qualité repose sur les valeurs telles que
+          <i className="text-accent">la passion</i> ,
+          <i className="text-accent">la persévérance</i>
+          et <i className="text-accent">la patience</i> , nous permettant de
+          recueillir des gousses d'exception reflétant notre engagement éthique.
         </div>
       </Element>
-      <Element className="custom-section sub-section-3" name="section-3">
+      <Element className="custom-section sub-section-3 px-28" name="section-3">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum
-          nihil deleniti repellat ipsam.
+        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+          Des producteurs locaux engagés pour une
+          <i className="text-accent"> vanille de qualité supérieure</i>
+          respectueuse de l'environnement et du commerce equitable.
         </div>
       </Element>
-      <Element className="custom-section sub-section-4" name="section-4">
+      <Element className="custom-section sub-section-4 px-28" name="section-4">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis illum
-          nihil deleniti repellat ipsam.
+        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+          <i className="text-accent">La vanille de Madagascar,</i> pour une
+          expérience gustative inoubliable.
         </div>
       </Element>
-      <Element
-        className="custom-section sub-section-5 h-screen bg-green-700"
-        name="section-5"
-      />
       <Element
         className="custom-section sub-section-5 h-screen bg-green-700"
         name="section-5"
