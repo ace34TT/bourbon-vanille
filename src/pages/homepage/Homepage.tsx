@@ -15,10 +15,10 @@ export default function Prototype() {
   };
   return (
     <div className="homepage">
-      {/* <TransitionContextProvider>
+      <TransitionContextProvider>
         <MainSection scrollToNextSection={scrollToNextSection} />
-      </TransitionContextProvider> */}
-      <FullPageScroll />
+      </TransitionContextProvider>
+      {/* <FullPageScroll /> */}
       <section className="min-h-screen bg-green-500 flex items-center justify-center">
         Section 5
       </section>

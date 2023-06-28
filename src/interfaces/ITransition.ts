@@ -35,11 +35,11 @@ export const transitions: ITransition[] = [
       rotation: [Math.PI / 4, Math.PI / 4, -3.5],
     },
   },
-  {
-    section: "sub-section-5",
-    model: {
-      position: [-0.25, 0.5, -0.5],
-      rotation: [Math.PI / 2, Math.PI / 4, -3.5],
-    },
-  },
+  // {
+  //   section: "sub-section-5",
+  //   model: {
+  //     position: [-0.25, 0.5, -0.5],
+  //     rotation: [Math.PI / 2, Math.PI / 4, -3.5],
+  //   },
+  // },
 ];

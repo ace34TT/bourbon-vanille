@@ -66,7 +66,7 @@ export default function MainSection({ scrollToNextSection }: IProps) {
     };
     const createScrollTrigger = (element: ITransition, index: number) => {
       ScrollTrigger.create({
-        // markers: true,
+        markers: true,
         trigger: "." + element.section,
         start: "center 40%",
         end: "80% 90%",

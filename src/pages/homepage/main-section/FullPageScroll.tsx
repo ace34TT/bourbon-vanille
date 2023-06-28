@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TransitionContext } from "../../../context/TransitionContaxt";
+import { ITransition, transitions } from "../../../interfaces/ITransition";
+import ModelContainer from "../../../components/model/ModelContainer";
 // Register GSAP ScrollToPlugin
 gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 export default function FullPageScroll() {
   const [currentIndex, setCurrentIndex] = useState<number>(0); // Track the current section index
   useEffect(() => {
@@ -43,26 +48,53 @@ export default function FullPageScroll() {
         });
       }
     };
-
     window.addEventListener("wheel", handleScroll, { passive: false });
-
     // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [currentIndex]);
+  // !
+  const { setIndex } = useContext(TransitionContext);
+  useEffect(() => {
+    const animateElement = (_element: ITransition, index: number) => {
+      console.log("enter");
+
+      setIndex(index + 1);
+    };
+    const reverseAnimation = (_element: ITransition, index: number) => {
+      setIndex(index);
+    };
+    const createScrollTrigger = (element: ITransition, index: number) => {
+      ScrollTrigger.create({
+        markers: true,
+        trigger: "." + element.section,
+        start: "center 40%",
+        end: "80% 90%",
+        onEnter: () => animateElement(element, index),
+        onLeaveBack: () => reverseAnimation(element, index),
+      });
+    };
+    transitions.forEach((element, index) =>
+      createScrollTrigger(element, index)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
-      <section className="min-h-screen bg-indigo-500 flex items-center justify-center">
+      <div className="sticky top-0">
+        <ModelContainer />
+      </div>
+      <section className="sub-section-1 min-h-screen bg-indigo-500 flex items-center justify-center">
         Section 1
       </section>
-      <section className="min-h-screen bg-red-600 flex items-center justify-center">
+      <section className="sub-section-2 min-h-screen bg-red-600 flex items-center justify-center">
         Section 2
       </section>
-      <section className="min-h-screen bg-blue-700 flex items-center justify-center">
+      <section className="sub-section-3 min-h-screen bg-blue-700 flex items-center justify-center">
         Section 3
       </section>
-      <section className="min-h-screen bg-pink-800 flex items-center justify-center">
+      <section className="sub-section-4 min-h-screen bg-pink-800 flex items-center justify-center">
         Section 4
       </section>
     </>
