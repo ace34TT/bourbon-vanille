@@ -1,7 +1,7 @@
 import { TransitionContextProvider } from "../../context/TransitionContaxt";
 import MainSection from "./MainSection/MainSection";
 import purchaseBG from "./../../assets/backgrounds/6.jpg";
-export default function Prototype() {
+export default function Homepage() {
   return (
     <div>
       <TransitionContextProvider>
