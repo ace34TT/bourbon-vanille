@@ -1,0 +1,14 @@
+#story {
+  section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .section-1 {
+    background-image: linear-gradient(#162d1eb3, #162d1eb3),
+      url("./../../../assets/backgrounds/2.jpg");
+    h1 {
+      font-family: "Bacasime Antique", serif;
+    }
+  }
+}

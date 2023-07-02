@@ -1,5 +1,5 @@
 import { TransitionContextProvider } from "../../context/TransitionContaxt";
-import MainSection from "./MainSection/MainSection";
+import MainSection from "./main-section/MainSection";
 import purchaseBG from "./../../assets/backgrounds/6.jpg";
 export default function Homepage() {
   return (

@@ -20,6 +20,7 @@
     "react-scroll": "^1.8.9",
     "react-three-fiber": "^6.0.13",
     "react-use-scroll-snap": "^0.0.4",
+    "sass": "^1.63.6",
     "three": "^0.153.0"
   },
   "devDependencies": {

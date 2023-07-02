@@ -8,15 +8,15 @@ export default function Footer() {
       </div>
       <div className="flex justify-around text-secondary mt-10 font-medium">
         <ul>
-          <li className="text-5xl">Liens utiles</li>
-          <li className="text-2xl">Notre histoire</li>
-          <li className="text-2xl">Commande</li>
-          <li className="text-2xl">Contact</li>
+          <li className="text-3xl">Liens utiles</li>
+          <li className="text-xl">Notre histoire</li>
+          <li className="text-xl">Commande</li>
+          <li className="text-xl">Contact</li>
         </ul>
         <ul>
-          <li className="text-5xl">Contact</li>
-          <li className="text-2xl">+33 6 20 69 98 89</li>
-          <li className="text-2xl">contact@bourbonvanille.com</li>
+          <li className="text-3xl">Contact</li>
+          <li className="text-xl">+33 6 20 69 98 89</li>
+          <li className="text-xl">contact@bourbonvanille.com</li>
         </ul>
       </div>
       <div className="h-20 w-full flex items-center justify-center text-secondary text-xl">
