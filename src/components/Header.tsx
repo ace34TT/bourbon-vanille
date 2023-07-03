@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "./../assets/logo/logo_principal 1.png";
-import { BiMenu } from "react-icons/bi";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";

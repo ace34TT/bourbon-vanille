@@ -1,4 +1,3 @@
-import React from "react";
 import Logo from "./../assets/logo/logo_principal 1.png";
 import { Link } from "react-router-dom";
 export default function Footer() {

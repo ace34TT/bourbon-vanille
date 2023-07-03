@@ -1,6 +1,6 @@
 import vanilla from "./../assets/Vanilla-png-1-min.png";
 import { Formik, Field, ErrorMessage, Form } from "formik";
-import { AiOutlineLock, AiOutlineMail, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineMail, AiOutlineUser } from "react-icons/ai";
 import * as Yup from "yup";
 export const Contact = () => {
   const contactSchema = {
@@ -27,7 +27,7 @@ export const Contact = () => {
               initialValues={{ fullName: "", email: "", message: "" }}
               validationSchema={contactSchema}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
-              onSubmit={async (values, { setSubmitting }) => {}}
+              onSubmit={async () => {}}
             >
               {({ isSubmitting }) => (
                 <Form>

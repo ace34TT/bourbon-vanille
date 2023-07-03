@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.scss";
 import image_1 from "./../../../assets/backgrounds/1.jpg";
 export const Story = () => {
@@ -10,7 +9,7 @@ export const Story = () => {
             Laissez-vous transporter vers les contrées lointaines de Madagascar
             grâce <i className="text-accent">à nos vanilles d'exception !</i>
           </h1>
-          <p className="text-justify text-secondary ">
+          <p className="text-justify text-secondary text-lg">
             Bienvenue chez Bourbon Vanille, une entreprise passionnée par la
             vanille bourbon de Madagascar, cette épice rare et prestigieuse dont
             la qualité et la saveur ne sont plus à démontrer. Nous sommes
@@ -23,7 +22,7 @@ export const Story = () => {
       </section>
       <section className="h-fit py-20 lg:h-screen bg-primary flex flex-col items-center justify-center">
         <div className="w-10/12 lg:w-6/12 prose max-w-none">
-          <p className="text-justify text-secondary px-4">
+          <p className="text-justify text-secondary px-4 text-lg">
             Notre vanille bourbon est le fruit d'un partenariat étroit avec des
             producteurs locaux, qui ont un savoir-faire exceptionnel en matière
             de culture et de récolte de vanille. En utilisant des méthodes
@@ -39,7 +38,7 @@ export const Story = () => {
       </section>
       <section className="h-fit py-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
         <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
-          <p className="text-justify text-primary px-4">
+          <p className="text-justify text-primary px-4 text-lg">
             Nous croyons également que notre engagement doit s'étendre au-delà
             de la qualité de notre produit. Nous sommes fiers de soutenir des
             initiatives qui favorisent le développement économique des
@@ -52,7 +51,7 @@ export const Story = () => {
       </section>
       <section className="h-fit py-20  bg-primary flex flex-col items-center justify-center">
         <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-10">
-          <p className="text-secondary text-justify flex-1">
+          <p className="text-secondary text-justify flex-1 text-lg">
             Enfin, nous sommes convaincus que l'éthique professionnelle est la
             clé de notre réussite. Nous agissons avec transparence et honnêteté
             envers nos clients, nos partenaires et nos employés. Nous avons à

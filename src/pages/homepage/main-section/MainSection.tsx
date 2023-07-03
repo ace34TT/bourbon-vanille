@@ -1,12 +1,12 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+// import { useCallback, useContext, useEffect, useState } from "react";
 import "./style.css";
-import { scroller } from "react-scroll";
+// import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
-import ModelContainer from "../../../components/model/ModelContainer";
+// import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ITransition, transitions } from "../../../interfaces/ITransition";
-import { TransitionContext } from "../../../context/TransitionContaxt";
+// import { ITransition, transitions } from "../../../interfaces/ITransition";
+// import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   // const [currentSection, setCurrentSection] = useState(1);
@@ -65,7 +65,7 @@ export default function MainSection() {
       <Element className="custom-section sub-section-1 px-28" name="section-1">
         <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
           La Maison Bourbon Vanille née à
-          <i className="text-accent"> Madagascar</i> ,est un trésor rare niche
+          <i className="text-accent"> Madagascar </i> ,est un trésor rare niche
           dans un environnement naturel exceptionnellement luxueux.
         </div>
         <div className="flex-1"></div>
@@ -74,9 +74,9 @@ export default function MainSection() {
         <div className="flex-1"></div>
         <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100 ">
           Notre artisanat de haute qualité repose sur les valeurs telles que
-          <i className="text-accent">la passion</i> ,
-          <i className="text-accent">la persévérance</i>
-          et <i className="text-accent">la patience</i> , nous permettant de
+          <i className="text-accent">la passion </i> ,
+          <i className="text-accent">la persévérance </i>
+          et <i className="text-accent">la patience </i> , nous permettant de
           recueillir des gousses d'exception reflétant notre engagement éthique.
         </div>
       </Element>
