@@ -18,10 +18,10 @@ export const Contact = () => {
           <div className="flex flex-col bg-secondary p-20 rounded-2xl mt-10">
             <h1>Formulaire de contact</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-              possimus qui minima harum aliquam officia, non tenetur officiis
-              voluptatibus vitae voluptates adipisci exercitationem autem cum
-              veritatis nihil eaque quae nisi?
+              Nous sommes toujours heureux de recevoir vos messages. N’hésitez
+              pas à nous contacter via le formulaire ci-dessous pour toute
+              question ou suggestion. Nous répondrons rapidement. Merci de votre
+              intérêt !
             </p>
             <Formik
               initialValues={{ fullName: "", email: "", message: "" }}
@@ -54,7 +54,7 @@ export const Contact = () => {
                     </div>
                     <div className="flex flex-col gap-1">
                       <label htmlFor="email" className="font-bold">
-                        email{" "}
+                        Email <span className="text-red-700">*</span>
                       </label>
                       <div className="relative w-full">
                         <label htmlFor="email"></label>
@@ -75,7 +75,7 @@ export const Contact = () => {
                     </div>
                     <div className="flex flex-col gap-1">
                       <label htmlFor="message" className="font-bold">
-                        message
+                        Message <span className="text-red-700">*</span>
                       </label>
                       <div className="relative w-full">
                         <label htmlFor="message"></label>
@@ -98,7 +98,7 @@ export const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-40 bg-primary text-white font-bold py-2 rounded-2xl"
+                    className="w-40 bg-primary text-white font-bold py-2 rounded-2xl hover:bg-[#2b4b40] transition-all duration-150"
                   >
                     Submit
                   </button>

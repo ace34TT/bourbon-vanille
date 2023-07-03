@@ -5,7 +5,7 @@ export const Story = () => {
   return (
     <div id="story">
       <section className="h-screen flex flex-col items-center justify-center section-1">
-        <div className="w-6/12 prose max-w-none">
+        <div className="md:w-10/12 lg:w-6/12 prose max-w-none">
           <h1 className="text-center text-secondary text-6xl ">
             Laissez-vous transporter vers les contrées lointaines de Madagascar
             grâce <i className="text-accent">à nos vanilles d'exception !</i>

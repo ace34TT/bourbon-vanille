@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./../assets/logo/logo_principal 1.png";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer className="w-full pt-10 bg-primary">
@@ -9,9 +10,30 @@ export default function Footer() {
       <div className="flex justify-around text-secondary mt-10 font-medium">
         <ul>
           <li className="text-3xl">Liens utiles</li>
-          <li className="text-xl">Notre histoire</li>
-          <li className="text-xl">Commande</li>
-          <li className="text-xl">Contact</li>
+          <li className="text-xl">
+            <Link
+              to={"order"}
+              className="hover:text-accent transition-colors duration-300"
+            >
+              Notre histoire
+            </Link>
+          </li>
+          <li className="text-xl">
+            <Link
+              to={"our-story"}
+              className="hover:text-accent transition-colors duration-300"
+            >
+              Commande
+            </Link>
+          </li>
+          <li className="text-xl">
+            <Link
+              to={"contact"}
+              className="hover:text-accent transition-colors duration-300"
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
         <ul>
           <li className="text-3xl">Contact</li>

@@ -8,10 +8,10 @@ export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
     <header className="fixed top-0 z-50 ">
-      <div className="h-20 w-screen flex justify-between items-center bg-primary px-10 relative">
+      <div className="h-24 w-screen flex justify-between items-center bg-primary px-10 relative py-10">
         <div></div>
         <Link to={"/"}>
-          <img src={Logo} alt="" className="h-16" />
+          <img src={Logo} alt="" className="h-20" />
         </Link>
         <div>
           <BiMenu
@@ -38,10 +38,10 @@ export const Header = () => {
               exit={{ y: -1000 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex justify-between items-center h-20 px-10">
+              <div className="flex justify-between items-center h-24 px-10 py-10">
                 <div />
                 <div>
-                  <img src={Logo} alt="" className="h-16" />
+                  <img src={Logo} alt="" className="h-20" />
                 </div>
                 <div>
                   <RxCross1
@@ -50,10 +50,11 @@ export const Header = () => {
                   />
                 </div>
               </div>
-              <nav className="flex items-center justify-around h-60 text-4xl text-primary font-normal">
+              <nav className="flex items-center justify-around h-36 text-4xl text-primary font-normal">
                 <Link
                   to={"/order"}
                   className="hover:text-complementary transition-colors duration-300"
+                  onClick={() => setIsMenuVisible(false)}
                 >
                   Commader
                 </Link>
@@ -61,6 +62,7 @@ export const Header = () => {
                 <Link
                   to={"/our-story"}
                   className="hover:text-complementary transition-colors duration-300"
+                  onClick={() => setIsMenuVisible(false)}
                 >
                   Notre histoire
                 </Link>
@@ -68,6 +70,7 @@ export const Header = () => {
                 <Link
                   to={"/contact"}
                   className="hover:text-complementary transition-colors duration-300"
+                  onClick={() => setIsMenuVisible(false)}
                 >
                   Contact
                 </Link>
