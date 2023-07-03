@@ -1,6 +1,6 @@
 import vanilla from "./../assets/Vanilla-png-1-min.png";
 import { Formik, Field, ErrorMessage, Form } from "formik";
-import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
+import { AiOutlineLock, AiOutlineMail, AiOutlineUser } from "react-icons/ai";
 import * as Yup from "yup";
 export const Contact = () => {
   const contactSchema = {
@@ -42,7 +42,7 @@ export const Contact = () => {
                           name="fullName"
                           className="border border-primary bg-secondary rounded-lg pl-10 pr-3 py-2 w-full"
                         />
-                        <AiOutlineMail className="absolute text-gray-600 left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                        <AiOutlineUser className="absolute text-gray-600 left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                       </div>
                       <div className="h-4 text-red-500">
                         <ErrorMessage
@@ -63,7 +63,7 @@ export const Contact = () => {
                           name="email"
                           className="border border-primary bg-secondary rounded-lg pl-10 pr-3 py-2 w-full"
                         />
-                        <AiOutlineLock className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                        <AiOutlineMail className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                       </div>
                       <div className="h-4 text-red-500">
                         <ErrorMessage

@@ -4,18 +4,19 @@ import { BiMenu } from "react-icons/bi";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { VscMenu } from "react-icons/vsc";
 export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
     <header className="fixed top-0 z-50 ">
-      <div className="h-24 w-screen flex justify-between items-center bg-primary px-10 relative py-10">
+      <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative py-10">
         <div></div>
         <Link to={"/"}>
-          <img src={Logo} alt="" className="h-20" />
+          <img src={Logo} alt="" className="h-16 lg:h-20" />
         </Link>
         <div>
-          <BiMenu
-            className={"text-secondary text-5xl cursor-pointer"}
+          <VscMenu
+            className={"text-secondary text-3xl lg:text-4xl cursor-pointer"}
             onClick={() => setIsMenuVisible(true)}
           />
         </div>
@@ -32,7 +33,7 @@ export const Header = () => {
               transition={{ duration: 0.3 }}
             />
             <motion.div
-              className="absolute top-0 left-0 px-5 w-screen bg-secondary "
+              className="absolute top-0 left-0 px-0 lg:px-5 w-screen bg-secondary "
               initial={{ y: -1000 }}
               animate={{ y: 0 }}
               exit={{ y: -1000 }}
@@ -41,7 +42,7 @@ export const Header = () => {
               <div className="flex justify-between items-center h-24 px-10 py-10">
                 <div />
                 <div>
-                  <img src={Logo} alt="" className="h-20" />
+                  <img src={Logo} alt="" className="h-16 lg:h-20" />
                 </div>
                 <div>
                   <RxCross1
@@ -50,7 +51,7 @@ export const Header = () => {
                   />
                 </div>
               </div>
-              <nav className="flex items-center justify-around h-36 text-4xl text-primary font-normal">
+              <nav className="flex flex-col lg:flex-row justify-between items-center lg:items-center lg:justify-around h-80 py-16 lg:h-36 text-4xl text-primary font-normal">
                 <Link
                   to={"/order"}
                   className="hover:text-complementary transition-colors duration-300"
@@ -58,7 +59,7 @@ export const Header = () => {
                 >
                   Commader
                 </Link>
-                <div className="w-px h-6 bg-complementary"></div>{" "}
+                <div className="hidden lg:block w-px h-6 bg-complementary" />
                 <Link
                   to={"/our-story"}
                   className="hover:text-complementary transition-colors duration-300"
@@ -66,7 +67,7 @@ export const Header = () => {
                 >
                   Notre histoire
                 </Link>
-                <div className="w-px h-6 bg-complementary"></div>{" "}
+                <div className="hidden lg:block w-px h-6 bg-complementary" />
                 <Link
                   to={"/contact"}
                   className="hover:text-complementary transition-colors duration-300"
