@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+html,
 body {
-  margin: 0;
-  padding: 0;
+  background-color: #132821;
 }
-
 footer {
   font-family: "Bacasime Antique", serif;
+  /* font-family: "Playfair Display", serif; */
+}
+
+.playfair-display {
+  font-family: "Playfair Display", serif;
 }

@@ -1,15 +1,11 @@
 import React from "react";
 import "./style.scss";
 import { VanillaCard } from "../../../components/VanillaCard";
-import {
-  Vanilla_m1,
-  Vanilla_m2,
-  Vanilla_m3,
-} from "../../../imports/vanille.import";
+import { Vanilla_m1 } from "../../../imports/vanille.import";
 export const Order = () => {
   return (
     <div id="order">
-      <section className="mt-20 lg:mt-24 py-10 h-fit lg:h-80 flex items-center px-10 lg:px-72 text-xl bg-primary text-secondary text-center">
+      <section className="playfair-display mt-20 lg:mt-24 py-10 h-fit lg:h-80 flex items-center px-10 lg:px-72 text-xl bg-primary text-secondary text-center">
         En choisissant Bourbon Vanille, vous optez pour une vanille de qualité
         supérieure, respectueuse de l'environnement et de la responsabilité
         sociale, tout en soutenant une économie équitable et circulaire. Nous

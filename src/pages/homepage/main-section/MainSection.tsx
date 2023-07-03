@@ -63,7 +63,7 @@ export default function MainSection() {
         <ModelContainer />
       </div> */}
       <Element className="custom-section sub-section-1 px-28" name="section-1">
-        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
           La Maison Bourbon Vanille née à
           <i className="text-accent"> Madagascar</i> ,est un trésor rare niche
           dans un environnement naturel exceptionnellement luxueux.
@@ -72,7 +72,7 @@ export default function MainSection() {
       </Element>
       <Element className="custom-section sub-section-2 px-28" name="section-2">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100 ">
+        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100 ">
           Notre artisanat de haute qualité repose sur les valeurs telles que
           <i className="text-accent">la passion</i> ,
           <i className="text-accent">la persévérance</i>
@@ -82,7 +82,7 @@ export default function MainSection() {
       </Element>
       <Element className="custom-section sub-section-3 px-28" name="section-3">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
           Des producteurs locaux engagés pour une
           <i className="text-accent"> vanille de qualité supérieure</i>
           respectueuse de l'environnement et du commerce equitable.
@@ -90,7 +90,7 @@ export default function MainSection() {
       </Element>
       <Element className="custom-section sub-section-4 px-28" name="section-4">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[48px] text-center font-medium text-white opacity-100">
+        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
           <i className="text-accent">La vanille de Madagascar,</i> pour une
           expérience gustative inoubliable.
         </div>

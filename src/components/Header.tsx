@@ -8,8 +8,8 @@ import { VscMenu } from "react-icons/vsc";
 export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
-    <header className="fixed top-0 z-50 ">
-      <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative py-10">
+    <header className="fixed top-0 z-50 playfair-display">
+      <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
         <div></div>
         <Link to={"/"}>
           <img src={Logo} alt="" className="h-16 lg:h-20" />
@@ -59,7 +59,7 @@ export const Header = () => {
                 >
                   Commader
                 </Link>
-                <div className="hidden lg:block w-px h-6 bg-complementary" />
+                <div className="hidden lg:block w-1 h-6 bg-complementary" />
                 <Link
                   to={"/our-story"}
                   className="hover:text-complementary transition-colors duration-300"
@@ -67,7 +67,7 @@ export const Header = () => {
                 >
                   Notre histoire
                 </Link>
-                <div className="hidden lg:block w-px h-6 bg-complementary" />
+                <div className="hidden lg:block w-1 h-6 bg-complementary" />
                 <Link
                   to={"/contact"}
                   className="hover:text-complementary transition-colors duration-300"

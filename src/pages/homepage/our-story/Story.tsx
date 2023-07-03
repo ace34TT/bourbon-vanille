@@ -3,10 +3,10 @@ import "./style.scss";
 import image_1 from "./../../../assets/backgrounds/1.jpg";
 export const Story = () => {
   return (
-    <div id="story">
-      <section className="h-screen flex flex-col items-center justify-center section-1">
-        <div className="md:w-10/12 lg:w-6/12 prose max-w-none">
-          <h1 className="text-center text-secondary text-6xl ">
+    <div id="story" className="mt-20 lg:mt-0 playfair-display">
+      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1">
+        <div className="w-10/12 lg:w-6/12 prose max-w-none ">
+          <h1 className="text-center text-secondary text-4xl lg:text-6xl font-semibold">
             Laissez-vous transporter vers les contrées lointaines de Madagascar
             grâce <i className="text-accent">à nos vanilles d'exception !</i>
           </h1>
@@ -21,8 +21,8 @@ export const Story = () => {
           </p>
         </div>
       </section>
-      <section className="h-screen bg-primary flex flex-col items-center justify-center">
-        <div className="w-6/12 prose max-w-none">
+      <section className="h-fit py-20 lg:h-screen bg-primary flex flex-col items-center justify-center">
+        <div className="w-10/12 lg:w-6/12 prose max-w-none">
           <p className="text-justify text-secondary px-4">
             Notre vanille bourbon est le fruit d'un partenariat étroit avec des
             producteurs locaux, qui ont un savoir-faire exceptionnel en matière
@@ -31,14 +31,14 @@ export const Story = () => {
             une qualité de vanille supérieure, tout en préservant les ressources
             naturelles de Madagascar.
           </p>
-          <div className="w-full flex justify-around gap-4">
-            <img src={image_1} className="w-[512px]" alt="" />
-            <img src={image_1} className="w-[512px]" alt="" />
+          <div className="w-full flex flex-col lg:flex-row justify-around gap-0 lg:gap-4">
+            <img src={image_1} className="w-[512px] mb-0" alt="" />
+            <img src={image_1} className="w-[512px] mb-0" alt="" />
           </div>
         </div>
       </section>
-      <section className="h-screen bg-secondary flex flex-col items-center justify-center">
-        <div className="w-8/12 prose max-w-none flex flex-col items-center">
+      <section className="h-fit py-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
+        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
           <p className="text-justify text-primary px-4">
             Nous croyons également que notre engagement doit s'étendre au-delà
             de la qualité de notre produit. Nous sommes fiers de soutenir des
@@ -47,20 +47,20 @@ export const Story = () => {
             travail équitables et en participant à des programmes de formation
             professionnelle pour les agriculteurs.
           </p>
-          <img src={image_1} className="h-[600px]" alt="" />
+          <img src={image_1} className="w-full lg:h-[600px]" alt="" />
         </div>
       </section>
-      <section className="flex bg-primary justify-center items-center gap-10 px-52 py-16">
-        <div>
-          <p className="text-secondary text-justify">
+      <section className="h-fit py-20  bg-primary flex flex-col items-center justify-center">
+        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-10">
+          <p className="text-secondary text-justify flex-1">
             Enfin, nous sommes convaincus que l'éthique professionnelle est la
             clé de notre réussite. Nous agissons avec transparence et honnêteté
             envers nos clients, nos partenaires et nos employés. Nous avons à
             cœur de maintenir des relations solides et durables avec tous les
             acteurs de notre chaîne de valeur.
           </p>
+          <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" />
         </div>
-        <img src={image_1} className="h-96" alt="" />
       </section>
       <div className="flex justify-center bg-primary">
         <div className="w-1/2 bg-secondary h-px"></div>
