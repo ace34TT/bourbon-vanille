@@ -14,7 +14,7 @@ export default function Homepage() {
         </TransitionContextProvider>
       </BrowserView>
       <MobileView>
-        <section className="h-screen mt-20 flex flex-col items-center justify-between bg-primary py-10">
+        <section className="h-fit mt-20 flex flex-col items-center justify-between bg-primary py-10">
           <span className="text-center text-3xl text-secondary playfair-display">
             Découvrez notre gamme de{" "}
             <span className="text-accent">vanilles d'exception</span> , avec des
