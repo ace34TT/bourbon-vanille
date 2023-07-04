@@ -6,6 +6,7 @@ import { Order } from "./pages/homepage/order/Order";
 import { Story } from "./pages/homepage/our-story/Story";
 import { Contact } from "./pages/Contact";
 
+import { Labs } from "./pages/homepage/Labs";
 function App() {
   return (
     <Routes>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/our-story" element={<Story />} />
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/labs" element={<Labs />} />
       </Route>
     </Routes>
   );

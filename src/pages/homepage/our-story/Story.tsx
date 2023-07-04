@@ -1,15 +1,47 @@
 import "./style.scss";
 import image_1 from "./../../../assets/backgrounds/1.jpg";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { motion } from "framer-motion";
+import SplitType from "split-type";
+import { Line } from "../../../components/svg/Line";
 export const Story = () => {
+  const textRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    if (textRef.current) {
+      const split = new SplitType(textRef.current, { types: "words" });
+
+      gsap.from(split.words, {
+        y: "100%",
+        opacity: 0,
+        stagger: {
+          each: 0.1,
+        },
+        duration: 0.5,
+        ease: "power1.out",
+      });
+    }
+  }, []);
+  //
+
   return (
     <div id="story" className="mt-20 lg:mt-0 playfair-display">
-      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1">
+      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20">
         <div className="w-10/12 lg:w-6/12 prose max-w-none ">
-          <h1 className="text-center text-secondary text-4xl lg:text-6xl font-semibold">
+          <h1
+            className="reveal-text text-center text-secondary text-4xl lg:text-6xl font-medium"
+            ref={textRef}
+          >
             Laissez-vous transporter vers les contrées lointaines de Madagascar
-            grâce <i className="text-accent">à nos vanilles d'exception !</i>
+            grâce
+            <i className="text-accent"> à nos vanilles d'exception !</i>
           </h1>
-          <p className="text-justify text-secondary text-lg">
+          <motion.p
+            className="text-center text-secondary text-lg"
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: -25, transition: { delay: 1.5 } }}
+            transition={{ duration: 1 }}
+          >
             Bienvenue chez Bourbon Vanille, une entreprise passionnée par la
             vanille bourbon de Madagascar, cette épice rare et prestigieuse dont
             la qualité et la saveur ne sont plus à démontrer. Nous sommes
@@ -17,7 +49,7 @@ export const Story = () => {
             piliers essentiels : l'engagement envers la qualité, la
             responsabilité environnementale et sociale et l'éthique
             professionnelle.
-          </p>
+          </motion.p>
         </div>
       </section>
       <section className="h-fit py-20 lg:h-screen bg-primary flex flex-col items-center justify-center">

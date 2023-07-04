@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { VscMenu } from "react-icons/vsc";
 export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+
   return (
     <header className="fixed top-0 z-50 playfair-display">
       <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
@@ -29,14 +30,14 @@ export const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: isMenuVisible ? 0.5 : 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.5 }}
             />
             <motion.div
               className="absolute top-0 left-0 px-0 lg:px-5 w-screen bg-secondary "
               initial={{ y: -1000 }}
               animate={{ y: 0 }}
               exit={{ y: -1000 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.5 }}
             >
               <div className="flex justify-between items-center h-24 px-10 py-10">
                 <div />
