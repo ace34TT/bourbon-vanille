@@ -9,6 +9,9 @@ export default {
         accent: "#FECD4A",
         complementary: "#C2975B",
       },
+      zIndex: {
+        negative: "-1",
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

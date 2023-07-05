@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import SplitType from "split-type";
 import { dec_1, dec_2, dec_3 } from "../../../imports/vanille.import";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { Parallax } from "react-scroll-parallax";
+import bg from "./../../../assets/backgrounds/istockphoto-1353766164-640_adpp_is.mp4";
 gsap.registerPlugin(ScrollTrigger);
 export const Story = () => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -26,22 +27,20 @@ export const Story = () => {
     }
   }, []);
   //
-  useEffect(() => {
-    gsap.to(".section-1", {
-      y: "-100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".section-1",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-    });
-  }, []);
+
   return (
     <div id="story" className="mt-20 lg:mt-0 playfair-display">
-      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20">
-        <div className="w-10/12 lg:w-6/12 prose max-w-none ">
+      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20 relative overflow-hidden">
+        {/* <div className="video-overlay z-[1]"></div>
+        <video
+          className="absolute right-0 bottom-0 min-w-full min-h-full object-cover z-negative"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={bg} type="video/mp4" />
+        </video> */}
+        <div className="w-10/12 lg:w-6/12 prose max-w-none z-20">
           <h1
             className="reveal-text text-center text-secondary text-4xl lg:text-6xl font-medium"
             ref={textRef}
@@ -66,45 +65,67 @@ export const Story = () => {
           </motion.p>
         </div>
       </section>
-      <section className="h-screen w-screen flex items-center bg-primary">
-        <div className="flex-1 flex justify-center">
-          <div className="bg-secondary w-[350px] h-[500px] relative">
-            <img src={dec_1} className="absolute top-6 -left-14 w-64" alt="" />
-            <img
-              src={dec_2}
-              className="absolute top-20 -right-32 w-56"
-              alt=""
-            />
-            <img
-              src={dec_3}
-              className="absolute -bottom-10 -right-24 w-56"
-              alt=""
-            />
+
+      <section className="h-fit flex flex-col gap-10 py-24 w-screen bg-primary">
+        <div className="flex  gap-10 items-center">
+          <div className="flex-1 flex justify-center">
+            <div className="bg-secondary w-[350px] h-[500px] relative">
+              <Parallax speed={-2}>
+                <img
+                  src={dec_1}
+                  className="absolute top-6 -left-14 w-64"
+                  alt=""
+                />
+              </Parallax>
+              <Parallax speed={-3}>
+                <img
+                  src={dec_2}
+                  className="absolute top-20 -right-32 w-56"
+                  alt=""
+                />
+              </Parallax>
+              <img
+                src={dec_3}
+                className="absolute -bottom-10 -right-24 w-56"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="flex-1  prose max-w-none text-secondary">
+            <div className="w-10/12">
+              {" "}
+              <h1 className="text-secondary playfair-display font-normal">
+                Lorem ipsum{" "}
+                <i className="text-accent font-medium">dolor sit amet</i> ,
+                consectetur adipisicing elit. Saepe similique.
+              </h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
+                quidem optio aliquam repudiandae laudantium quibusdam officia,
+                ducimus cumque repellendus, aperiam tempore illo quae nostrum
+                laborum, delectus esse commodi excepturi? Dicta.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="flex-1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem
-          optio aliquam repudiandae laudantium quibusdam officia, ducimus cumque
-          repellendus, aperiam tempore illo quae nostrum laborum, delectus esse
-          commodi excepturi? Dicta.
-        </div>
-      </section>
-      <section className="h-fit py-20 lg:h-screen bg-primary flex flex-col items-center justify-center">
-        <div className="w-10/12 lg:w-6/12 prose max-w-none">
-          <p className="text-justify text-secondary px-4 text-lg">
-            Notre vanille bourbon est le fruit d'un partenariat étroit avec des
-            producteurs locaux, qui ont un savoir-faire exceptionnel en matière
-            de culture et de récolte de vanille. En utilisant des méthodes
-            artisanales et respectueuses de l'environnement, ils garantissent
-            une qualité de vanille supérieure, tout en préservant les ressources
-            naturelles de Madagascar.
-          </p>
-          <div className="w-full flex flex-col lg:flex-row justify-around gap-0 lg:gap-4">
-            <img src={image_1} className="w-[512px] mb-0" alt="" />
-            <img src={image_1} className="w-[512px] mb-0" alt="" />
+        <div className="h-fit py-20 bg-primary flex flex-col items-center justify-center">
+          <div className="w-10/12 lg:w-6/12 prose max-w-none">
+            <p className="text-justify text-secondary px-4 text-lg">
+              Notre vanille bourbon est le fruit d'un partenariat étroit avec
+              des producteurs locaux, qui ont un savoir-faire exceptionnel en
+              matière de culture et de récolte de vanille. En utilisant des
+              méthodes artisanales et respectueuses de l'environnement, ils
+              garantissent une qualité de vanille supérieure, tout en préservant
+              les ressources naturelles de Madagascar.
+            </p>
+            <div className="w-full flex flex-col lg:flex-row justify-around gap-0 lg:gap-4">
+              <img src={image_1} className="w-[512px] mb-0" alt="" />
+              <img src={image_1} className="w-[512px] mb-0" alt="" />
+            </div>
           </div>
         </div>
       </section>
+
       <section className="h-fit py-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
         <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
           <p className="text-justify text-primary px-4 text-lg">
@@ -119,7 +140,7 @@ export const Story = () => {
         </div>
       </section>
       <section className="h-fit py-20  bg-primary flex flex-col items-center justify-center">
-        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-10">
+        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-20">
           <p className="text-secondary text-justify flex-1 text-lg">
             Enfin, nous sommes convaincus que l'éthique professionnelle est la
             clé de notre réussite. Nous agissons avec transparence et honnêteté
@@ -127,7 +148,18 @@ export const Story = () => {
             cœur de maintenir des relations solides et durables avec tous les
             acteurs de notre chaîne de valeur.
           </p>
-          <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" />
+          <div className="flex-1 w-full h-[400px] relative bg-secondary">
+            {/* <div className="video-overlay z-20 "></div> */}
+            <video
+              className="absolute left-5 top-5 min-w-full min-h-full object-cover z-[19] p-0 m-0"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={bg} type="video/mp4" />
+            </video>
+          </div>
+          {/* <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" /> */}
         </div>
       </section>
       <div className="flex justify-center bg-primary">
