@@ -22,6 +22,7 @@
     "react-intersection-observer": "^9.5.2",
     "react-router-dom": "^6.11.2",
     "react-scroll": "^1.8.9",
+    "react-scroll-parallax": "^3.4.2",
     "react-three-fiber": "^6.0.13",
     "react-use-scroll-snap": "^0.0.4",
     "sass": "^1.63.6",

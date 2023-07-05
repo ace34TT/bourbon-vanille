@@ -1,10 +1,13 @@
 import "./style.scss";
 import image_1 from "./../../../assets/backgrounds/1.jpg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
 import SplitType from "split-type";
-import { Line } from "../../../components/svg/Line";
+import { dec_1, dec_2, dec_3 } from "../../../imports/vanille.import";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 export const Story = () => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
@@ -23,7 +26,18 @@ export const Story = () => {
     }
   }, []);
   //
-
+  useEffect(() => {
+    gsap.to(".section-1", {
+      y: "-100%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".section-1",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+    });
+  }, []);
   return (
     <div id="story" className="mt-20 lg:mt-0 playfair-display">
       <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20">
@@ -50,6 +64,29 @@ export const Story = () => {
             responsabilité environnementale et sociale et l'éthique
             professionnelle.
           </motion.p>
+        </div>
+      </section>
+      <section className="h-screen w-screen flex items-center bg-primary">
+        <div className="flex-1 flex justify-center">
+          <div className="bg-secondary w-[350px] h-[500px] relative">
+            <img src={dec_1} className="absolute top-6 -left-14 w-64" alt="" />
+            <img
+              src={dec_2}
+              className="absolute top-20 -right-32 w-56"
+              alt=""
+            />
+            <img
+              src={dec_3}
+              className="absolute -bottom-10 -right-24 w-56"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="flex-1">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quidem
+          optio aliquam repudiandae laudantium quibusdam officia, ducimus cumque
+          repellendus, aperiam tempore illo quae nostrum laborum, delectus esse
+          commodi excepturi? Dicta.
         </div>
       </section>
       <section className="h-fit py-20 lg:h-screen bg-primary flex flex-col items-center justify-center">
