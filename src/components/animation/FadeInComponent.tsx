@@ -1,5 +1,5 @@
 import { motion, useAnimation } from "framer-motion";
-import React, { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 interface IProps {
