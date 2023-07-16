@@ -1,40 +1,51 @@
-// import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import "./style.css";
-// import { scroller } from "react-scroll";
+import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
-// import ModelContainer from "../../../components/model/ModelContainer";
+import ModelContainer from "../../../components/model/ModelContainer";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { ITransition, transitions } from "../../../interfaces/ITransition";
-// import { TransitionContext } from "../../../context/TransitionContaxt";
+import { ITransition, transitions } from "../../../interfaces/ITransition";
+import { TransitionContext } from "../../../context/TransitionContaxt";
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
-  // const [currentSection, setCurrentSection] = useState(1);
-  // const { setIndex } = useContext(TransitionContext);
+  const [currentSection, setCurrentSection] = useState(1);
+  const handleScroll = useCallback((event: { deltaY: number }) => {
+    const threshold = 50;
+    if (event.deltaY > threshold) {
+      setCurrentSection((prevState) => Math.min(prevState + 1, 4));
+    } else if (event.deltaY < -threshold) {
+      setCurrentSection((prevState) => Math.max(prevState - 1, 1));
+    }
+  }, []);
+  useEffect(() => {
+    window.addEventListener("wheel", handleScroll, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [handleScroll]);
 
-  // const handleScroll = useCallback((event: { deltaY: number }) => {
-  //   const threshold = 50; // Adjust this value as needed for sensitivity
-  //   if (event.deltaY > threshold) {
-  //     setCurrentSection((prevState) => Math.min(prevState + 1, 5));
-  //   } else if (event.deltaY < -threshold) {
-  //     setCurrentSection((prevState) => Math.max(prevState - 1, 1));
-  //   }
-  // }, []);
-
+  useEffect(() => {
+    scroller.scrollTo(`section-${currentSection}`, {
+      duration: 1000,
+      smooth: true,
+    });
+  }, [currentSection]);
   // useEffect(() => {
-  //   window.addEventListener("wheel", handleScroll, { passive: false });
-  //   return () => {
-  //     window.removeEventListener("wheel", handleScroll);
-  //   };
-  // }, [handleScroll]);
-
-  // useEffect(() => {
-  //   scroller.scrollTo(`section-${currentSection}`, {
-  //     duration: 1000,
-  //     smooth: true,
+  //   [1, 2, 3, 4, 5].forEach((element) => {
+  //     ScrollTrigger.create({
+  //       markers: true,
+  //       trigger: "section" + element,
+  //       start: "top top",
+  //       end: "+=100%",
+  //       pin: true,
+  //       scrub: true,
+  //       snap: 1 / (5 - 1), // snap whole page height sections
+  //     });
   //   });
-  // }, [currentSection]);
-  // // ! 3d model animation
+  // }, []);
+  // ! 3d model animation
+  // const { setIndex } = useContext(TransitionContext);
   // useEffect(() => {
   //   const animateElement = (_element: ITransition, index: number) => {
   //     setIndex(index + 1);
@@ -47,7 +58,7 @@ export default function MainSection() {
   //       markers: true,
   //       trigger: "." + element.section,
   //       start: "center 40%",
-  //       end: "bottom 90%",
+  //       end: "180% 90%",
   //       onEnter: () => animateElement(element, index),
   //       onLeaveBack: () => reverseAnimation(element, index),
   //     });
@@ -59,20 +70,28 @@ export default function MainSection() {
   // }, []);
   return (
     <div className="parent">
-      {/* <div className="sticky top-0">
+      {/* <div className="fixed top-0">
         <ModelContainer />
       </div> */}
-      <Element className="custom-section sub-section-1 px-28" name="section-1">
-        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
+      <Element
+        className="custom-section sub-section-1 px-28"
+        id="section-1"
+        name="section-1"
+      >
+        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
           La Maison Bourbon Vanille née à
           <i className="text-accent"> Madagascar </i> ,est un trésor rare niche
           dans un environnement naturel exceptionnellement luxueux.
         </div>
         <div className="flex-1"></div>
       </Element>
-      <Element className="custom-section sub-section-2 px-28" name="section-2">
+      <Element
+        className="custom-section sub-section-2 px-28"
+        id="section-2"
+        name="section-2"
+      >
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100 ">
+        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 ">
           Notre artisanat de haute qualité repose sur les valeurs telles que
           <i className="text-accent">la passion </i> ,
           <i className="text-accent">la persévérance </i>
@@ -80,23 +99,32 @@ export default function MainSection() {
           recueillir des gousses d'exception reflétant notre engagement éthique.
         </div>
       </Element>
-      <Element className="custom-section sub-section-3 px-28" name="section-3">
+      <Element
+        className="custom-section sub-section-3 px-28"
+        id="section-3"
+        name="section-3"
+      >
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
+        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
           Des producteurs locaux engagés pour une
           <i className="text-accent"> vanille de qualité supérieure</i>
           respectueuse de l'environnement et du commerce equitable.
         </div>
       </Element>
-      <Element className="custom-section sub-section-4 px-28" name="section-4">
+      <Element
+        className="custom-section sub-section-4 px-28"
+        id="section-4"
+        name="section-4"
+      >
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-6xl leading-[56px] text-center font-medium text-white opacity-100">
+        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
           <i className="text-accent">La vanille de Madagascar,</i> pour une
           expérience gustative inoubliable.
         </div>
       </Element>
       <Element
         className="custom-section sub-section-5 h-screen bg-green-700"
+        id="section-5"
         name="section-5"
       />
     </div>

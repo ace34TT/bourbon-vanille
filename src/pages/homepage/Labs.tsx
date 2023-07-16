@@ -4,59 +4,64 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 export const Labs = () => {
-  // Use useRef to create a reference to the circle element
-  const circleRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sections = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    const animation = gsap.to(circleRef.current, {
-      duration: 3,
-      ease: "power1.inOut",
-      motionPath: {
-        path: "#myPath",
-        align: "#myPath",
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true,
-      },
-      paused: true, // Pause the animation initially
-    });
+    const container = containerRef.current;
+    const sectionsArray = Array.from(sections.current);
 
-    const scrollHandler = () => {
-      // For this demo, let's assume the scrollable area is 500px
-      const maxScroll = 500;
-      const currentScroll = window.pageYOffset;
-      const progress = currentScroll / maxScroll;
+    const handleScroll = (event: WheelEvent) => {
+      event.preventDefault();
 
-      if (progress <= 1) {
-        animation.progress(progress);
+      const threshold = 50;
+      const deltaY = event.deltaY;
+
+      if (deltaY > threshold) {
+        const nextSection = sectionsArray.find(
+          (section) => section.offsetTop > container!.scrollTop
+        );
+        gsap.to(container, { scrollTop: nextSection!.offsetTop, duration: 1 });
+      } else if (deltaY < -threshold) {
+        const prevSection = sectionsArray
+          .slice()
+          .reverse()
+          .find((section) => section.offsetTop < container!.scrollTop);
+        gsap.to(container, { scrollTop: prevSection!.offsetTop, duration: 1 });
       }
     };
-
-    window.addEventListener("scroll", scrollHandler);
-
-    // Clean up the event listener when the component is unmounted
+    container!.addEventListener("wheel", handleScroll, { passive: false });
     return () => {
-      window.removeEventListener("scroll", scrollHandler);
+      container!.removeEventListener("wheel", handleScroll);
     };
   }, []);
 
   return (
-    <>
-      <svg
-        width="600"
-        height="200"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        className="mt-52"
+    <div ref={containerRef} className="container">
+      <section
+        ref={(el) => (sections.current[0] = el!)}
+        className="section flex h-screen w-screen items-center justify-center"
       >
-        <path
-          id="myPath"
-          d="M10 80 Q 77.5 10, 145 80 T 280 80"
-          stroke="lightgrey"
-          fill="transparent"
-        />
-        <circle ref={circleRef} r="5" fill="tomato" />
-      </svg>
-      <div className="h-screen"></div>
-    </>
+        Section 1
+      </section>
+      <section
+        ref={(el) => (sections.current[1] = el!)}
+        className="section flex h-screen w-screen items-center justify-center"
+      >
+        Section 2
+      </section>
+      <section
+        ref={(el) => (sections.current[2] = el!)}
+        className="section flex h-screen w-screen items-center justify-center"
+      >
+        Section 3
+      </section>
+      <section
+        ref={(el) => (sections.current[3] = el!)}
+        className="section flex h-screen w-screen items-center justify-center"
+      >
+        Section 4
+      </section>
+    </div>
   );
 };
