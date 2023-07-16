@@ -1,67 +1,58 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { scroller, Element } from "react-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 export const Labs = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sections = useRef<HTMLElement[]>([]);
-
+  const [currentSection, setCurrentSection] = useState(0);
   useEffect(() => {
-    const container = containerRef.current;
-    const sectionsArray = Array.from(sections.current);
-
     const handleScroll = (event: WheelEvent) => {
-      event.preventDefault();
+      const delta = event.deltaY;
 
-      const threshold = 50;
-      const deltaY = event.deltaY;
-
-      if (deltaY > threshold) {
-        const nextSection = sectionsArray.find(
-          (section) => section.offsetTop > container!.scrollTop
-        );
-        gsap.to(container, { scrollTop: nextSection!.offsetTop, duration: 1 });
-      } else if (deltaY < -threshold) {
-        const prevSection = sectionsArray
-          .slice()
-          .reverse()
-          .find((section) => section.offsetTop < container!.scrollTop);
-        gsap.to(container, { scrollTop: prevSection!.offsetTop, duration: 1 });
+      if (delta > 0) {
+        scroller.scrollTo(`section${currentSection + 1}`, {
+          duration: 500,
+          smooth: true,
+        });
+      } else if (delta < 0 && currentSection > 0) {
+        scroller.scrollTo(`section${currentSection - 1}`, {
+          duration: 500,
+          smooth: true,
+        });
       }
     };
-    container!.addEventListener("wheel", handleScroll, { passive: false });
+
+    window.addEventListener("wheel", handleScroll);
+
     return () => {
-      container!.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
     };
-  }, []);
+  }, [currentSection]);
 
   return (
-    <div ref={containerRef} className="container">
-      <section
-        ref={(el) => (sections.current[0] = el!)}
-        className="section flex h-screen w-screen items-center justify-center"
+    <div className="full-page-snap">
+      <Element name="section1" className="w-screen h-screen bg-red-400 section">
+        {/* Your content for section 1 */}
+      </Element>
+      <Element
+        name="section2"
+        className="w-screen h-screen bg-blue-400 section"
       >
-        Section 1
-      </section>
-      <section
-        ref={(el) => (sections.current[1] = el!)}
-        className="section flex h-screen w-screen items-center justify-center"
+        {/* Your content for section 2 */}
+      </Element>
+      <Element
+        name="section3"
+        className="w-screen h-screen bg-green-400 section"
       >
-        Section 2
-      </section>
-      <section
-        ref={(el) => (sections.current[2] = el!)}
-        className="section flex h-screen w-screen items-center justify-center"
+        {/* Your content for section 3 */}
+      </Element>
+      <Element
+        name="section4"
+        className="w-screen h-screen bg-yellow-400 section"
       >
-        Section 3
-      </section>
-      <section
-        ref={(el) => (sections.current[3] = el!)}
-        className="section flex h-screen w-screen items-center justify-center"
-      >
-        Section 4
-      </section>
+        {/* Your content for section 4 */}
+      </Element>
     </div>
   );
 };
