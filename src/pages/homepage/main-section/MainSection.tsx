@@ -7,13 +7,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ITransition, transitions } from "../../../interfaces/ITransition";
 import { TransitionContext } from "../../../context/TransitionContaxt";
+import purchaseBG from "./../../../assets/backgrounds/6.jpg";
 gsap.registerPlugin(ScrollTrigger);
+
 export default function MainSection() {
   const [currentSection, setCurrentSection] = useState(1);
   const handleScroll = useCallback((event: { deltaY: number }) => {
     const threshold = 50;
     if (event.deltaY > threshold) {
-      setCurrentSection((prevState) => Math.min(prevState + 1, 4));
+      setCurrentSection((prevState) => Math.min(prevState + 1, 6));
     } else if (event.deltaY < -threshold) {
       setCurrentSection((prevState) => Math.max(prevState - 1, 1));
     }
@@ -24,7 +26,6 @@ export default function MainSection() {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [handleScroll]);
-
   useEffect(() => {
     scroller.scrollTo(`section-${currentSection}`, {
       duration: 1000,
@@ -127,6 +128,16 @@ export default function MainSection() {
         id="section-5"
         name="section-5"
       />
+      <Element
+        name="section-6"
+        className="w-full h-screen"
+        style={{
+          backgroundImage: `url(${purchaseBG})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></Element>
     </div>
   );
 }

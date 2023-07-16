@@ -1,6 +1,6 @@
 import { TransitionContextProvider } from "../../context/TransitionContaxt";
 import MainSection from "./main-section/MainSection";
-import purchaseBG from "./../../assets/backgrounds/6.jpg";
+
 import { BrowserView, MobileView } from "react-device-detect";
 import { Vanilla_m1 } from "../../imports/vanille.import";
 import "./main-section/style.css";
@@ -55,15 +55,6 @@ export default function Homepage() {
           </MobileSubSection>
         </section>
       </MobileView>
-      <div
-        className="w-full h-screen"
-        style={{
-          backgroundImage: `url(${purchaseBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></div>
     </div>
   );
 }
