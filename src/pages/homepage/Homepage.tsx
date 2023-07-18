@@ -3,7 +3,7 @@ import MainSection from "./main-section/MainSection";
 
 import { BrowserView, MobileView } from "react-device-detect";
 import { Vanilla_m1 } from "../../imports/vanille.import";
-import "./main-section/style.css";
+// import "./main-section/style.css";
 import MobileSubSection from "../../components/MobileSubSection";
 export default function Homepage() {
   return (

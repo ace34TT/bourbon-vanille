@@ -3,6 +3,7 @@
 html,
 body {
   background-color: #132821;
+  /* overflow-x: hidden; */
 }
 footer {
   font-family: "Bacasime Antique", serif;

@@ -131,9 +131,6 @@ export default function Labs() {
           </div>
         </div>
       </div>
-      <div className="footer h-screen bg-gray-500 flex justify-center items-center">
-        Footer
-      </div>
     </>
   );
 }
