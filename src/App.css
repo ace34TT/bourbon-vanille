@@ -11,3 +11,7 @@ footer {
 .playfair-display {
   font-family: "Playfair Display", serif;
 }
+
+* {
+  border: solid 1px red;
+}

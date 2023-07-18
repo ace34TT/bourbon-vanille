@@ -1,4 +1,4 @@
-import { TransitionContextProvider } from "../../context/TransitionContaxt";
+import { TransitionContextProvider } from "../../context/TransitionContext";
 import MainSection from "./main-section/MainSection";
 
 import { BrowserView, MobileView } from "react-device-detect";
@@ -11,6 +11,12 @@ export default function Homepage() {
       <BrowserView>
         <TransitionContextProvider>
           <MainSection />
+          <div className="footer h-screen bg-red-500 flex justify-center items-center">
+            end
+          </div>
+          <div className="footer h-screen bg-green-500 flex justify-center items-center">
+            end
+          </div>
         </TransitionContextProvider>
       </BrowserView>
       <MobileView>
