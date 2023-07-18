@@ -13,7 +13,6 @@ const loadImage = async (path: string): Promise<string> => {
     return "";
   }
 };
-
 const imagePaths = [
   "./../../assets/backgrounds/1.jpg",
   "./../../assets/backgrounds/2.jpg",
