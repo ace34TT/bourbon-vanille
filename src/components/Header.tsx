@@ -8,7 +8,7 @@ export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 playfair-display">
+    <header className="fixed top-0 z-50 playfair-display z-50">
       <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
         <div></div>
         <Link to={"/"}>

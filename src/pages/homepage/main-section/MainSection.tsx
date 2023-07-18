@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import "./style.css";
 import { scroller } from "react-scroll";
 import { Element } from "react-scroll";
@@ -12,136 +12,191 @@ import { debounce } from "lodash";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const loadImage = async (path: string): Promise<string> => {
+  try {
+    const imageModule = await import(path);
+    return imageModule.default;
+  } catch (error) {
+    console.error("Error loading image:", error);
+    return "";
+  }
+};
+
+const imagePaths = [
+  "./../../assets/backgrounds/1.jpg",
+  "./../../assets/backgrounds/2.jpg",
+  "./../../assets/backgrounds/3.jpg",
+  "./../../assets/backgrounds/5.jpg",
+];
+const sectionRelations = [
+  { bg: "bg-4", subSection: "sub-section-2" },
+  { bg: "bg-3", subSection: "sub-section-3" },
+  { bg: "bg-2", subSection: "sub-section-4" },
+];
 export default function MainSection() {
-  const [currentSection, setCurrentSection] = useState(1);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const handleScroll = useCallback(
-    debounce((event: { deltaY: number }) => {
-      // if (isScrolling) return;
-      const threshold = 50;
-      if (event.deltaY > threshold) {
-        setCurrentSection((prevState) => Math.min(prevState + 1, 6));
-      } else if (event.deltaY < -threshold) {
-        setCurrentSection((prevState) => Math.max(prevState - 1, 1));
-      }
-    }, 500),
-    [isScrolling] // dependencies go here
-  );
+  const [loadedImages, setLoadedImages] = useState<any[]>([]);
+  const containerRef = useRef<any>(null);
+  gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const loadImages = async () => {
+      const loaded = await Promise.all(
+        imagePaths.map((path) => loadImage(path))
+      );
+      setLoadedImages(loaded);
+    };
+    loadImages();
+  }, []);
 
   useEffect(() => {
-    window.addEventListener("wheel", handleScroll, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
+    const animateElement = (bg: string) => {
+      gsap.fromTo("." + bg, { opacity: 1 }, { opacity: 0, duration: 1 });
     };
-  }, [handleScroll]);
-  useEffect(() => {
-    scroller.scrollTo(`section-${currentSection}`, {
-      duration: 1000,
-      smooth: true,
-    });
-  }, [currentSection]);
-  // ! 3d model animation
-  const { setIndex } = useContext(TransitionContext);
-  useEffect(() => {
-    const animateElement = (_element: ITransition, index: number) => {
-      setIndex(index + 1);
+    const reverseAnimation = (bg: string) => {
+      gsap.fromTo("." + bg, { opacity: 0 }, { opacity: 1, duration: 0.5 });
     };
-    const reverseAnimation = (_element: ITransition, index: number) => {
-      setIndex(index);
-    };
-    const createScrollTrigger = (element: ITransition, index: number) => {
+    const createScrollTrigger = (element: {
+      bg: string;
+      subSection: string;
+    }) => {
       ScrollTrigger.create({
         markers: true,
-        trigger: "." + element.section,
-        start: "center 40%",
-        end: "180% 90%",
-        onEnter: () => {
-          setIsScrolling(true);
-          animateElement(element, index);
-        },
-        onLeaveBack: () => {
-          setIsScrolling(false);
-          reverseAnimation(element, index);
-        },
+        trigger: "." + element.subSection,
+        start: "top 60%",
+        end: "bottom 15%",
+        onEnter: () => animateElement(element.bg),
+        onLeaveBack: () => reverseAnimation(element.bg),
       });
     };
-    transitions.forEach((element, index) =>
-      createScrollTrigger(element, index)
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
+  useEffect(() => {
+    const createScrollTrigger = (element: {
+      bg: string;
+      subSection: string;
+    }) => {
+      gsap.fromTo(
+        "." + element.subSection,
+        { opacity: 0 },
+        {
+          opacity: 0.95,
+          scrollTrigger: {
+            trigger: "." + element.subSection,
+            start: "top 50%",
+            end: "bottom bottom",
+            scrub: true,
+            markers: true,
+          },
+        }
+      );
+    };
+    sectionRelations.forEach((element) => createScrollTrigger(element));
+  }, []);
+  // ! 3d model animation
+  // const { setIndex } = useContext(TransitionContext);
+  // useEffect(() => {
+  //   const animateElement = (_element: ITransition, index: number) => {
+  //     setIndex(index + 1);
+  //   };
+  //   const reverseAnimation = (_element: ITransition, index: number) => {
+  //     setIndex(index);
+  //   };
+  //   const createScrollTrigger = (element: ITransition, index: number) => {
+  //     ScrollTrigger.create({
+  //       markers: true,
+  //       trigger: "." + element.section,
+  //       start: "center 40%",
+  //       end: "180% 90%",
+  //       onEnter: () => {
+  //         animateElement(element, index);
+  //       },
+  //       onLeaveBack: () => {
+  //         reverseAnimation(element, index);
+  //       },
+  //     });
+  //   };
+  //   transitions.forEach((element, index) =>
+  //     createScrollTrigger(element, index)
+  //   );
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
-    <div className="parent">
-      <div className="relative">
-        <div className="fixed top-0">
+    <div className="">
+      {/* <div className="fixed top-0">
           <ModelContainer />
+        </div> */}
+      <div ref={containerRef} className="3d-section relative">
+        <div className="w-screen h-screen main-section sticky top-0">
+          <div
+            className="bg-1 w-full h-full absolute z-10 brightness-50"
+            style={{ zIndex: 10 }}
+          >
+            <img
+              src={loadedImages[0]}
+              alt="Your Image"
+              className="w-full h-full object-cover"
+            ></img>
+          </div>
+          <div
+            className="bg-2 w-full h-full absolute z-20 brightness-50"
+            style={{ zIndex: 20 }}
+          >
+            <img
+              src={loadedImages[1]}
+              alt="Your Image"
+              className="w-full h-full object-cover"
+            ></img>
+          </div>
+          <div
+            className="bg-3 w-full h-full absolute z-30 brightness-50"
+            style={{ zIndex: 30 }}
+          >
+            <img
+              src={loadedImages[2]}
+              alt="Your Image"
+              className="w-full h-full object-cover"
+            ></img>
+          </div>
+          <div
+            className="bg-4 w-full h-full absolute z-40 brightness-50"
+            style={{ zIndex: 40 }}
+          >
+            <img
+              src={loadedImages[3]}
+              alt="Your Image"
+              className="w-full h-full object-cover"
+            ></img>
+          </div>
         </div>
-        <Element
-          className="custom-section sub-section-1 px-28"
-          id="section-1"
-          name="section-1"
-        >
-          <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
-            La Maison Bourbon Vanille née à
-            <i className="text-accent"> Madagascar </i> ,est un trésor rare
-            niche dans un environnement naturel exceptionnellement luxueux.
+        {/*  */}
+        <div className="sub-section-1 px-32 flex justify-around items-center h-screen w-screen absolute top-0 z-50 opacity-100 bg-opacity-100">
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
+            Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
           </div>
           <div className="flex-1"></div>
-        </Element>
-        <Element
-          className="custom-section sub-section-2 px-28"
-          id="section-2"
-          name="section-2"
-        >
+        </div>
+        <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-50 ">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 ">
-            Notre artisanat de haute qualité repose sur les valeurs telles que
-            <i className="text-accent">la passion </i> ,
-            <i className="text-accent">la persévérance </i>
-            et <i className="text-accent">la patience </i> , nous permettant de
-            recueillir des gousses d'exception reflétant notre engagement
-            éthique.
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
+            Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Omnis illum nihil deleniti repellat ipsam.
           </div>
-        </Element>
-        <Element
-          className="custom-section sub-section-3 px-28"
-          id="section-3"
-          name="section-3"
-        >
+        </div>
+        <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
-            Des producteurs locaux engagés pour une
-            <i className="text-accent"> vanille de qualité supérieure</i>
-            respectueuse de l'environnement et du commerce equitable.
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+            illum nihil deleniti repellat ipsam.
           </div>
-        </Element>
-        <Element
-          className="custom-section sub-section-4 px-28"
-          id="section-4"
-          name="section-4"
-        >
+        </div>
+        <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100">
-            <i className="text-accent">La vanille de Madagascar,</i> pour une
-            expérience gustative inoubliable.
+          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
+            illum nihil deleniti repellat ipsam.
           </div>
-        </Element>
+        </div>
       </div>
-      <Element
-        className="custom-section sub-section-5 h-screen bg-green-700"
-        id="section-5"
-        name="section-5"
-      />
-      <Element
-        name="section-6"
-        className="w-full h-screen"
-        style={{
-          backgroundImage: `url(${purchaseBG})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      ></Element>
     </div>
   );
 }
