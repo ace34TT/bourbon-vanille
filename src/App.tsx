@@ -6,7 +6,7 @@ import { Order } from "./pages/homepage/order/Order";
 import { Story } from "./pages/homepage/our-story/Story";
 import { Contact } from "./pages/Contact";
 
-import { Labs } from "./pages/homepage/labs/Labs";
+import Labs from "./pages/homepage/labs/Labs";
 function App() {
   return (
     <Routes>
