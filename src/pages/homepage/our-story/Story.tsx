@@ -23,28 +23,40 @@ export const Story = () => {
         stagger: {
           each: 0.1,
         },
-        duration: 0.5,
+        duration: 0.75,
         ease: "power1.out",
       });
     }
   }, []);
   // section 2 interaction
   const [activeImage, setActiveImage] = useState(0);
+  // section 3
+  const section3Ref = useRef<HTMLElement | null>(null);
+  const section3ImgRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    gsap.fromTo(
+      section3ImgRef.current,
+      { height: "100vh", borderRadius: "0px" },
+      {
+        height: "600px",
+        width: "400px",
+        borderRadius: "250px",
+        scrollTrigger: {
+          markers: true,
+          trigger: section3Ref.current,
+          start: "50% bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      }
+    );
+  }, []);
   return (
     <div id="story" className="mt-20 lg:mt-0 playfair-display">
       <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20 relative overflow-hidden">
-        {/* <div className="video-overlay z-[1]"></div>
-        <video
-          className="absolute right-0 bottom-0 min-w-full min-h-full object-cover z-negative"
-          autoPlay
-          loop
-          muted
-        >
-          <source src={bg} type="video/mp4" />
-        </video> */}
         <div className="w-10/12 lg:w-6/12 prose max-w-none z-20">
           <h1
-            className="reveal-text text-center text-secondary text-4xl lg:text-6xl font-medium"
+            className="reveal-text text-center text-secondary text-4xl lg:text-6xl font-medium playfair-display"
             ref={textRef}
           >
             Laissez-vous transporter vers les contrées lointaines de Madagascar
@@ -52,10 +64,10 @@ export const Story = () => {
             <i className="text-accent"> à nos vanilles d'exception !</i>
           </h1>
           <motion.p
-            className="text-center text-secondary text-lg"
+            className="text-center text-secondary text-lg playfair-display"
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: -25, transition: { delay: 1.5 } }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 2 }}
           >
             Bienvenue chez Bourbon Vanille, une entreprise passionnée par la
             vanille bourbon de Madagascar, cette épice rare et prestigieuse dont
@@ -93,7 +105,6 @@ export const Story = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
         {/*  */}
         <div className="z-20">
           <div className="flex  gap-10 items-center">
@@ -120,7 +131,7 @@ export const Story = () => {
                 />
               </div>
             </div>
-            <div className="flex-1  prose max-w-none text-secondary">
+            <div className="flex-1 prose max-w-none text-secondary">
               <div className="w-10/12">
                 <Parallax speed={2}>
                   <FadeInComponent>
@@ -147,7 +158,7 @@ export const Story = () => {
           <div className="h-fit py-20 flex flex-col items-center justify-center">
             <div className="w-10/12 lg:w-6/12 prose max-w-none">
               <FadeInComponent>
-                <p className="text-justify text-secondary px-4 text-lg">
+                <p className="text-justify text-secondary px-4 text-lg playfair-display">
                   Notre vanille bourbon est le fruit d'un partenariat étroit
                   avec des producteurs locaux, qui ont un savoir-faire
                   exceptionnel en matière de culture et de récolte de vanille.
@@ -177,7 +188,40 @@ export const Story = () => {
           </div>
         </div>
       </section>
-      <section className="h-fit py-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
+      <section
+        className="h-fit lg:h-screen bg-secondary flex items-center justify-center gap-[500px] relative prose max-w-none"
+        ref={section3Ref}
+      >
+        <div className="w-60 text-right relative -top-16">
+          <h1 className="font-normal">
+            Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
+            similique.
+          </h1>
+        </div>
+        <div className="w-60 text-left relative top-16">
+          <h1 className="font-normal">
+            Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
+            similique.
+          </h1>
+        </div>
+        <div
+          ref={section3ImgRef}
+          className="w-screen h-screen overflow-hidden rounded-[200px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        >
+          <div className="relative w-full h-full">
+            <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-70"></div>
+            <video
+              className="min-w-full min-h-full object-cover z-[19] p-0 m-0"
+              autoPlay
+              loop
+              muted
+            >
+              <source src={bg} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+      <section className="h-fit pb-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
         <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
           <p className="text-justify text-primary px-4 text-lg">
             Nous croyons également que notre engagement doit s'étendre au-delà
@@ -210,7 +254,6 @@ export const Story = () => {
               <source src={bg} type="video/mp4" />
             </video>
           </div>
-
           {/* <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" /> */}
         </div>
       </section>
