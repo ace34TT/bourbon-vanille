@@ -16,7 +16,6 @@ export const Story = () => {
   useEffect(() => {
     if (textRef.current) {
       const split = new SplitType(textRef.current, { types: "words" });
-
       gsap.from(split.words, {
         y: "100%",
         opacity: 0,
