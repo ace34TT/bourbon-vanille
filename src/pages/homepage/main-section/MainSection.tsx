@@ -66,10 +66,10 @@ export default function MainSection() {
   }, []);
   return (
     <div ref={containerRef} className="3d-section z-10 relative">
-      <div className="w-screen h-screen sticky top-0 left-0 z-[50]">
+      <div className="w-screen h-screen sticky float-left top-0 left-0 z-[50]">
         <ModelContainer containerRef={containerRef} className="" />
       </div>
-      <div className="w-screen h-screen main-section fixed top-0 left-0 relative">
+      <div className="w-screen h-screen main-section sticky top-0 left-0 relative">
         <div
           className="bg-1 w-full h-full absolute z-[9] brightness-50"
           style={{ zIndex: 10 }}

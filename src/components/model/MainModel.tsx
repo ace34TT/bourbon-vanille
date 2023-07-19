@@ -63,7 +63,7 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
     //
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 1, y: Math.PI / 2 },
+      { duration: 1, y: -Math.PI / 12 },
       1
     );
     //
@@ -72,12 +72,27 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
       { duration: 1, x: -0.5, y: 0, z: -5 },
       2
     );
-    tl.current.to(modelRef.current.rotation, { duration: 1, y: Math.PI }, 2);
+    tl.current.to(
+      modelRef.current.rotation,
+      { duration: 1, y: Math.PI / 16 },
+      2
+    );
     //
     tl.current.to(
       modelRef.current.position,
       { duration: 1, x: -0.5, y: -0.3, z: -5 },
       3
+    );
+    //
+    tl.current.to(
+      modelRef.current.position,
+      { duration: 1, x: 0, y: -0.2, z: -5 },
+      4
+    );
+    tl.current.to(
+      modelRef.current.rotation,
+      { duration: 1, y: Math.PI, x: Math.PI / 6 },
+      4
     );
     tl.current.to(
       cameraRef.current,
@@ -85,11 +100,13 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
         duration: 1,
         zoom: 300,
         onUpdate: () => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           cameraRef.current!.updateProjectionMatrix();
         },
       },
       4
     );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleScroll = () => {
