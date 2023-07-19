@@ -9,9 +9,9 @@ export const VanillaCard = ({ image, name, price }: IProps) => {
       <div className="flex-grow flex flex-col items-center ">
         <img src={image} className="w-28" alt="" />
         <p className="text-3xl text-primary">{name}</p>
-        <p>15 - 16 cm</p>
+        <p className="playfair-display font-medium">15 - 16 cm</p>
       </div>
-      <button className="absolute -bottom-6 border border-primary bg-secondary w-36 py-4 rounded-2xl hover:bg-primary hover:text-secondary transition-all duration-150">
+      <button className="absolute -bottom-6 border border-primary bg-secondary w-36 py-4 rounded-2xl hover:bg-primary hover:border-secondary hover:text-secondary transition-all duration-150 playfair-display">
         {price} €
       </button>
     </div>

@@ -14,4 +14,10 @@ footer {
 
 * {
   font-family: "Bacasime Antique", serif;
+  padding: 0;
+  margin-top: 0;
+  /* border: 1px solid red !important; */
+}
+::-webkit-scrollbar {
+  width: 0 !important;
 }

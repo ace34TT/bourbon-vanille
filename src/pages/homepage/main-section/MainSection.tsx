@@ -65,11 +65,14 @@ export default function MainSection() {
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
   return (
-    <div ref={containerRef} className="3d-section z-10 relative">
+    <div
+      ref={containerRef}
+      className="3d-section z-10 relative max-w-full bg-red-600"
+    >
       <div className="w-screen h-screen sticky float-left top-0 left-0 z-[50]">
         <ModelContainer containerRef={containerRef} className="" />
       </div>
-      <div className="w-screen h-screen main-section sticky top-0 left-0 relative">
+      <div className="max-w-[100vw] h-screen main-section sticky top-0 left-0 relative ">
         <div
           className="bg-1 w-full h-full absolute z-[9] brightness-50"
           style={{ zIndex: 10 }}
@@ -118,7 +121,7 @@ export default function MainSection() {
           ></img>
         </div>
       </div>
-      <div className="sub-section-1 px-32 flex justify-around items-center h-screen w-screen absolute top-0 z-10 opacity-100 bg-opacity-100">
+      <div className="sub-section-1 px-32 flex justify-around items-center h-screen max-w-[100vw] absolute top-0 z-10 opacity-100 bg-opacity-100">
         <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           La Maison Bourbon Vanille née à
           <i className="text-accent"> Madagascar </i> ,est un trésor rare niche
@@ -151,9 +154,7 @@ export default function MainSection() {
           expérience gustative inoubliable.
         </div>
       </div>
-      <div className="h-screen w-screen bg-gray-500 flex justify-center items-center z-10">
-        end
-      </div>
+      <div className="h-screen w-screen bg-gray-500 flex justify-center items-center z-10"></div>
     </div>
   );
 }

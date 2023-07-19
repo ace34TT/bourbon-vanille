@@ -16,14 +16,13 @@ export const Story = () => {
   useEffect(() => {
     if (textRef.current) {
       const split = new SplitType(textRef.current, { types: "words" });
-
       gsap.from(split.words, {
         y: "100%",
         opacity: 0,
         stagger: {
           each: 0.1,
         },
-        duration: 0.75,
+        duration: 0.5,
         ease: "power1.out",
       });
     }
@@ -137,13 +136,14 @@ export const Story = () => {
                   <FadeInComponent>
                     <h1 className="text-secondary playfair-display font-normal">
                       Lorem ipsum{" "}
-                      <i className="text-accent font-medium">dolor sit amet</i>{" "}
+                      <i className="text-accent font-medium playfair-display">
+                        dolor sit amet
+                      </i>{" "}
                       , consectetur adipisicing elit. Saepe similique.
                     </h1>
                   </FadeInComponent>
                   <FadeInComponent>
-                    <p>
-                      {" "}
+                    <p className="text-lg playfair-display">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Ea quidem optio aliquam repudiandae laudantium quibusdam
                       officia, ducimus cumque repellendus, aperiam tempore illo
@@ -257,9 +257,6 @@ export const Story = () => {
           {/* <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" /> */}
         </div>
       </section>
-      <div className="flex justify-center bg-primary">
-        <div className="w-1/2 bg-secondary h-px"></div>
-      </div>
     </div>
   );
 };
