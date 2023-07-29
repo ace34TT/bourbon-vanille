@@ -9,6 +9,7 @@ interface ITransitionContext {
 
 const TransitionContext = createContext<ITransitionContext>({
   index: 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setIndex: () => {},
 });
 interface ITransitionContextProviderProps {

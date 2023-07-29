@@ -8,10 +8,12 @@ import MobileSubSection from "../../components/MobileSubSection";
 import { motion } from "framer-motion";
 import { VanillaCard } from "../../components/VanillaCard";
 import { mp4_bg } from "../../imports/background.import";
+import { Loader } from "../../components/loader/Loader";
 
 export default function Homepage() {
   return (
     <div>
+      <Loader></Loader>
       <BrowserView>
         <TransitionContextProvider>
           <MainSection />
@@ -57,7 +59,6 @@ export default function Homepage() {
                 avec tous les acteurs de notre chaîne de valeur.
               </p>
               <div className="flex-1 w-full h-[400px] relative bg-secondary">
-                {/* <div className="video-overlay z-20 "></div> */}
                 <video
                   className="absolute left-5 top-5 min-w-full min-h-full object-cover z-[19] p-0 m-0"
                   autoPlay
@@ -67,12 +68,11 @@ export default function Homepage() {
                   <source src={mp4_bg} type="video/mp4" />
                 </video>
               </div>
-              {/* <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" /> */}
             </div>
           </section>
         </TransitionContextProvider>
       </BrowserView>
-      <MobileView>
+      {/* <MobileView>
         <section className="h-fit mt-20 flex flex-col items-center justify-between bg-primary py-10">
           <span className="text-center text-3xl text-secondary playfair-display">
             Découvrez notre gamme de{" "}
@@ -113,7 +113,7 @@ export default function Homepage() {
             </p>
           </MobileSubSection>
         </section>
-      </MobileView>
+      </MobileView> */}
     </div>
   );
 }

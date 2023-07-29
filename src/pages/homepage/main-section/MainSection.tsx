@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { bg_1, bg_2, bg_3, bg_4 } from "../../../imports/background.import";
 import ModelContainer from "../../../components/model/ModelContainer";
+import { ProgressContext } from "../../../context/ProgressContext";
 
 const sectionRelations = [
   { bg: "bg-4", subSection: "sub-section-2" },
@@ -32,7 +33,7 @@ export default function MainSection() {
       subSection: string;
     }) => {
       ScrollTrigger.create({
-        markers: true,
+        // markers: true,
         trigger: "." + element.subSection,
         start: "top 60%",
         end: "bottom 15%",
@@ -57,13 +58,14 @@ export default function MainSection() {
             start: "top 50%",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
+            // markers: true,
           },
         }
       );
     };
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
+  const { progress } = useContext(ProgressContext);
   return (
     <div
       ref={containerRef}
@@ -124,34 +126,41 @@ export default function MainSection() {
       <div className="sub-section-1 px-32 flex justify-around items-center h-screen max-w-[100vw] absolute top-0 z-10 opacity-100 bg-opacity-100">
         <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           La Maison Bourbon Vanille née à
-          <i className="text-accent"> Madagascar </i> ,est un trésor rare niche
-          dans un environnement naturel exceptionnellement luxueux.
+          <i className="text-accent playfair-display"> Madagascar </i> ,est un
+          trésor rare niche dans un environnement naturel exceptionnellement
+          luxueux. {progress}
         </div>
         <div className="flex-1"></div>
       </div>
       <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-10 ">
         <div className="flex-1"></div>
         <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
-          Notre artisanat de haute qualité repose sur les valeurs telles que
-          <i className="text-accent">la passion </i> ,
-          <i className="text-accent">la persévérance </i>
-          et <i className="text-accent">la patience </i> , nous permettant de
-          recueillir des gousses d'exception reflétant notre engagement éthique.
+          Notre artisanat de haute qualité repose sur les valeurs telles que{" "}
+          <i className="text-accent playfair-display">la passion </i> ,
+          <i className="text-accent playfair-display">la persévérance </i>
+          et <i className="text-accent playfair-display">la patience </i> , nous
+          permettant de recueillir des gousses d'exception reflétant notre
+          engagement éthique.
         </div>
       </div>
       <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-10 opacity-75">
         <div className="flex-1"></div>
         <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           Des producteurs locaux engagés pour une
-          <i className="text-accent"> vanille de qualité supérieure</i>
+          <i className="text-accent playfair-display">
+            {" "}
+            vanille de qualité supérieure
+          </i>
           respectueuse de l'environnement et du commerce equitable.
         </div>
       </div>
       <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-10 opacity-75">
         <div className="flex-1"></div>
         <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
-          <i className="text-accent">La vanille de Madagascar,</i> pour une
-          expérience gustative inoubliable.
+          <i className="text-accent playfair-display">
+            La vanille de Madagascar,
+          </i>{" "}
+          pour une expérience gustative inoubliable.
         </div>
       </div>
       <div className="h-screen w-screen bg-gray-500 flex justify-center items-center z-10"></div>
