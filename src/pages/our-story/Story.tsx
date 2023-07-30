@@ -1,15 +1,15 @@
 import "./style.scss";
-import image_1 from "./../../../assets/backgrounds/1.jpg";
+import image_1 from "../../assets/backgrounds/1.jpg";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import SplitType from "split-type";
-import { dec_1, dec_2, dec_3 } from "../../../imports/vanille.import";
+import { dec_1, dec_2, dec_3 } from "../../imports/vanille.import";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Parallax } from "react-scroll-parallax";
-import bg from "./../../../assets/backgrounds/istockphoto-1353766164-640_adpp_is.mp4";
-import { FadeInComponent } from "../../../components/animation/FadeInComponent";
-import { bg_1, bg_2 } from "../../../imports/background.import";
+import bg from "../../assets/backgrounds/istockphoto-1353766164-640_adpp_is.mp4";
+import { FadeInComponent } from "../../components/animation/FadeInComponent";
+import { bg_1, bg_2 } from "../../imports/background.import";
 gsap.registerPlugin(ScrollTrigger);
 export const Story = () => {
   const textRef = useRef<HTMLHeadingElement | null>(null);

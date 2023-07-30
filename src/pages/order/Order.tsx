@@ -1,6 +1,6 @@
 import "./style.scss";
-import { VanillaCard } from "../../../components/VanillaCard";
-import { Vanilla_m1 } from "../../../imports/vanille.import";
+import { VanillaCard } from "../../components/VanillaCard";
+import { Vanilla_m1 } from "../../imports/vanille.import";
 import { motion } from "framer-motion";
 export const Order = () => {
   return (

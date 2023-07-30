@@ -58,7 +58,8 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
         duration: 1,
         zoom: 900,
         onUpdate: () => {
-          cameraRef.current!.updateProjectionMatrix();
+          if (!cameraRef.current) return;
+          cameraRef.current.updateProjectionMatrix();
         },
       },
       0
@@ -108,8 +109,8 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
         duration: 1,
         zoom: 300,
         onUpdate: () => {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          cameraRef.current!.updateProjectionMatrix();
+          if (!cameraRef.current) return;
+          cameraRef.current.updateProjectionMatrix();
         },
       },
       4

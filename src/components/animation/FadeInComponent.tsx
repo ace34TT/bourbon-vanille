@@ -8,12 +8,12 @@ interface IProps {
 export const FadeInComponent = ({ children }: IProps) => {
   const controls = useAnimation();
   const { ref, inView } = useInView();
-
   useEffect(() => {
     if (inView) {
       controls.start("visible");
     }
   }, [controls, inView]);
+
   return (
     <motion.div
       ref={ref}

@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Logo from "./../assets/logo/logo_principal 1.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
 import { VscMenu } from "react-icons/vsc";
+import { PageTransitionContext } from "../context/PageTransitionContext";
 export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-
+  const { handleAnimation } = useContext(PageTransitionContext);
   return (
     <header className="fixed top-0 playfair-display z-50 w-screen">
       <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
         <div></div>
-        <Link to={"/"}>
+        <button onClick={() => handleAnimation("/")}>
           <img src={Logo} alt="" className="h-16 lg:h-20" />
-        </Link>
+        </button>
         <div>
           <VscMenu
             className={"text-secondary text-3xl lg:text-4xl cursor-pointer"}
@@ -52,29 +52,38 @@ export const Header = () => {
                 </div>
               </div>
               <nav className="flex flex-col lg:flex-row justify-between items-center lg:items-center lg:justify-around h-80 py-16 lg:h-36 text-4xl text-primary font-normal">
-                <Link
-                  to={"/order"}
-                  className="hover:text-complementary transition-colors duration-300"
-                  onClick={() => setIsMenuVisible(false)}
+                <button
+                  // to={"/order"}
+                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  onClick={() => {
+                    setIsMenuVisible(false);
+                    handleAnimation("/order");
+                  }}
                 >
                   Commader
-                </Link>
+                </button>
                 <div className="hidden lg:block w-1 h-6 bg-complementary" />
-                <Link
-                  to={"/our-story"}
-                  className="hover:text-complementary transition-colors duration-300"
-                  onClick={() => setIsMenuVisible(false)}
+                <button
+                  // to={"/our-story"}
+                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  onClick={() => {
+                    setIsMenuVisible(false);
+                    handleAnimation("/our-story");
+                  }}
                 >
                   Notre histoire
-                </Link>
+                </button>
                 <div className="hidden lg:block w-1 h-6 bg-complementary" />
-                <Link
-                  to={"/contact"}
-                  className="hover:text-complementary transition-colors duration-300"
-                  onClick={() => setIsMenuVisible(false)}
+                <button
+                  // to={"/contact"}
+                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  onClick={() => {
+                    setIsMenuVisible(false);
+                    handleAnimation("/contact");
+                  }}
                 >
                   Contact
-                </Link>
+                </button>
               </nav>
             </motion.div>
           </>

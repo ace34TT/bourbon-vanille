@@ -12,9 +12,16 @@ const sectionRelations = [
 ];
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
-  const containerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const elementExists = (selector: string) => {
+    const element = document.querySelector(selector);
+    return element ? true : false;
+  };
   useEffect(() => {
+    if (!containerRef.current) return;
     const animateElement = (bg: string) => {
+      if (!elementExists("." + bg)) return;
       gsap.fromTo(
         "." + bg,
         { opacity: 1, y: 0 },
@@ -22,6 +29,7 @@ export default function MainSection() {
       );
     };
     const reverseAnimation = (bg: string) => {
+      if (!elementExists("." + bg)) return;
       gsap.fromTo(
         "." + bg,
         { opacity: 0, y: -100 },
@@ -32,6 +40,7 @@ export default function MainSection() {
       bg: string;
       subSection: string;
     }) => {
+      if (!elementExists("." + element.subSection)) return;
       ScrollTrigger.create({
         // markers: true,
         trigger: "." + element.subSection,
@@ -44,10 +53,12 @@ export default function MainSection() {
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
   useEffect(() => {
+    if (!containerRef.current) return;
     const createScrollTrigger = (element: {
       bg: string;
       subSection: string;
     }) => {
+      if (!elementExists("." + element.subSection)) return;
       gsap.fromTo(
         "." + element.subSection,
         { opacity: 0 },

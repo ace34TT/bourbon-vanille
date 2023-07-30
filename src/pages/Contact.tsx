@@ -16,8 +16,10 @@ export const Contact = () => {
         </div>
         <div className="flex-1 h-full flex flex-col justify-center prose max-w-none lg:px-16 ">
           <div className="flex flex-col bg-secondary p-10 lg:p-20 rounded-2xl mt-10">
-            <h1>Formulaire de contact</h1>
-            <p>
+            <h1 className="playfair-display text-primary">
+              Formulaire de contact
+            </h1>
+            <p className="playfair-display font-medium mt-0">
               Nous sommes toujours heureux de recevoir vos messages. N’hésitez
               pas à nous contacter via le formulaire ci-dessous pour toute
               question ou suggestion. Nous répondrons rapidement. Merci de votre

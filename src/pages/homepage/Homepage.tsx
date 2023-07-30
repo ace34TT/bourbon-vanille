@@ -1,19 +1,15 @@
 import { TransitionContextProvider } from "../../context/TransitionContext";
 import MainSection from "./main-section/MainSection";
 
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView } from "react-device-detect";
 import { Vanilla_m1 } from "../../imports/vanille.import";
-// import "./main-section/style.css";
-import MobileSubSection from "../../components/MobileSubSection";
 import { motion } from "framer-motion";
 import { VanillaCard } from "../../components/VanillaCard";
 import { mp4_bg } from "../../imports/background.import";
-import { Loader } from "../../components/loader/Loader";
 
 export default function Homepage() {
   return (
     <div>
-      <Loader></Loader>
       <BrowserView>
         <TransitionContextProvider>
           <MainSection />
