@@ -9,10 +9,10 @@ export const Header = () => {
   const { handleAnimation } = useContext(PageTransitionContext);
   return (
     <header className="fixed top-0 playfair-display z-50 w-screen">
-      <div className="h-20 lg:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
+      <div className="h-16 lg:h-20 2xl:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
         <div></div>
         <button onClick={() => handleAnimation("/")}>
-          <img src={Logo} alt="" className="h-16 lg:h-20" />
+          <img src={Logo} alt="" className="h-16 lg:h-16 2xl:h-20" />
         </button>
         <div>
           <VscMenu
@@ -42,7 +42,7 @@ export const Header = () => {
               <div className="flex justify-between items-center h-24 px-10 py-10">
                 <div />
                 <div>
-                  <img src={Logo} alt="" className="h-16 lg:h-20" />
+                  <img src={Logo} alt="" className="h-16 lg:h-16 2xl:h-20" />
                 </div>
                 <div>
                   <RxCross1
@@ -51,9 +51,8 @@ export const Header = () => {
                   />
                 </div>
               </div>
-              <nav className="flex flex-col lg:flex-row justify-between items-center lg:items-center lg:justify-around h-80 py-16 lg:h-36 text-4xl text-primary font-normal">
+              <nav className="flex flex-col lg:flex-row justify-between items-center lg:items-center lg:justify-around h-80 2xl:py-16 lg:h-28 2xl:h-36 lg:text-3xl 2xl:text-4xl text-primary font-normal">
                 <button
-                  // to={"/order"}
                   className="hover:text-complementary transition-colors duration-300 playfair-display"
                   onClick={() => {
                     setIsMenuVisible(false);
@@ -64,7 +63,6 @@ export const Header = () => {
                 </button>
                 <div className="hidden lg:block w-1 h-6 bg-complementary" />
                 <button
-                  // to={"/our-story"}
                   className="hover:text-complementary transition-colors duration-300 playfair-display"
                   onClick={() => {
                     setIsMenuVisible(false);
@@ -75,7 +73,6 @@ export const Header = () => {
                 </button>
                 <div className="hidden lg:block w-1 h-6 bg-complementary" />
                 <button
-                  // to={"/contact"}
                   className="hover:text-complementary transition-colors duration-300 playfair-display"
                   onClick={() => {
                     setIsMenuVisible(false);

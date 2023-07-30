@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export const Order = () => {
   return (
     <div id="order">
-      <section className="playfair-display mt-20 lg:mt-24 py-10 h-fit lg:h-48 flex items-center px-10 lg:px-60 text-xl bg-primary text-secondary text-center">
+      <section className="playfair-display lg:mt-20 2xl:mt-24  py-10 h-fit lg:h-48 flex items-center px-10 lg:px-60 text-xl bg-primary text-secondary text-center">
         En choisissant Bourbon Vanille, vous optez pour une vanille de qualité
         supérieure, respectueuse de l'environnement et de la responsabilité
         sociale, tout en soutenant une économie équitable et circulaire. Nous
