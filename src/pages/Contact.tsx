@@ -10,12 +10,12 @@ export const Contact = () => {
   };
   return (
     <>
-      <div className="h-fit py-20 lg:my-0 lg:h-screen bg-primary flex playfair-display">
+      <div className="h-fit py-20 lg:my-0 lg:h-fit 2xl:h-screen bg-primary flex playfair-display">
         <div className="flex-1 flex items-center justify-center sr-only lg:not-sr-only">
-          <img src={vanilla} className="h-full" alt="" />
+          <img src={vanilla} className="lg:h-[800px] 2xl:h-full" alt="" />
         </div>
         <div className="flex-1 h-full flex flex-col justify-center prose max-w-none lg:px-16 ">
-          <div className="flex flex-col bg-secondary p-10 lg:p-20 rounded-2xl mt-10">
+          <div className="flex flex-col bg-secondary lg:p-10 2xl:p-20 rounded-2xl mt-10">
             <h1 className="playfair-display text-primary">
               Formulaire de contact
             </h1>
