@@ -13,7 +13,6 @@ const sectionRelations = [
 gsap.registerPlugin(ScrollTrigger);
 export default function MainSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-
   const elementExists = (selector: string) => {
     const element = document.querySelector(selector);
     return element ? true : false;
@@ -135,7 +134,7 @@ export default function MainSection() {
         </div>
       </div>
       <div className="sub-section-1 px-32 flex justify-around items-center h-screen max-w-[100vw] absolute top-0 z-10 opacity-100 bg-opacity-100">
-        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
+        <div className="flex-1 prose max-w-none  lg:text-4xl 2xl:text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           La Maison Bourbon Vanille née à
           <i className="text-accent playfair-display"> Madagascar </i> ,est un
           trésor rare niche dans un environnement naturel exceptionnellement
@@ -145,7 +144,7 @@ export default function MainSection() {
       </div>
       <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-10 ">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
+        <div className="flex-1 prose max-w-none  lg:text-4xl 2xl:text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           Notre artisanat de haute qualité repose sur les valeurs telles que{" "}
           <i className="text-accent playfair-display">la passion </i> ,
           <i className="text-accent playfair-display">la persévérance </i>
@@ -156,7 +155,7 @@ export default function MainSection() {
       </div>
       <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-10 opacity-75">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
+        <div className="flex-1 prose max-w-none  lg:text-4xl 2xl:text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           Des producteurs locaux engagés pour une
           <i className="text-accent playfair-display">
             {" "}
@@ -167,7 +166,7 @@ export default function MainSection() {
       </div>
       <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-10 opacity-75">
         <div className="flex-1"></div>
-        <div className="flex-1 prose max-w-none text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
+        <div className="flex-1 prose max-w-none  lg:text-4xl 2xl:text-5xl leading-[56px] text-center font-medium text-white opacity-100 playfair-display">
           <i className="text-accent playfair-display">
             La vanille de Madagascar,
           </i>{" "}

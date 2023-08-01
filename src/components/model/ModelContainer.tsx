@@ -3,6 +3,7 @@ import {
   Environment,
   OrthographicCamera,
   ScrollControls,
+  Stage,
 } from "@react-three/drei";
 import { OrthographicCamera as OrthographicCameraType } from "three";
 import { Model } from "./MainModel";
@@ -19,15 +20,17 @@ export default function ModelContainer({ containerRef, className }: IProps) {
       <Canvas>
         <OrthographicCamera
           ref={cameraRef}
-          position={[0, 0, 1]}
-          zoom={600}
-          near={0.1}
+          position={[0, 0, 100]}
+          zoom={5}
+          near={0.5}
           far={5000}
           makeDefault
         />
         <Suspense fallback={null}>
           <ScrollControls pages={5} damping={0.25}>
+            {/* <Stage intensity={0}> */}
             <Model cameraRef={cameraRef} containerRef={containerRef} />
+            {/* </Stage> */}
           </ScrollControls>
           <Environment preset="warehouse" />
         </Suspense>

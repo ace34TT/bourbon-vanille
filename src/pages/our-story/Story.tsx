@@ -55,7 +55,7 @@ export const Story = () => {
       <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20 relative overflow-hidden">
         <div className="w-10/12 lg:w-6/12 prose max-w-none z-20">
           <h1
-            className="reveal-text text-center text-secondary text-4xl lg:text-6xl font-medium playfair-display"
+            className="reveal-text text-center text-secondary lg:text-5xl 2xl:text-6xl font-medium playfair-display"
             ref={textRef}
           >
             Laissez-vous transporter vers les contrées lointaines de Madagascar
@@ -106,7 +106,7 @@ export const Story = () => {
         </AnimatePresence>
         {/*  */}
         <div className="z-20">
-          <div className="flex  gap-10 items-center">
+          <div className="flex gap-10 items-center">
             <div className="flex-1 flex justify-center">
               <div className="bg-secondary w-[350px] h-[500px] relative">
                 <Parallax speed={-2}>
@@ -155,7 +155,7 @@ export const Story = () => {
               </div>
             </div>
           </div>
-          <div className="h-fit py-20 flex flex-col items-center justify-center">
+          <div className="h-fit pt-20 flex flex-col items-center justify-center">
             <div className="w-10/12 lg:w-6/12 prose max-w-none">
               <FadeInComponent>
                 <p className="text-justify text-secondary px-4 text-lg playfair-display">
@@ -189,7 +189,7 @@ export const Story = () => {
         </div>
       </section>
       <section
-        className="h-fit lg:h-screen bg-secondary flex items-center justify-center gap-[500px] relative prose max-w-none"
+        className="h-screen bg-secondary flex items-center justify-center gap-[500px] relative prose max-w-none"
         ref={section3Ref}
       >
         <div className="w-60 text-right relative -top-16">
@@ -221,7 +221,7 @@ export const Story = () => {
           </div>
         </div>
       </section>
-      <section className="h-fit pb-20 lg:h-screen bg-secondary flex flex-col items-center justify-center">
+      <section className="h-fit pb-20 2xl:h-fit bg-secondary flex flex-col items-center justify-start">
         <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
           <p className="text-justify text-primary px-4 text-lg">
             Nous croyons également que notre engagement doit s'étendre au-delà
