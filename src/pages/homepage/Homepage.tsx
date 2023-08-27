@@ -1,11 +1,12 @@
 import { TransitionContextProvider } from "../../context/TransitionContext";
 import MainSection from "./main-section/MainSection";
 
-import { BrowserView } from "react-device-detect";
+import { BrowserView, MobileView } from "react-device-detect";
 import { Vanilla_m1 } from "../../imports/vanille.import";
 import { motion } from "framer-motion";
 import { VanillaCard } from "../../components/VanillaCard";
 import { mp4_bg } from "../../imports/background.import";
+import MobileSubSection from "../../components/MobileSubSection";
 
 export default function Homepage() {
   return (
@@ -68,7 +69,7 @@ export default function Homepage() {
           </section>
         </TransitionContextProvider>
       </BrowserView>
-      {/* <MobileView>
+      <MobileView>
         <section className="h-fit mt-20 flex flex-col items-center justify-between bg-primary py-10">
           <span className="text-center text-3xl text-secondary playfair-display">
             Découvrez notre gamme de{" "}
@@ -79,11 +80,13 @@ export default function Homepage() {
         </section>
         <section>
           <MobileSubSection subSection={"1"}>
-            <p className="text-center">
-              La Maison Bourbon Vanille née à
-              <i className="text-accent"> Madagascar</i> ,est un trésor rare
-              niche dans un environnement naturel exceptionnellement luxueux.
-            </p>
+            <div className="">
+              <p className="text-center">
+                La Maison Bourbon Vanille née à
+                <i className="text-accent"> Madagascar</i> ,est un trésor rare
+                niche dans un environnement naturel exceptionnellement luxueux.
+              </p>
+            </div>
           </MobileSubSection>
           <MobileSubSection subSection={"2"}>
             <p className="text-center">
@@ -109,7 +112,7 @@ export default function Homepage() {
             </p>
           </MobileSubSection>
         </section>
-      </MobileView> */}
+      </MobileView>
     </div>
   );
 }
