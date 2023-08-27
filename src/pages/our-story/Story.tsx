@@ -10,6 +10,7 @@ import { Parallax } from "react-scroll-parallax";
 import bg from "../../assets/backgrounds/istockphoto-1353766164-640_adpp_is.mp4";
 import { FadeInComponent } from "../../components/animation/FadeInComponent";
 import { bg_1, bg_2 } from "../../imports/background.import";
+import { BrowserView, isBrowser } from "react-device-detect";
 gsap.registerPlugin(ScrollTrigger);
 export const Story = () => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -47,15 +48,15 @@ export const Story = () => {
           end: "bottom bottom",
           scrub: true,
         },
-      }
+      },
     );
   }, []);
   return (
-    <div id="story" className="mt-20 lg:mt-0 playfair-display">
-      <section className="h-fit py-20 lg:h-screen flex flex-col items-center justify-center section-1 z-20 relative overflow-hidden">
-        <div className="w-10/12 lg:w-6/12 prose max-w-none z-20">
+    <div id="story" className="playfair-display mt-20 lg:mt-0">
+      <section className="section-1 relative z-20 flex h-fit h-screen flex-col items-center justify-center overflow-hidden py-20">
+        <div className="prose z-20 w-10/12 max-w-none lg:w-6/12">
           <h1
-            className="reveal-text text-center text-secondary lg:text-5xl 2xl:text-6xl font-medium playfair-display"
+            className="reveal-text playfair-display text-center font-medium text-secondary lg:text-5xl 2xl:text-6xl"
             ref={textRef}
           >
             Laissez-vous transporter vers les contrées lointaines de Madagascar
@@ -63,7 +64,7 @@ export const Story = () => {
             <i className="text-accent"> à nos vanilles d'exception !</i>
           </h1>
           <motion.p
-            className="text-center text-secondary text-lg playfair-display"
+            className="playfair-display text-center text-lg text-secondary"
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: -25, transition: { delay: 1.5 } }}
             transition={{ duration: 2 }}
@@ -78,87 +79,89 @@ export const Story = () => {
           </motion.p>
         </div>
       </section>
-      <section className="h-fit flex flex-col gap-10 py-24 w-screen bg-primary relative">
-        <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-75 z-[11]"></div>
+      <section className="relative flex h-fit w-screen flex-col gap-10 bg-primary py-20 lg:py-24">
+        <div className="absolute left-0 top-0 z-[11] h-full w-full bg-primary opacity-75"></div>
         <AnimatePresence mode="wait">
           {activeImage === 1 && (
             <motion.div
-              className="w-full h-full absolute top-0 left-0 z-10"
+              className="absolute left-0 top-0 z-10 h-full w-full"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 1 }}
             >
-              <img src={bg_1} className="w-full h-full object-cover" alt="" />
+              <img src={bg_1} className="h-full w-full object-cover" alt="" />
             </motion.div>
           )}
           {activeImage === 2 && (
             <motion.div
-              className="w-full h-full absolute top-0 left-0 z-10"
+              className="absolute left-0 top-0 z-10 h-full w-full"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}
               transition={{ duration: 1 }}
             >
-              <img src={bg_2} className="w-full h-full object-cover" alt="" />
+              <img src={bg_2} className="h-full w-full object-cover" alt="" />
             </motion.div>
           )}
         </AnimatePresence>
         {/*  */}
         <div className="z-20">
-          <div className="flex gap-10 items-center">
-            <div className="flex-1 flex justify-center">
-              <div className="bg-secondary w-[350px] h-[500px] relative">
-                <Parallax speed={-2}>
+          <BrowserView>
+            <div className="flex items-center gap-10">
+              <div className="flex flex-1 justify-center">
+                <div className="relative h-[500px] w-[350px] bg-secondary">
+                  <Parallax speed={-2}>
+                    <img
+                      src={dec_1}
+                      className="absolute -left-14 top-6 w-64"
+                      alt=""
+                    />
+                  </Parallax>
+                  <Parallax speed={-3}>
+                    <img
+                      src={dec_2}
+                      className="absolute -right-32 top-20 w-56"
+                      alt=""
+                    />
+                  </Parallax>
                   <img
-                    src={dec_1}
-                    className="absolute top-6 -left-14 w-64"
+                    src={dec_3}
+                    className="absolute -bottom-10 -right-24 w-56"
                     alt=""
                   />
-                </Parallax>
-                <Parallax speed={-3}>
-                  <img
-                    src={dec_2}
-                    className="absolute top-20 -right-32 w-56"
-                    alt=""
-                  />
-                </Parallax>
-                <img
-                  src={dec_3}
-                  className="absolute -bottom-10 -right-24 w-56"
-                  alt=""
-                />
+                </div>
+              </div>
+              <div className="prose max-w-none flex-1 text-secondary">
+                <div className="w-10/12">
+                  <Parallax speed={2}>
+                    <FadeInComponent>
+                      <h1 className="playfair-display font-normal text-secondary">
+                        Lorem ipsum{" "}
+                        <i className="playfair-display font-medium text-accent">
+                          dolor sit amet
+                        </i>{" "}
+                        , consectetur adipisicing elit. Saepe similique.
+                      </h1>
+                    </FadeInComponent>
+                    <FadeInComponent>
+                      <p className="playfair-display text-lg">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Ea quidem optio aliquam repudiandae laudantium quibusdam
+                        officia, ducimus cumque repellendus, aperiam tempore
+                        illo quae nostrum laborum, delectus esse commodi
+                        excepturi? Dicta.
+                      </p>
+                    </FadeInComponent>
+                  </Parallax>
+                </div>
               </div>
             </div>
-            <div className="flex-1 prose max-w-none text-secondary">
-              <div className="w-10/12">
-                <Parallax speed={2}>
-                  <FadeInComponent>
-                    <h1 className="text-secondary playfair-display font-normal">
-                      Lorem ipsum{" "}
-                      <i className="text-accent font-medium playfair-display">
-                        dolor sit amet
-                      </i>{" "}
-                      , consectetur adipisicing elit. Saepe similique.
-                    </h1>
-                  </FadeInComponent>
-                  <FadeInComponent>
-                    <p className="text-lg playfair-display">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Ea quidem optio aliquam repudiandae laudantium quibusdam
-                      officia, ducimus cumque repellendus, aperiam tempore illo
-                      quae nostrum laborum, delectus esse commodi excepturi?
-                      Dicta.
-                    </p>
-                  </FadeInComponent>
-                </Parallax>
-              </div>
-            </div>
-          </div>
-          <div className="h-fit pt-20 flex flex-col items-center justify-center">
-            <div className="w-10/12 lg:w-6/12 prose max-w-none">
+          </BrowserView>
+          <div className="flex h-fit flex-col items-center justify-center pt-0 lg:pt-20">
+            <div className="prose w-10/12 max-w-none lg:w-6/12">
               <FadeInComponent>
-                <p className="text-justify text-secondary px-4 text-lg playfair-display">
+                <p className="playfair-display px-4 text-justify text-lg text-secondary">
                   Notre vanille bourbon est le fruit d'un partenariat étroit
                   avec des producteurs locaux, qui ont un savoir-faire
                   exceptionnel en matière de culture et de récolte de vanille.
@@ -168,17 +171,17 @@ export const Story = () => {
                   Madagascar.
                 </p>
               </FadeInComponent>
-              <div className="w-full flex flex-col lg:flex-row justify-around gap-0 lg:gap-10">
+              <div className="flex w-full flex-col justify-around gap-0 lg:flex-row lg:gap-10">
                 <img
                   src={image_1}
-                  className="w-[512px] mb-0 rounded-2xl"
+                  className="mb-0 w-[512px] rounded-2xl"
                   alt=""
                   onMouseEnter={() => setActiveImage(1)}
                   onMouseLeave={() => setActiveImage(0)}
                 />
                 <img
                   src={bg_2}
-                  className="w-[512px] mb-0 rounded-2xl"
+                  className="mb-0 w-[512px] rounded-2xl"
                   alt=""
                   onMouseEnter={() => setActiveImage(2)}
                   onMouseLeave={() => setActiveImage(0)}
@@ -188,42 +191,44 @@ export const Story = () => {
           </div>
         </div>
       </section>
-      <section
-        className="h-screen bg-secondary flex items-center justify-center gap-[500px] relative prose max-w-none"
-        ref={section3Ref}
-      >
-        <div className="w-60 text-right relative -top-16">
-          <h1 className="font-normal">
-            Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
-            similique.
-          </h1>
-        </div>
-        <div className="w-60 text-left relative top-16">
-          <h1 className="font-normal">
-            Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
-            similique.
-          </h1>
-        </div>
-        <div
-          ref={section3ImgRef}
-          className="w-screen h-screen overflow-hidden rounded-[200px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      <BrowserView>
+        <section
+          className="prose relative flex h-screen max-w-none items-center justify-center gap-[500px] bg-secondary "
+          ref={section3Ref}
         >
-          <div className="relative w-full h-full">
-            <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-70"></div>
-            <video
-              className="min-w-full min-h-full object-cover z-[19] p-0 m-0"
-              autoPlay
-              loop
-              muted
-            >
-              <source src={bg} type="video/mp4" />
-            </video>
+          <div className="relative -top-16 w-60 text-right">
+            <h1 className="font-normal">
+              Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
+              similique.
+            </h1>
           </div>
-        </div>
-      </section>
-      <section className="h-fit pb-20 2xl:h-fit bg-secondary flex flex-col items-center justify-start">
-        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col items-center">
-          <p className="text-justify text-primary px-4 text-lg">
+          <div className="relative top-16 w-60 text-left">
+            <h1 className="font-normal">
+              Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
+              similique.
+            </h1>
+          </div>
+          <div
+            ref={section3ImgRef}
+            className="absolute left-1/2 top-1/2 h-screen w-screen -translate-x-1/2 -translate-y-1/2 transform overflow-hidden rounded-[200px]"
+          >
+            <div className="relative h-full w-full">
+              <div className="absolute left-0 top-0 h-full w-full bg-primary opacity-70"></div>
+              <video
+                className="z-[19] m-0 min-h-full min-w-full object-cover p-0"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={bg} type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </section>
+      </BrowserView>
+      <section className="flex h-fit flex-col items-center justify-start bg-secondary py-20 lg:pb-20 2xl:h-fit">
+        <div className="prose flex w-10/12 max-w-none flex-col items-center lg:w-8/12">
+          <p className="px-4 text-justify text-lg text-primary">
             Nous croyons également que notre engagement doit s'étendre au-delà
             de la qualité de notre produit. Nous sommes fiers de soutenir des
             initiatives qui favorisent le développement économique des
@@ -234,26 +239,29 @@ export const Story = () => {
           <img src={image_1} className="w-full lg:h-[600px]" alt="" />
         </div>
       </section>
-      <section className="h-fit py-20  bg-primary flex flex-col items-center justify-center">
-        <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-20">
-          <p className="text-secondary text-justify flex-1 text-lg">
+      <section className="flex h-fit flex-col items-center justify-center bg-primary py-20 lg:py-20">
+        <div className="prose flex w-10/12 max-w-none flex-col items-center gap-20 lg:w-8/12 lg:flex-row">
+          <p className="flex-1 text-justify text-lg text-secondary">
             Enfin, nous sommes convaincus que l'éthique professionnelle est la
             clé de notre réussite. Nous agissons avec transparence et honnêteté
             envers nos clients, nos partenaires et nos employés. Nous avons à
             cœur de maintenir des relations solides et durables avec tous les
             acteurs de notre chaîne de valeur.
           </p>
-          <div className="flex-1 w-full h-[400px] relative bg-secondary">
-            {/* <div className="video-overlay z-20 "></div> */}
-            <video
-              className="absolute left-5 top-5 min-w-full min-h-full object-cover z-[19] p-0 m-0"
-              autoPlay
-              loop
-              muted
-            >
-              <source src={bg} type="video/mp4" />
-            </video>
-          </div>
+          {isBrowser && (
+            <div className="relative h-[400px] w-full flex-1 bg-secondary ">
+              {/* <div className="video-overlay z-20 "></div> */}
+              <video
+                className="absolute left-5 top-5 z-[19] m-0 min-h-full min-w-full object-cover p-0"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={bg} type="video/mp4" />
+              </video>
+            </div>
+          )}
+
           {/* <img src={image_1} className="w-full lg:h-[400px] flex-1" alt="" /> */}
         </div>
       </section>

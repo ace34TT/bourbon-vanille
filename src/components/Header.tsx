@@ -8,15 +8,15 @@ export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { handleAnimation } = useContext(PageTransitionContext);
   return (
-    <header className="fixed top-0 playfair-display z-50 w-screen">
-      <div className="h-16 lg:h-20 2xl:h-24 w-screen flex justify-between items-center bg-primary px-10 relative">
+    <header className="playfair-display fixed top-0 z-50 w-screen ">
+      <div className=" relative flex h-20 w-screen items-center justify-between bg-primary px-10 py-5 lg:h-20 2xl:h-24">
         <div></div>
         <button onClick={() => handleAnimation("/")}>
           <img src={Logo} alt="" className="h-16 lg:h-16 2xl:h-20" />
         </button>
         <div>
           <VscMenu
-            className={"text-secondary text-3xl lg:text-4xl cursor-pointer"}
+            className={"cursor-pointer text-3xl text-secondary lg:text-4xl"}
             onClick={() => setIsMenuVisible(true)}
           />
         </div>
@@ -25,7 +25,7 @@ export const Header = () => {
         {isMenuVisible && (
           <>
             <motion.div
-              className={`fixed top-0 left-0 w-screen h-screen bg-black`}
+              className={`fixed left-0 top-0 h-screen w-screen bg-black`}
               onClick={() => setIsMenuVisible(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: isMenuVisible ? 0.5 : 0 }}
@@ -33,37 +33,37 @@ export const Header = () => {
               transition={{ duration: 0.5 }}
             />
             <motion.div
-              className="absolute top-0 left-0 px-0 lg:px-5 w-screen bg-secondary "
+              className="absolute left-0 top-0 w-screen bg-secondary px-0 lg:px-5 "
               initial={{ y: -1000 }}
               animate={{ y: 0 }}
               exit={{ y: -1000 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex justify-between items-center h-24 px-10 py-10">
+              <div className="flex h-24 items-center justify-between px-10 py-10">
                 <div />
                 <div>
                   <img src={Logo} alt="" className="h-16 lg:h-16 2xl:h-20" />
                 </div>
                 <div>
                   <RxCross1
-                    className={"text-primary text-4xl"}
+                    className={"text-4xl text-primary"}
                     onClick={() => setIsMenuVisible(false)}
                   />
                 </div>
               </div>
-              <nav className="flex flex-col lg:flex-row justify-between items-center lg:items-center lg:justify-around h-80 2xl:py-16 lg:h-28 2xl:h-36 lg:text-3xl 2xl:text-4xl text-primary font-normal">
+              <nav className="flex h-64 flex-col items-center justify-around pb-10 text-2xl font-normal text-primary lg:h-28 lg:flex-row lg:items-center lg:justify-around lg:text-3xl 2xl:h-36 2xl:py-16 2xl:text-4xl">
                 <button
-                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  className="playfair-display transition-colors duration-300 hover:text-complementary"
                   onClick={() => {
                     setIsMenuVisible(false);
                     handleAnimation("/order");
                   }}
                 >
-                  Commader
+                  Commander
                 </button>
-                <div className="hidden lg:block w-1 h-6 bg-complementary" />
+                <div className="hidden h-6 w-1 bg-complementary lg:block" />
                 <button
-                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  className="playfair-display transition-colors duration-300 hover:text-complementary"
                   onClick={() => {
                     setIsMenuVisible(false);
                     handleAnimation("/our-story");
@@ -71,9 +71,9 @@ export const Header = () => {
                 >
                   Notre histoire
                 </button>
-                <div className="hidden lg:block w-1 h-6 bg-complementary" />
+                <div className="hidden h-6 w-1 bg-complementary lg:block" />
                 <button
-                  className="hover:text-complementary transition-colors duration-300 playfair-display"
+                  className="playfair-display transition-colors duration-300 hover:text-complementary"
                   onClick={() => {
                     setIsMenuVisible(false);
                     handleAnimation("/contact");

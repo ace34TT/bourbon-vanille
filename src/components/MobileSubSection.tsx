@@ -14,7 +14,7 @@ export default function MobileSubSection({ children, subSection }: IProps) {
   const control = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true }) as unknown as [
     RefObject<HTMLDivElement>,
-    boolean
+    boolean,
   ];
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function MobileSubSection({ children, subSection }: IProps) {
   }, [control, inView]);
   return (
     <motion.div
-      className={`custom-section-mobile h-96 w-full px-10 flex items-center playfair-display sub-section-${subSection} text-secondary text-2xl`}
+      className={`custom-section-mobile h-96 w-full flex items-center playfair-display subsection text-secondary text-2xl`}
       ref={ref}
       variants={boxVariant}
       initial="hidden"

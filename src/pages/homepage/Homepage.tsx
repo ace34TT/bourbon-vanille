@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { VanillaCard } from "../../components/VanillaCard";
 import { mp4_bg } from "../../imports/background.import";
 import MobileSubSection from "../../components/MobileSubSection";
-
+import "./style.css";
 export default function Homepage() {
   return (
     <div>
@@ -80,13 +80,11 @@ export default function Homepage() {
         </section>
         <section>
           <MobileSubSection subSection={"1"}>
-            <div className="">
-              <p className="text-center">
-                La Maison Bourbon Vanille née à
-                <i className="text-accent"> Madagascar</i> ,est un trésor rare
-                niche dans un environnement naturel exceptionnellement luxueux.
-              </p>
-            </div>
+            <p className="text-center">
+              La Maison Bourbon Vanille née à
+              <i className="text-accent"> Madagascar</i> ,est un trésor rare
+              niche dans un environnement naturel exceptionnellement luxueux.
+            </p>
           </MobileSubSection>
           <MobileSubSection subSection={"2"}>
             <p className="text-center">

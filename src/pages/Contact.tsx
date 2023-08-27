@@ -10,16 +10,16 @@ export const Contact = () => {
   };
   return (
     <>
-      <div className="h-fit py-20 lg:my-0 lg:h-fit 2xl:h-screen bg-primary flex playfair-display">
-        <div className="flex-1 flex items-center justify-center sr-only lg:not-sr-only">
+      <div className="playfair-display flex h-fit bg-primary py-20 lg:my-0 lg:h-fit 2xl:h-screen">
+        <div className="sr-only flex flex-1 items-center justify-center lg:not-sr-only">
           <img src={vanilla} className="lg:h-[800px] 2xl:h-full" alt="" />
         </div>
-        <div className="flex-1 h-full flex flex-col justify-center prose max-w-none lg:px-16 ">
-          <div className="flex flex-col bg-secondary lg:p-10 2xl:p-20 rounded-2xl mt-10">
+        <div className="prose flex h-full max-w-none flex-1 flex-col justify-center lg:px-16 ">
+          <div className="mx-5 mt-10 flex flex-col rounded-2xl bg-secondary p-8 lg:p-10 2xl:p-20">
             <h1 className="playfair-display text-primary">
               Formulaire de contact
             </h1>
-            <p className="playfair-display font-medium mt-0">
+            <p className="playfair-display mt-0 font-medium">
               Nous sommes toujours heureux de recevoir vos messages. N’hésitez
               pas à nous contacter via le formulaire ci-dessous pour toute
               question ou suggestion. Nous répondrons rapidement. Merci de votre
@@ -42,15 +42,15 @@ export const Contact = () => {
                         <Field
                           type="text"
                           name="fullName"
-                          className="border border-primary bg-secondary rounded-lg pl-10 pr-3 py-2 w-full"
+                          className="w-full rounded-lg border border-primary bg-secondary py-2 pl-10 pr-3"
                         />
-                        <AiOutlineUser className="absolute text-gray-600 left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                        <AiOutlineUser className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform text-gray-600" />
                       </div>
                       <div className="h-4 text-red-500">
                         <ErrorMessage
                           name="fullName"
                           component="p"
-                          className="p-0 m-0"
+                          className="m-0 p-0"
                         />
                       </div>
                     </div>
@@ -63,15 +63,15 @@ export const Contact = () => {
                         <Field
                           type="email"
                           name="email"
-                          className="border border-primary bg-secondary rounded-lg pl-10 pr-3 py-2 w-full"
+                          className="w-full rounded-lg border border-primary bg-secondary py-2 pl-10 pr-3"
                         />
-                        <AiOutlineMail className="absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                        <AiOutlineMail className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 transform" />
                       </div>
                       <div className="h-4 text-red-500">
                         <ErrorMessage
                           name="email"
                           component="p"
-                          className="p-0 m-0"
+                          className="m-0 p-0"
                         />
                       </div>
                     </div>
@@ -84,14 +84,14 @@ export const Contact = () => {
                         <Field
                           as="textarea"
                           name="message"
-                          className="border border-primary bg-secondary rounded-lg pl-4 pr-3 py-2 w-full"
+                          className="w-full rounded-lg border border-primary bg-secondary py-2 pl-4 pr-3"
                         />
                       </div>
                       <div className="h-4 text-red-500">
                         <ErrorMessage
                           name="message"
                           component="p"
-                          className="p-0 m-0"
+                          className="m-0 p-0"
                         />
                       </div>
                     </div>
@@ -100,7 +100,7 @@ export const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-40 bg-primary text-secondary font-bold py-2 rounded-2xl hover:bg-[#2b4b40] transition-all duration-150"
+                    className="w-40 rounded-2xl bg-primary py-2 font-bold text-secondary transition-all duration-150 hover:bg-[#2b4b40]"
                   >
                     Submit
                   </button>
@@ -111,7 +111,7 @@ export const Contact = () => {
         </div>
       </div>{" "}
       <div className="flex justify-center bg-primary">
-        <div className="w-1/2 bg-secondary h-px"></div>
+        <div className="h-px w-1/2 bg-secondary"></div>
       </div>
     </>
   );
