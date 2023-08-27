@@ -1,9 +1,8 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { bg_1, bg_2, bg_3, bg_4 } from "../../../imports/background.import";
 import ModelContainer from "../../../components/model/ModelContainer";
-import { ProgressContext } from "../../../context/ProgressContext";
 
 const sectionRelations = [
   { bg: "bg-4", subSection: "sub-section-2" },
@@ -75,7 +74,6 @@ export default function MainSection() {
     };
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
-  const { progress } = useContext(ProgressContext);
   return (
     <div
       ref={containerRef}
@@ -138,7 +136,7 @@ export default function MainSection() {
           La Maison Bourbon Vanille née à
           <i className="text-accent playfair-display"> Madagascar </i> ,est un
           trésor rare niche dans un environnement naturel exceptionnellement
-          luxueux. {progress}
+          luxueux.
         </div>
         <div className="flex-1"></div>
       </div>

@@ -3,7 +3,6 @@ import {
   Environment,
   OrthographicCamera,
   ScrollControls,
-  Stage,
 } from "@react-three/drei";
 import { OrthographicCamera as OrthographicCameraType } from "three";
 import { Model } from "./MainModel";

@@ -91,6 +91,11 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
       { duration: 1, x: targetX, y: -25, z: -5 },
       3
     );
+    tl.current.to(
+      modelRef.current.rotation,
+      { duration: 1, y: Math.PI / 3 },
+      3
+    );
     //
     tl.current.to(
       modelRef.current.position,

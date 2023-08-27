@@ -1,17 +1,11 @@
 import "./App.css";
-import {
-  Route,
-  Routes,
-  ScrollRestoration,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./pages/homepage/Homepage";
 import { MainLayout } from "./layouts/MainLayout";
 import { Order } from "./pages/order/Order";
 import { Story } from "./pages/our-story/Story";
 import { Contact } from "./pages/Contact";
 import Labs from "./pages/homepage/labs/Labs";
-import { Transition } from "./components/loader/Transition";
 import { useEffect } from "react";
 function App() {
   const { pathname } = useLocation();

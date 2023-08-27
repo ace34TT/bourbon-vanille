@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import gsap from "gsap";
 import { PageTransitionContext } from "../../context/PageTransitionContext";
-import { toInteger } from "lodash";
 export const Transition = () => {
   const { animationState } = useContext(PageTransitionContext);
   const [zIndex, setZIndex] = useState(50);
