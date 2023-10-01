@@ -16,7 +16,7 @@ export default function MobileSubSection({ children, subSection }: IProps) {
     RefObject<HTMLDivElement>,
     boolean,
   ];
-
+  console.log(subSection);
   useEffect(() => {
     if (inView) {
       control.start("visible");
@@ -26,7 +26,7 @@ export default function MobileSubSection({ children, subSection }: IProps) {
   }, [control, inView]);
   return (
     <motion.div
-      className={`custom-section-mobile h-96 w-full flex items-center playfair-display subsection text-secondary text-2xl`}
+      className={`custom-section-mobile playfair-display subsection flex h-96 w-full items-center text-2xl text-secondary`}
       ref={ref}
       variants={boxVariant}
       initial="hidden"
