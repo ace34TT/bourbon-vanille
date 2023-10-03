@@ -1,8 +1,5 @@
 import { Suspense, useRef } from "react";
-import {
-  Environment,
-  OrthographicCamera,
-} from "@react-three/drei";
+import { Environment, OrthographicCamera } from "@react-three/drei";
 import { OrthographicCamera as OrthographicCameraType } from "three";
 import { Model } from "./MainModel";
 import { Canvas } from "react-three-fiber";
@@ -25,11 +22,7 @@ export default function ModelContainer({ containerRef, className }: IProps) {
           makeDefault
         />
         <Suspense fallback={null}>
-          {/* <ScrollControls pages={5} damping={0.25}> */}
-          {/* <Stage intensity={0}> */}
           <Model cameraRef={cameraRef} containerRef={containerRef} />
-          {/* </Stage> */}
-          {/* </ScrollControls> */}
           <Environment preset="warehouse" />
         </Suspense>
       </Canvas>

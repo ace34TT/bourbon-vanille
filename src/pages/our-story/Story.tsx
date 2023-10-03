@@ -30,7 +30,8 @@ export const Story = () => {
     }
   }, []);
   // section 2 interaction
-  const [activeImage, setActiveImage] = useState(0);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const [activeImage, setActiveImage] = useState(0);
   // section 3
   const section3Ref = useRef<HTMLElement | null>(null);
   const section3ImgRef = useRef<HTMLDivElement | null>(null);
@@ -43,7 +44,7 @@ export const Story = () => {
         width: "400px",
         borderRadius: "250px",
         scrollTrigger: {
-          markers: true,
+          // markers: true,
           trigger: section3Ref.current,
           start: "50% bottom",
           end: "bottom bottom",
@@ -86,7 +87,7 @@ export const Story = () => {
       <section className="relative flex h-fit w-screen flex-col gap-10 bg-primary py-20 lg:py-24">
         <div className="absolute left-0 top-0 z-[11] h-full w-full bg-primary opacity-75"></div>
         <AnimatePresence mode="wait">
-          {activeImage === 1 && (
+          {/* {activeImage === 1 && (
             <motion.div
               className="absolute left-0 top-0 z-10 h-full w-full"
               initial={{ y: -10, opacity: 0 }}
@@ -107,7 +108,7 @@ export const Story = () => {
             >
               <img src={bg_2} className="h-full w-full object-cover" alt="" />
             </motion.div>
-          )}
+          )} */}
         </AnimatePresence>
         {/*  */}
         <div className="z-20">

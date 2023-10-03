@@ -40,7 +40,7 @@ export default function MainSection() {
     }) => {
       if (!elementExists("." + element.subSection)) return;
       ScrollTrigger.create({
-        markers: true,
+        // markers: true,
         trigger: "." + element.subSection,
         start: "top 60%",
         end: "bottom 15%",

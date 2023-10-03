@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "./redux/store";
 function App() {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

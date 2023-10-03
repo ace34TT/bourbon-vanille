@@ -23,7 +23,7 @@ export default function Labs() {
       subSection: string;
     }) => {
       ScrollTrigger.create({
-        markers: true,
+        // markers: true,
         trigger: "." + element.subSection,
         start: "top 60%",
         end: "bottom 15%",
@@ -48,9 +48,9 @@ export default function Labs() {
             start: "top 50%",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
+            // markers: true,
           },
-        }
+        },
       );
     };
     sectionRelations.forEach((element) => createScrollTrigger(element));
@@ -59,73 +59,73 @@ export default function Labs() {
   return (
     <>
       <div ref={containerRef} className="3d-section relative">
-        <div className="w-screen h-screen main-section sticky top-0 relative">
+        <div className="main-section relative sticky top-0 h-screen w-screen">
           <div
-            className="bg-1 w-full h-full absolute z-10 brightness-50"
+            className="bg-1 absolute z-10 h-full w-full brightness-50"
             style={{ zIndex: 10 }}
           >
             <img
               src={bg_1}
               alt="Your Image"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             ></img>
           </div>
           <div
-            className="bg-2 w-full h-full absolute z-20 brightness-50"
+            className="bg-2 absolute z-20 h-full w-full brightness-50"
             style={{ zIndex: 20 }}
           >
             <img
               src={bg_2}
               alt="Your Image"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             ></img>
           </div>
           <div
-            className="bg-3 w-full h-full absolute z-30 brightness-50"
+            className="bg-3 absolute z-30 h-full w-full brightness-50"
             style={{ zIndex: 30 }}
           >
             <img
               src={bg_3}
               alt="Your Image"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             ></img>
           </div>
           <div
-            className="bg-4 w-full h-full absolute z-40 brightness-50"
+            className="bg-4 absolute z-40 h-full w-full brightness-50"
             style={{ zIndex: 40 }}
           >
             <img
               src={bg_4}
               alt="Your Image"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             ></img>
           </div>
         </div>
         {/*  */}
-        <div className="sub-section-1 px-32 flex justify-around items-center h-screen w-screen absolute top-0 z-50 opacity-100 bg-opacity-100">
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white opacity-100">
+        <div className="sub-section-1 absolute top-0 z-50 flex h-screen w-screen items-center justify-around bg-opacity-100 px-32 opacity-100">
+          <div className="prose max-w-none flex-1 text-5xl font-extrabold text-white opacity-100">
             Sub-1 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Omnis illum nihil deleniti repellat ipsam.
           </div>
           <div className="flex-1"></div>
         </div>
-        <div className="sub-section-2 px-32 flex justify-around items-center h-screen w-screen z-50 ">
+        <div className="sub-section-2 z-50 flex h-screen w-screen items-center justify-around px-32 ">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white ">
+          <div className="prose max-w-none flex-1 text-5xl font-extrabold text-white ">
             Sub-2 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Omnis illum nihil deleniti repellat ipsam.
           </div>
         </div>
-        <div className="sub-section-3 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
+        <div className="sub-section-3 z-50 flex h-screen w-screen items-center justify-around px-32 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          <div className="prose max-w-none flex-1 text-5xl font-extrabold text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
             illum nihil deleniti repellat ipsam.
           </div>
         </div>
-        <div className="sub-section-4 px-32 flex justify-around items-center h-screen w-screen z-50 opacity-75">
+        <div className="sub-section-4 z-50 flex h-screen w-screen items-center justify-around px-32 opacity-75">
           <div className="flex-1"></div>
-          <div className="flex-1 prose max-w-none text-5xl font-extrabold text-white">
+          <div className="prose max-w-none flex-1 text-5xl font-extrabold text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
             illum nihil deleniti repellat ipsam.
           </div>

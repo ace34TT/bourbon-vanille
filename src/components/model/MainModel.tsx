@@ -65,7 +65,7 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
     );
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 0.5, x: Math.PI / 12, y: Math.PI / 3, z: -2.75 },
+      { duration: 0.5, x: Math.PI / 12, y: Math.PI / 6, z: -2.75 },
       0,
     );
     //
@@ -82,20 +82,10 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
     );
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 0.5, x: Math.PI / 16 },
+      { duration: 0.5, x: Math.PI / 16, y: Math.PI / 16 },
       1,
     );
-    //
-    // tl.current.to(
-    //   modelRef.current.position,
-    //   { duration: 0.5, x: targetX, y: -25, z: -5 },
-    //   3,
-    // );
-    // tl.current.to(
-    //   modelRef.current.rotation,
-    //   { duration: 0.5, y: Math.PI / 3 },
-    //   3,
-    // );
+
     //
     tl.current.to(
       modelRef.current.position,

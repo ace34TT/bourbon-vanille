@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { PageTransitionContext } from "../context/PageTransitionContext";
 
 interface IProps {
@@ -9,7 +8,6 @@ interface IProps {
 }
 
 export const VanillaCard = ({ image, name, price }: IProps) => {
-  const navigate = useNavigate();
   const { handleAnimation } = useContext(PageTransitionContext);
   return (
     <div
