@@ -11,6 +11,7 @@ import bg from "../../assets/backgrounds/istockphoto-1353766164-640_adpp_is.mp4"
 import { FadeInComponent } from "../../components/animation/FadeInComponent";
 import { bg_1, bg_2 } from "../../imports/background.import";
 import { BrowserView, isBrowser } from "react-device-detect";
+import { Helmet } from "react-helmet";
 gsap.registerPlugin(ScrollTrigger);
 export const Story = () => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -52,11 +53,14 @@ export const Story = () => {
     );
   }, []);
   return (
-    <div id="story" className="playfair-display mt-20 lg:mt-0">
-      <section className="section-1 relative z-20 flex h-fit h-screen flex-col items-center justify-center overflow-hidden py-20">
+    <div id="story" className="playfair-display pt-20 lg:mt-0">
+      <Helmet>
+        <title>Bourbon vanille - Notre histoire</title>
+      </Helmet>
+      <section className="section-1 relative z-20 flex  h-screen flex-col items-center justify-center overflow-hidden py-20">
         <div className="prose z-20 w-10/12 max-w-none lg:w-6/12">
           <h1
-            className="reveal-text playfair-display text-center font-medium text-secondary lg:text-5xl 2xl:text-6xl"
+            className="reveal-text playfair-display text-center text-3xl font-medium  text-secondary md:text-5xl 2xl:text-6xl"
             ref={textRef}
           >
             Laissez-vous transporter vers les contrées lointaines de Madagascar
@@ -64,7 +68,7 @@ export const Story = () => {
             <i className="text-accent"> à nos vanilles d'exception !</i>
           </h1>
           <motion.p
-            className="playfair-display text-center text-lg text-secondary"
+            className="playfair-display text-center text-base text-secondary md:text-lg "
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: -25, transition: { delay: 1.5 } }}
             transition={{ duration: 2 }}
@@ -145,7 +149,7 @@ export const Story = () => {
                       </h1>
                     </FadeInComponent>
                     <FadeInComponent>
-                      <p className="playfair-display text-lg">
+                      <p className="playfair-display text-base md:text-lg">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Ea quidem optio aliquam repudiandae laudantium quibusdam
                         officia, ducimus cumque repellendus, aperiam tempore
@@ -161,7 +165,7 @@ export const Story = () => {
           <div className="flex h-fit flex-col items-center justify-center pt-0 lg:pt-20">
             <div className="prose w-10/12 max-w-none lg:w-6/12">
               <FadeInComponent>
-                <p className="playfair-display px-4 text-justify text-lg text-secondary">
+                <p className="playfair-display px-4 text-justify text-base text-secondary md:text-lg">
                   Notre vanille bourbon est le fruit d'un partenariat étroit
                   avec des producteurs locaux, qui ont un savoir-faire
                   exceptionnel en matière de culture et de récolte de vanille.
@@ -176,15 +180,15 @@ export const Story = () => {
                   src={image_1}
                   className="mb-0 w-[512px] rounded-2xl"
                   alt=""
-                  onMouseEnter={() => setActiveImage(1)}
-                  onMouseLeave={() => setActiveImage(0)}
+                  // onMouseEnter={() => setActiveImage(1)}
+                  // onMouseLeave={() => setActiveImage(0)}
                 />
                 <img
                   src={bg_2}
                   className="mb-0 w-[512px] rounded-2xl"
                   alt=""
-                  onMouseEnter={() => setActiveImage(2)}
-                  onMouseLeave={() => setActiveImage(0)}
+                  // onMouseEnter={() => setActiveImage(2)}
+                  // onMouseLeave={() => setActiveImage(0)}
                 />
               </div>
             </div>

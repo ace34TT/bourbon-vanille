@@ -1,11 +1,21 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { PageTransitionContext } from "../context/PageTransitionContext";
+
 interface IProps {
   image: string;
   name: string;
   price: number;
 }
+
 export const VanillaCard = ({ image, name, price }: IProps) => {
+  const navigate = useNavigate();
+  const { handleAnimation } = useContext(PageTransitionContext);
   return (
-    <div className="relative flex h-[428px] w-80 flex-col items-center rounded-2xl bg-secondary pt-10 transition-transform duration-500 hover:scale-105 lg:h-[490px] 2xl:h-[536px] ">
+    <div
+      className="relative flex h-[428px] w-80 flex-col items-center rounded-2xl bg-secondary pt-10 transition-transform duration-500 hover:scale-105 lg:h-[490px] 2xl:h-[536px] "
+      onClick={() => handleAnimation(`/contact?product=${name}&price=${price}`)}
+    >
       <div className="flex flex-grow flex-col items-center ">
         <img src={image} className="w-20 lg:w-24 2xl:w-28" alt="" />
         <p className="text-3xl text-primary">{name}</p>

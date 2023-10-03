@@ -4,12 +4,33 @@ import { AnimatePresence, motion } from "framer-motion";
 import { RxCross1 } from "react-icons/rx";
 import { VscMenu } from "react-icons/vsc";
 import { PageTransitionContext } from "../context/PageTransitionContext";
+import { useDispatch } from "react-redux";
+import { updateCursor } from "../features/cursor.feature";
 export const Header = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   const { handleAnimation } = useContext(PageTransitionContext);
+  const dispatch = useDispatch();
   return (
-    <header className="playfair-display fixed top-0 z-50 w-screen ">
-      <div className=" relative flex h-20 w-screen items-center justify-between bg-primary px-10 py-5 lg:h-20 2xl:h-24">
+    <header
+      className="playfair-display fixed top-0 z-50 w-screen"
+      onMouseEnter={() => {
+        dispatch(
+          updateCursor({
+            isHoveringHeader: true,
+            isHeaderOpened: isMenuVisible,
+          }),
+        );
+      }}
+      onMouseLeave={() => {
+        dispatch(
+          updateCursor({
+            isHoveringHeader: false,
+            isHeaderOpened: isMenuVisible,
+          }),
+        );
+      }}
+    >
+      <div className="relative flex h-20 w-screen items-center justify-between bg-primary px-10 py-5 lg:h-20 2xl:h-24">
         <div></div>
         <button onClick={() => handleAnimation("/")}>
           <img src={Logo} alt="" className="h-16 lg:h-16 2xl:h-20" />
@@ -17,7 +38,15 @@ export const Header = () => {
         <div>
           <VscMenu
             className={"cursor-pointer text-3xl text-secondary lg:text-4xl"}
-            onClick={() => setIsMenuVisible(true)}
+            onClick={() => {
+              dispatch(
+                updateCursor({
+                  isHoveringHeader: true,
+                  isHeaderOpened: true,
+                }),
+              );
+              setIsMenuVisible(true);
+            }}
           />
         </div>
       </div>
@@ -47,7 +76,15 @@ export const Header = () => {
                 <div>
                   <RxCross1
                     className={"text-4xl text-primary"}
-                    onClick={() => setIsMenuVisible(false)}
+                    onClick={() => {
+                      setIsMenuVisible(false);
+                      dispatch(
+                        updateCursor({
+                          isHoveringHeader: false,
+                          isHeaderOpened: isMenuVisible,
+                        }),
+                      );
+                    }}
                   />
                 </div>
               </div>

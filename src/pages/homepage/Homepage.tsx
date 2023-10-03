@@ -8,13 +8,17 @@ import { VanillaCard } from "../../components/VanillaCard";
 import { mp4_bg } from "../../imports/background.import";
 import MobileSubSection from "../../components/MobileSubSection";
 import "./style.css";
+import { Helmet } from "react-helmet";
 export default function Homepage() {
   return (
     <div>
+      <Helmet>
+        <title>Bourbon vanille - Accueil</title>
+      </Helmet>
       <BrowserView>
         <TransitionContextProvider>
           <MainSection />
-          <section className="py-20 section-2 flex flex-col lg:flex-row justify-center items-center gap-20">
+          <section className="section-2 flex flex-col items-center justify-center gap-20 py-20 lg:flex-row">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{
@@ -46,18 +50,18 @@ export default function Homepage() {
               <VanillaCard image={Vanilla_m1} name={"50 Vanilles"} price={99} />
             </motion.div>
           </section>
-          <section className="h-fit py-20  bg-primary flex flex-col items-center justify-center">
-            <div className="w-10/12 lg:w-8/12 prose max-w-none flex flex-col lg:flex-row items-center gap-20">
-              <p className="text-secondary text-justify flex-1 text-lg">
+          <section className="flex h-fit  flex-col items-center justify-center bg-primary py-20">
+            <div className="prose flex w-10/12 max-w-none flex-col items-center gap-20 lg:w-8/12 lg:flex-row">
+              <p className="flex-1 text-justify text-lg text-secondary">
                 Enfin, nous sommes convaincus que l'éthique professionnelle est
                 la clé de notre réussite. Nous agissons avec transparence et
                 honnêteté envers nos clients, nos partenaires et nos employés.
                 Nous avons à cœur de maintenir des relations solides et durables
                 avec tous les acteurs de notre chaîne de valeur.
               </p>
-              <div className="flex-1 w-full h-[400px] relative bg-secondary">
+              <div className="relative h-[400px] w-full flex-1 bg-secondary">
                 <video
-                  className="absolute left-5 top-5 min-w-full min-h-full object-cover z-[19] p-0 m-0"
+                  className="absolute left-5 top-5 z-[19] m-0 min-h-full min-w-full object-cover p-0"
                   autoPlay
                   loop
                   muted
@@ -70,8 +74,8 @@ export default function Homepage() {
         </TransitionContextProvider>
       </BrowserView>
       <MobileView>
-        <section className="h-fit mt-20 flex flex-col items-center justify-between bg-primary py-10">
-          <span className="text-center text-3xl text-secondary playfair-display">
+        <section className="mt-20 flex h-fit flex-col items-center justify-between bg-primary px-10 py-10">
+          <span className="playfair-display text-center text-2xl leading-snug text-secondary">
             Découvrez notre gamme de{" "}
             <span className="text-accent">vanilles d'exception</span> , avec des
             gousses parfumées
@@ -82,16 +86,16 @@ export default function Homepage() {
           <MobileSubSection subSection={"1"}>
             <p className="text-center">
               La Maison Bourbon Vanille née à
-              <i className="text-accent"> Madagascar</i> ,est un trésor rare
+              <i className="text-accent"> Madagascar</i> , est un trésor rare
               niche dans un environnement naturel exceptionnellement luxueux.
             </p>
           </MobileSubSection>
           <MobileSubSection subSection={"2"}>
             <p className="text-center">
-              Notre artisanat de haute qualité repose sur les valeurs telles que
-              <i className="text-accent">la passion</i> ,
-              <i className="text-accent">la persévérance</i>
-              et <i className="text-accent">la patience</i> , nous permettant de
+              Notre artisanat de haute qualité repose sur les valeurs telles que{" "}
+              <i className="text-accent">la passion</i> ,{" "}
+              <i className="text-accent">la persévérance</i> et{" "}
+              <i className="text-accent">la patience</i> , nous permettant de
               recueillir des gousses d'exception reflétant notre engagement
               éthique.
             </p>
@@ -99,7 +103,7 @@ export default function Homepage() {
           <MobileSubSection subSection={"3"}>
             <p className="text-center">
               Des producteurs locaux engagés pour une
-              <i className="text-accent"> vanille de qualité supérieure</i>
+              <i className="text-accent"> vanille de qualité supérieure</i>{" "}
               respectueuse de l'environnement et du commerce equitable.
             </p>
           </MobileSubSection>

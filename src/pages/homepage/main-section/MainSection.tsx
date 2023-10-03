@@ -40,7 +40,7 @@ export default function MainSection() {
     }) => {
       if (!elementExists("." + element.subSection)) return;
       ScrollTrigger.create({
-        // markers: true,
+        markers: true,
         trigger: "." + element.subSection,
         start: "top 60%",
         end: "bottom 15%",
@@ -64,16 +64,17 @@ export default function MainSection() {
           opacity: 0.95,
           scrollTrigger: {
             trigger: "." + element.subSection,
-            start: "top 50%",
+            start: "top 75%",
             end: "bottom bottom",
             scrub: true,
-            markers: true,
+            // markers: true,
           },
         },
       );
     };
     sectionRelations.forEach((element) => createScrollTrigger(element));
   }, []);
+
   return (
     <div
       ref={containerRef}
@@ -140,7 +141,7 @@ export default function MainSection() {
         </div>
         <div className="flex-1"></div>
       </div>
-      <div className="sub-section-2 z-10 flex h-screen w-screen items-center justify-around px-32 ">
+      <div className="sub-section-2 z-10 flex h-[70vh] w-screen items-start justify-around px-32 ">
         <div className="flex-1"></div>
         <div className="playfair-display prose max-w-none  flex-1 text-center font-medium leading-[56px] text-white opacity-100 lg:text-4xl 2xl:text-5xl">
           Notre artisanat de haute qualité repose sur les valeurs telles que{" "}
@@ -151,7 +152,7 @@ export default function MainSection() {
           engagement éthique.
         </div>
       </div>
-      <div className="sub-section-3 z-10 flex h-screen w-screen items-center justify-around px-32 opacity-75">
+      <div className="sub-section-3 z-10 flex h-[70vh] w-screen items-start justify-around px-32 opacity-75">
         <div className="flex-1"></div>
         <div className="playfair-display prose max-w-none  flex-1 text-center font-medium leading-[56px] text-white opacity-100 lg:text-4xl 2xl:text-5xl">
           Des producteurs locaux engagés pour une
@@ -162,7 +163,7 @@ export default function MainSection() {
           respectueuse de l'environnement et du commerce equitable.
         </div>
       </div>
-      <div className="sub-section-4 z-10 flex h-screen w-screen items-center justify-around px-32 opacity-75">
+      <div className="sub-section-4 z-10 flex h-[100vh] w-screen items-start justify-around px-32 opacity-75">
         <div className="flex-1"></div>
         <div className="playfair-display prose max-w-none  flex-1 text-center font-medium leading-[56px] text-white opacity-100 lg:text-4xl 2xl:text-5xl">
           <i className="playfair-display text-accent">
@@ -171,7 +172,7 @@ export default function MainSection() {
           pour une expérience gustative inoubliable.
         </div>
       </div>
-      <div className="z-10 flex h-screen w-screen items-center justify-center bg-gray-500"></div>
+      <div className="z-10 flex h-[50vh] w-screen items-center justify-center bg-gray-500" />
     </div>
   );
 }

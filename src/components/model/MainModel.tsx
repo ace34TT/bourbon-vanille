@@ -27,7 +27,7 @@ interface ModelProps {
 }
 export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
   const { nodes, materials } = useGLTF(
-    "models/Vanilla-transformed.glb"
+    "models/Vanilla-transformed.glb",
   ) as GLTFResult;
   const modelRef = useRef<THREE.Group>(null);
   const [scrollOffset, setScrollOffset] = useState(0);
@@ -50,78 +50,78 @@ export function Model({ cameraRef, containerRef, ...props }: ModelProps) {
     tl.current = gsap.timeline();
     tl.current.to(
       modelRef.current.position,
-      { duration: 1, x: targetX, y: -0.1, z: -5 },
-      0
+      { duration: 0.5, x: targetX, y: -0.1, z: -5 },
+      0,
     );
     tl.current.to(
       modelRef.current.scale,
       {
-        duration: 1,
+        duration: 0.5,
         x: defaultScaleValue.x * 2,
         y: defaultScaleValue.y * 2,
         z: defaultScaleValue.z * 2,
       },
-      0
+      0,
     );
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 1, x: Math.PI / 12, y: Math.PI / 3, z: -2.75 },
-      0
+      { duration: 0.5, x: Math.PI / 12, y: Math.PI / 3, z: -2.75 },
+      0,
     );
     //
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 1, y: -Math.PI / 3 },
-      1
-    );
-    //
-    tl.current.to(
-      modelRef.current.position,
-      { duration: 1, x: targetX, y: 50, z: -5 },
-      2
-    );
-    tl.current.to(
-      modelRef.current.rotation,
-      { duration: 1, x: Math.PI / 16 },
-      2
+      { duration: 0.5, y: -Math.PI / 3 },
+      0.5,
     );
     //
     tl.current.to(
       modelRef.current.position,
-      { duration: 1, x: targetX, y: -25, z: -5 },
-      3
+      { duration: 0.5, x: targetX, y: 50, z: -5 },
+      1,
     );
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 1, y: Math.PI / 3 },
-      3
+      { duration: 0.5, x: Math.PI / 16 },
+      1,
     );
+    //
+    // tl.current.to(
+    //   modelRef.current.position,
+    //   { duration: 0.5, x: targetX, y: -25, z: -5 },
+    //   3,
+    // );
+    // tl.current.to(
+    //   modelRef.current.rotation,
+    //   { duration: 0.5, y: Math.PI / 3 },
+    //   3,
+    // );
     //
     tl.current.to(
       modelRef.current.position,
-      { duration: 1, x: -0, y: -10, z: -5 },
-      4
+      { duration: 0.5, x: -0, y: -10, z: -5 },
+      1.5,
     );
     tl.current.to(
       modelRef.current.rotation,
-      { duration: 1, y: (5 * Math.PI) / 6 },
-      4
+      { duration: 0.5, y: (5 * Math.PI) / 6 },
+      1.5,
     );
     tl.current.to(
       modelRef.current.scale,
       {
-        duration: 1,
+        duration: 0.5,
         x: defaultScaleValue.x / 1.4,
         y: defaultScaleValue.y / 1.4,
         z: defaultScaleValue.z / 1.4,
       },
-      4
+      1.5,
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handleScroll = () => {
     const { scrollTop, clientHeight } = document.documentElement;
-    const newScrollOffset = scrollTop / (clientHeight * 5 - clientHeight);
+    const newScrollOffset = scrollTop / (clientHeight * 4 - clientHeight);
     setScrollOffset(newScrollOffset);
   };
   useLayoutEffect(() => {

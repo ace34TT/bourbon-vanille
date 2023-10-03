@@ -18,6 +18,11 @@ footer {
   margin-top: 0;
   /* border: 1px solid red !important; */
 }
-::-webkit-scrollbar {
+html:not(.no-scrollbar)::-webkit-scrollbar {
   width: 0 !important;
+}
+.no-cursor,
+.no-cursor a,
+.no-cursor * {
+  cursor: none !important;
 }
