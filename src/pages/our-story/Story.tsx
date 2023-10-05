@@ -142,20 +142,19 @@ export const Story = () => {
                   <Parallax speed={2}>
                     <FadeInComponent>
                       <h1 className="playfair-display font-normal text-secondary">
-                        Lorem ipsum{" "}
+                        La Maison Vanille Bourbon né à{" "}
                         <i className="playfair-display font-medium text-accent">
-                          dolor sit amet
+                          {" "}
+                          Madagascar{" "}
                         </i>{" "}
-                        , consectetur adipisicing elit. Saepe similique.
                       </h1>
                     </FadeInComponent>
                     <FadeInComponent>
                       <p className="playfair-display text-base md:text-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ea quidem optio aliquam repudiandae laudantium quibusdam
-                        officia, ducimus cumque repellendus, aperiam tempore
-                        illo quae nostrum laborum, delectus esse commodi
-                        excepturi? Dicta.
+                        Notre artisanat de haute qualité repose sur des valeurs
+                        telles que la passion, la persévérance et la patience,
+                        nous permettant de recueillir des gousses d'exception
+                        reflétant notre engagement éthique.
                       </p>
                     </FadeInComponent>
                   </Parallax>
@@ -203,14 +202,14 @@ export const Story = () => {
         >
           <div className="relative -top-16 w-60 text-right">
             <h1 className="font-normal">
-              Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
-              similique.
+              Notre vanille, une invitation au voyage gustatif dans les terres
+              de Madagascar.
             </h1>
           </div>
           <div className="relative top-16 w-60 text-left">
             <h1 className="font-normal">
-              Lorem ipsum dolor sit amet , consectetur adipisicing elit. Saepe
-              similique.
+              Découvrez la vanille bourbon de Madagascar, une saveur exquise
+              pour sublimer tous vos plats !
             </h1>
           </div>
           <div
@@ -231,7 +230,7 @@ export const Story = () => {
           </div>
         </section>
       </BrowserView>
-      <section className="flex h-fit flex-col items-center justify-start bg-secondary py-20 lg:pb-20 2xl:h-fit">
+      <section className="flex h-fit flex-col items-center justify-start bg-secondary py-0 lg:pb-20 2xl:h-fit">
         <div className="prose flex w-10/12 max-w-none flex-col items-center lg:w-8/12">
           <p className="px-4 text-justify text-lg text-primary">
             Nous croyons également que notre engagement doit s'étendre au-delà
