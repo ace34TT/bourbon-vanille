@@ -1,6 +1,6 @@
 import "./style.scss";
 import image_1 from "../../assets/backgrounds/1.jpg";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import SplitType from "split-type";
@@ -177,7 +177,7 @@ export const Story = () => {
               </FadeInComponent>
               <div className="flex w-full flex-col justify-around gap-0 lg:flex-row lg:gap-10">
                 <img
-                  src={image_1}
+                  src={bg_1}
                   className="mb-0 w-[512px] rounded-2xl"
                   alt=""
                   // onMouseEnter={() => setActiveImage(1)}
