@@ -1,7 +1,8 @@
+'use client'
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-
+import Image from "next/image";
 //
 const loadImage = async (path: string): Promise<string> => {
   try {
@@ -70,41 +71,53 @@ export default function Prototype() {
             className="bg-1 w-full h-full absolute z-10 brightness-50"
             style={{ zIndex: 10 }}
           >
-            <img
-              src={loadedImages[0]}
+            <Image
+              src='/1.jpg'
               alt="Your Image"
               className="w-full h-full object-cover"
-            ></img>
+              width={2000}
+              height={2002}
+              style={{width:'100%'}}
+            />
           </div>
           <div
             className="bg-2 w-full h-full absolute z-20 brightness-50"
             style={{ zIndex: 20 }}
           >
-            <img
-              src={loadedImages[1]}
+             <Image
+              src='/2.jpg'
               alt="Your Image"
               className="w-full h-full object-cover"
-            ></img>
+              width={2000}
+              height={2002}
+              style={{width:'100%'}}
+            />
           </div>
           <div
             className="bg-3 w-full h-full absolute z-30 brightness-50"
             style={{ zIndex: 30 }}
           >
-            <img
-              src={loadedImages[2]}
+             <Image
+              src='/3.jpg'
               alt="Your Image"
               className="w-full h-full object-cover"
-            ></img>
+              width={2000}
+              height={2002}
+              style={{width:'100%'}}
+            />
           </div>
           <div
             className="bg-4 w-full h-full absolute z-40 brightness-50"
             style={{ zIndex: 40 }}
           >
-            <img
-              src={loadedImages[3]}
+             <Image
+              src='/5.jpg'
               alt="Your Image"
               className="w-full h-full object-cover"
-            ></img>
+              width={2000}
+              height={2002}
+              style={{width:'100%'}}
+            />
           </div>
         </div>
         {/*  */}
