@@ -4,17 +4,42 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import { AiOutlineMail, AiOutlineUser } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import * as Yup from "yup";
+import { useState } from "react";
+import axios from "axios";
 export const Contact = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("product"); // 'value1'
   const price = searchParams.get("price"); // 'value2'
 
-  const contactSchema = {
-    fullName: Yup.string().required("Champs obligatoire").min(4),
+  const [isLoading, setIsLoading] = useState(false);
+  const handleSendMail = async (
+    name: string,
+    email: string,
+    message: string,
+  ) => {
+    try {
+      setIsLoading(true);
+      await axios.post(
+        "https://bourbon-mail-service.onrender.com/api/new-order",
+        {
+          name,
+          email,
+          message,
+        },
+      );
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const contactSchema = Yup.object().shape({
+    fullName: Yup.string()
+      .required("Champs obligatoire")
+      .min(4, "Nom invalide"),
     email: Yup.string().email().required("Champs obligatoire"),
     message: Yup.string().min(10).required("Champs obligatoire"),
-  };
+  });
   return (
     <div className="pt-20 lg:pt-20 2xl:pt-24">
       <Helmet>
@@ -42,15 +67,28 @@ export const Contact = () => {
                 message: `Bonjour , 
 
 Je souhaite commander le produit suivant :
-Produit : ${name}
-Prix : ${price}
+Produit : 
+Prix : 
 
-Dans l'attente de votre confirmation .
-`,
+Dans l'attente de votre confirmation .`,
               }}
               validationSchema={contactSchema}
               // eslint-disable-next-line @typescript-eslint/no-empty-function
-              onSubmit={async () => {}}
+              onSubmit={async (values, { resetForm, setSubmitting }) => {
+                try {
+                  await handleSendMail(
+                    values.fullName,
+                    values.email,
+                    values.message,
+                  );
+                  alert("Commande envoyée");
+                  setSubmitting(false);
+                } catch (error) {
+                  console.error(error);
+                  setSubmitting(false);
+                }
+                resetForm();
+              }}
             >
               {({ isSubmitting }) => (
                 <Form>
@@ -124,7 +162,7 @@ Dans l'attente de votre confirmation .
                     disabled={isSubmitting}
                     className="w-40 rounded-2xl bg-primary py-2 font-bold text-secondary transition-all duration-150 hover:bg-[#2b4b40]"
                   >
-                    Submit
+                    {isSubmitting ? "traitement en cours " : "Envoyer"}
                   </button>
                 </Form>
               )}
